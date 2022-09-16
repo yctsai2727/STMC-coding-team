@@ -1,0 +1,18 @@
+[0] Config.pm:311> INFO - This is Biber 2.16
+[0] Config.pm:314> INFO - Logfile is 'lesson0.blg'
+[167] biber-MSWIN32:340> INFO - === 
+[227] Biber.pm:415> INFO - Reading 'lesson0.bcf'
+[391] Biber.pm:952> INFO - Found 4 citekeys in bib section 0
+[410] Biber.pm:4340> INFO - Processing section 0
+[425] Biber.pm:4531> INFO - Looking for bibtex format file 'reference.bib' for section 0
+[493] bibtex.pm:1689> INFO - LaTeX decoding ...
+[504] bibtex.pm:1494> INFO - Found BibTeX data source 'reference.bib'
+[543] Utils.pm:395> WARN - legacy month field 'Dec' in entry 'westerndigital:EHT_blackhole' is not an integer - this will probably not sort properly.
+[543] Utils.pm:395> WARN - legacy month field 'Apr' in entry 'nasa:Ingenuity_Helicopter' is not an integer - this will probably not sort properly.
+[557] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[557] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[557] Biber.pm:4168> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
+[557] Biber.pm:4174> INFO - No sort tailoring available for locale 'en-US'
+[570] bbl.pm:654> INFO - Writing 'lesson0.bbl' with encoding 'UTF-8'
+[571] bbl.pm:757> INFO - Output to lesson0.bbl
+[571] Biber.pm:128> INFO - WARNINGS: 2

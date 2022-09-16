@@ -1,0 +1,654 @@
+\item Egyptian Fraction Problem
+\item Fisher-Yates shuffle algorithm
+\item Bubble sort
+\item Binary searching
+\item Minimum number of coins
+\item Number of ways to walk $m\times n$ grid
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{frame}[fragile]{Exercise: Arithmetic machine}
+  Write a program that 
+  \begin{itemize}
+    \item Takes in two real numbers \texttt{x1} and \texttt{x2}
+    \item Calculate the $x_1+x_2$, $x_1-x_2$, $x_1 x_2$, $x_1/x_2$
+    \item Print the results
+  \end{itemize}
+  Example output:
+\begin{lstlisting}[language=bash]
+    $./main
+    1.4 3.9
+    5.300000 -2.500000 5.460000 0.358974
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Exercise: Remainder}
+  \begin{itemize}
+    \item In elementary school, you learnt to do division with remainder
+    \item E.g. $29/3 = 9 \cdots 2$, $62/9 = 6 \cdots 8$, etc.
+    \item Write a program that compute that read two integers $x_1,x_2$ and return the remainder (You can output that as \texttt{float}, or search for \textit{type casting} if you want to convert that to \texttt{int})
+    \item (Hint: \texttt{int d = x1/x2} will give you the integer part of $x_1/x_2$)
+  \end{itemize}
+  Example output:
+\begin{lstlisting}[language=bash]
+    $./main
+    29 3
+    2.000000
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Exercise: Number of legs}
+  \begin{itemize}
+    \item You should have heard of questions like this:
+    \item Each chicken has 2 legs and rabbit has 4. If there are 10 animals in total and the total legs are 68, find the number of chicken and rabbit.
+    \item The problem can be solve this way:
+    \item Let $x$ be number of chicken and $y$ be number of rabbit, then
+  \end{itemize}
+\begin{align*}
+    x + y &= 10\\
+    2x + 4y &= 26
+  \end{align*}
+  We can solve the problem if we can solve this two equation \textit{simultaneously}
+\end{frame}
+
+\begin{frame}[fragile]{Exercise: Number of legs (cont.)}
+  Turns out for equation of form:
+ \begin{align*}
+    ax + by &= e\\
+    cx + dy &= f
+  \end{align*}
+  If $ad-bc \neq 0$, we have (try to prove it!) :
+  \begin{align*}
+    x &= \frac{ed - bf}{ad-bc}\\
+    y &= \frac{af - ec}{ad-bc}
+  \end{align*}
+\end{frame}
+
+\begin{frame}[fragile]{Exercise: Number of legs (cont.)}
+  Hence, write a program that do the following:
+  \begin{itemize}
+    \item Read in the total number of animals $N_a$ and legs $N_l$
+    \item Return the number of chicken $N_c$ and rabbit $N_r$ 
+  \end{itemize}
+  Example input and output for $N_a=10, N_l = 26$ (10 animals in total, 26 legs) :
+\begin{lstlisting}[language=bash]
+  $./main
+  10 26
+  7.000000 3.000000
+\end{lstlisting}
+The result suggested that there are $N_c=7$ chicken and $N_r=3$ rabbit
+\end{frame}
+
+\section{Modulo operator}
+
+\begin{frame}[fragile]{Modulo operator}
+  \begin{itemize}
+    \item In the second last exercise, we have discussed how to calculate the remainder for division of integers
+    \item However, there are actually a build-in way we can do it 
+    \item This is called the \textbf{modulo operator} \texttt{\%} (It's a lie, C/C++ modulo operation is actually a \textit{remainder operator}; \href{https://stackoverflow.com/questions/11720656/modulo-operation-with-negative-numbers}{Reference})
+    \item The modulo operator is defined as follows:
+  \end{itemize}
+\begin{lstlisting}[language=C]
+  a === (a/b)*b + a%b //C99 definition
+\end{lstlisting}
+Here \texttt{a/b} refers to integer division, not floating point division
+\end{frame}
+
+\begin{frame}{Modulo operator}
+  \begin{itemize}
+    \item Let's see some of the implications of that:
+    \item Consider the case when $a=19,b=3$:
+    \begin{itemize}
+      \item Since \texttt{a/b=6}; \texttt{a\%b = 19 - 6*3 = 1}
+      \item This is consistent with $19/3 = 6 \cdots 1$
+      \item So in general if $a>0$ and $b>0$, \texttt{a\%b} gives the \textbf{remainder} when \texttt{a} divides by \texttt{b}
+      \item The range of \texttt{a\%b} in this case is $[0,b-1]$
+    \end{itemize}
+
+    \vspace{1mm}
+    \item Now consider the case when $a=0, b=3$:
+    \begin{itemize}
+      \item Since \texttt{a/b=0}; \texttt{a\%b = 0 - 0 = 0}
+      \item So in general \texttt{a\%b = 0} when \texttt{a=0}
+    \end{itemize}
+
+  \end{itemize}
+  
+\end{frame}
+
+
+\begin{frame}{Modulo operator}
+  \begin{itemize}
+    \item Consider the case when $a=-19,b=3$:
+    \begin{itemize}
+      \item Since \texttt{a/b=-6}; \texttt{a\%b = -19 - (-6)*3 = -1}
+      \item In general if $a<0$ and $b>0$, \texttt{a\%b = - (a'\%b)}, where $a'=|a|$  
+      \item The range in this case is $[-(b-1),0]$
+    \end{itemize}
+
+    \vspace{1mm}
+    \item Now consider the case when $a=-19, b=-3$:
+    \begin{itemize}
+      \item Since \texttt{a/b=6}; \texttt{a\%b = -19 - 6*(-3) = -1}
+      \item So in general if $a<0$ and $b<0$, \texttt{a\%b = - (a'\%b)}, where $a'=|a|$, just like the case above
+    \end{itemize}
+  \end{itemize}
+  
+\end{frame}
+
+\begin{frame}{Modulo operator}
+  \begin{itemize}
+    \item Finally consider the case when $a=19,b=-3$:
+    \begin{itemize}
+      \item Since \texttt{a/b=-6}; \texttt{a\%b = 19 - (-6)*(-3) = 1}
+      \item In general if $a>0$ and $b<0$, \texttt{a\%b} gives the usual remainder 
+      \item The range in this case is $[0,(b-1)]$
+    \end{itemize}
+    \vspace{1mm}
+    \item The range of \texttt{a\%b} is summarized in the table below:
+  \end{itemize}
+  \begin{table}[]
+    \begin{tabular}{cccc}
+                     & a\textless{}0  & a=0 & a\textgreater{}0 \\
+    b\textgreater{}0 & {[}-(b-1),0{]} & 0   & {[}0,b-1{]}      \\
+    b=0              & \multicolumn{3}{c}{undefined}           \\
+    b\textless{}0    & {[}-(b-1),0{]} & 0   & {[}0,b-1{]}     
+    \end{tabular}
+    \end{table}
+\end{frame}
+
+
+\begin{frame}{Exercise: Sexagesimal numbers}
+  \begin{itemize}
+    \item Numbers in our daily life are usually represented in \textbf{base-10 system}
+    \item For example, when we write 72, what we actually mean is there is seven 10 plus two 1 (i.e. $72 = 7\times 10 + 2\times 1$)
+    \item But using base-10 is not necesary. For example, Babylonian uses the base \textbf{Sexagesimal (base-60) system} 
+  \end{itemize}
+\end{frame}
+
+\item The numerals in binary system is 0 and 1
+  \end{itemize}
+  \begin{table}[]
+    \begin{tabular}{llllllllll}
+    Base 10 & 0    & 1    & 2    & 3    & 4    & 5    & 6    & 7    & 8    \\
+    Base 2  & 0000 & 0001 & 0010 & 0011 & 0100 & 0101 & 0110 & 0111 & 1000
+    \end{tabular}
+    \end{table}
+
+
+\begin{frame}{Example: Predator-Prey Dynamics}
+  \begin{itemize}
+    \item In previous class some of you have asked about \textit{differential equations}
+    \item Impossible to introduce the theory of differential equation to you in this level
+    \item Instead we will try to let you know what differential equations can \textit{do}
+    \item Talk about a classic problem in biology: \textbf{predator-prey dynamics}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Example: Predator-Prey Dynamics}
+  \begin{itemize}
+    \item Let $x,y$ be the number of prey and predator at some time $t$. Then the rate of change of each species is model as:
+  \end{itemize}
+  \begin{align*}
+    \frac{\Delta x}{\Delta t} &= \alpha x - \beta x \,y\\
+    \frac{\Delta y}{\Delta t} &= \delta x\,y -\gamma y
+  \end{align*}
+\end{frame}
+
+\begin{frame}{Example: Predator-Prey Dynamics}
+  \begin{itemize}
+    \item Hence, the evolution of number of prey and predators can be written as:
+    \begin{align*}
+      x_{n+1} &= x_n + \left(\alpha x_n - \beta x_n\,y_n \right)h\\
+      y_{n+1} &= y_n + \left(\delta x_n\,y_n - \gamma y_n\right)h
+    \end{align*}
+    \item With that we can write code that do the simulation
+  \end{itemize}
+  
+\end{frame}
+
+\begin{frame}[fragile]{Example: Predator-Prey Dyanmics}
+\begin{lstlisting}[language=python]
+t,t_lim,dt = 0,100,1e-3
+a,b,c,d = 1.1,0.4,0.8,0.4
+x,y = 10,10
+while t < t_lim:
+    print(f'{t}\t{x}\t{y}')
+    x += (a*x-b*x*y)*dt
+    y += (d*x*y-c*y)*dt
+    t += dt
+\end{lstlisting}
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{frame}{Mathematical proving}
+  \begin{itemize}
+    \item A \textbf{mathematical proof} is a sequence of logical statements, one implying another, which gives an explanation of why a given statement is true. 
+    \item Mathematical proof is \textit{absolute}, which means that once a theorem is proved, it is proved for ever.
+  \end{itemize}  
+\end{frame}
+
+\begin{frame}{Mathematical proving}
+  \begin{exampleblock}{Example: Geometric sequence}
+    One day, Judy is bored. So she tries to play around with sum of power of two. She tabulated her some an found out something interesting: 
+    \begin{table}[]
+      \begin{tabular}{lll}
+      1 & $2^1 = 2$  & $1+2 = 3$                            \\
+      2 & $2^2 = 4$  & $1+2+ 2^2 = 7$                       \\
+      3 & $2^3 = 8$  & $1+2+2^2 + 2^3 = 15$                 \\
+      4 & $2^4 = 16$ & $1 + 2 + 2^2 + 2^3 + 2^4 = 31$       \\
+      5 & $2^5 = 32$ & $1 + 2 + 2^2 + 2^3 + 2^4 + 2^5 = 63$
+      \end{tabular}
+      \end{table}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Mathematical proving}
+  So she made the following hypothesis:
+  \begin{block}{Hypothesis}
+    Let $n$ be an integer and $n\geq 1$. Then $1+2+\cdots + 2^{n-1} = 2^n -1$\\
+    \textbf{\textit{Question: Is she correct? }}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Mathematical proving}
+  In fact she IS correct. To see that, let $S$ be the required sum:
+  \begin{align*}
+    S = 1 + 2 + 2^2 + \cdots + 2^{n-2} + 2^{n-1}
+  \end{align*}
+  Then $2S$ is:
+  \begin{align*}
+    2S = 2 + 2^2 + 2^3 + \cdots + 2^{n-1} + 2^{n}
+  \end{align*}
+\end{frame}
+
+\begin{frame}{Mathematical proving}
+  So:
+  \begin{align*}
+    S &= 2S - S\\
+    &= (2 + 2^2 + 2^3 + \cdots + 2^{n-1} + 2^{n}) - (1 + 2 + 2^2 + \cdots + 2^{n-2} + 2^{n-1})\\
+    &= 2^n - 1
+  \end{align*}
+  Which proves our hypothesis. Now, even if we don't list out every single number $n$, we will know the claim is true.
+\end{frame}
+
+\begin{frame}{Mathematical proving}
+  \begin{itemize}
+    \item This is an example of a proof
+    \item In general, we need a proof in order to be certain something is true, because apparent patterns can and had failed in the past 
+    \item Example:
+    \item \textbf{Claim:} $n^2 + n + 41$ is a prime number (which is false)
+  \end{itemize}  
+  \begin{table}[]
+    \begin{tabular}{lllllllll}
+    $n$        & 1   & 2   & 3   & 4   & $\cdots$ & 38   & 39   & 40   \\
+    $n^2+n+41$ & 43  & 47  & 53  & 61  & $\cdots$ & 1523 & 1601 & 1681 \\
+    Is prime?  & Yes & Yes & Yes & Yes & $\cdots$ & Yes  & Yes  & No  
+    \end{tabular}
+    \end{table}
+\end{frame}
+
+\begin{frame}{Mathematical proving}
+  \begin{exampleblock}{Exercise}
+    \begin{itemize}
+      \item Prove that $n(n+1)$ is always divisble by 2
+      \item In a group of $366$ people, there must be at least two people with the same birthday
+      \item Prove that is impossible to write $\sqrt{2} = \frac{m}{n}$ where $m,n$ are integers
+      \item Let $x$ be a real number and $0<x<1$. Show that if $n$ is the smallest positive integer such that $x-1/n \geq 0$, then $x-1/n < 1/n$
+    \end{itemize}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{(Optional) Proof by contrapositive}
+  \begin{itemize}
+    \item The result provide the grounding for a method of proof called \textbf{proof by contrapositive}
+    \item In short, because $p \rightarrow q$ is equivalent to $\neg q \rightarrow \neg p$, we can prove a statement by it's contrapositive, which is sometimes easier
+    \item Consider the following claim:
+    \item \textbf{Claim:}
+      Let $x\in\mathbb{Z}^+$. If $x^2 -6x + 5$ is even, then $x$ is odd.
+    \item How can we prove this claim?
+  \end{itemize}
+\end{frame}
+\begin{frame}{(Optional) Proof by contrapositive}
+  \begin{itemize}
+    \item Instead proving directly, we prove it's contrapositive. 
+    \item The contrapositive of the statement is:
+    \item \textbf{Contrapositive Claim:} If $x$ is even, then $x^2 - 6x + 5$ is odd
+    \item This is almost trivial to prove, because:
+    \begin{align*}
+      x^2 - 6x + 5 = \overbrace{x(x-6)}^{\text{even if x even}} + \overbrace{5}^{\text{odd}}
+    \end{align*}
+    So the sum must be odd
+  \end{itemize}
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+\begin{frame}{Mathematical proving}
+  \begin{itemize}
+    \item A \textbf{mathematical proof} is a sequence of logical statements, one implying another, which gives an explanation of why a given statement is true. 
+    \item Mathematical proof is \textit{absolute}, which means that once a theorem is proved, it is proved for ever.
+  \end{itemize}  
+\end{frame}
+
+\begin{frame}{Mathematical proving}
+  \begin{exampleblock}{Example: Geometric sequence}
+    One day, Judy is bored. So she tries to play around with sum of power of two. She tabulated her some an found out something interesting: 
+    \begin{table}[]
+      \begin{tabular}{lll}
+      1 & $2^1 = 2$  & $1+2 = 3$                            \\
+      2 & $2^2 = 4$  & $1+2+ 2^2 = 7$                       \\
+      3 & $2^3 = 8$  & $1+2+2^2 + 2^3 = 15$                 \\
+      4 & $2^4 = 16$ & $1 + 2 + 2^2 + 2^3 + 2^4 = 31$       \\
+      5 & $2^5 = 32$ & $1 + 2 + 2^2 + 2^3 + 2^4 + 2^5 = 63$
+      \end{tabular}
+      \end{table}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Mathematical proving}
+  So she made the following hypothesis:
+  \begin{block}{Hypothesis}
+    Let $n$ be an integer and $n\geq 1$. Then $1+2+\cdots + 2^{n-1} = 2^n -1$\\
+    \textbf{\textit{Question: Is she correct? }}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Mathematical proving}
+  In fact she IS correct. To see that, let $S$ be the required sum:
+  \begin{align*}
+    S = 1 + 2 + 2^2 + \cdots + 2^{n-2} + 2^{n-1}
+  \end{align*}
+  Then $2S$ is:
+  \begin{align*}
+    2S = 2 + 2^2 + 2^3 + \cdots + 2^{n-1} + 2^{n}
+  \end{align*}
+\end{frame}
+
+\begin{frame}{Mathematical proving}
+  So:
+  \begin{align*}
+    S &= 2S - S\\
+    &= (2 + 2^2 + 2^3 + \cdots + 2^{n-1} + 2^{n}) - (1 + 2 + 2^2 + \cdots + 2^{n-2} + 2^{n-1})\\
+    &= 2^n - 1
+  \end{align*}
+  Which proves our hypothesis. Now, even if we don't list out every single number $n$, we will know the claim is true.
+\end{frame}
+
+\begin{frame}{Mathematical proving}
+  \begin{itemize}
+    \item This is an example of a proof
+    \item In general, we need a proof in order to be certain something is true, because apparent patterns can and had failed in the past 
+    \item Example:
+    \item \textbf{Claim:} $n^2 + n + 41$ is a prime number (which is false)
+  \end{itemize}  
+  \begin{table}[]
+    \begin{tabular}{lllllllll}
+    $n$        & 1   & 2   & 3   & 4   & $\cdots$ & 38   & 39   & 40   \\
+    $n^2+n+41$ & 43  & 47  & 53  & 61  & $\cdots$ & 1523 & 1601 & 1681 \\
+    Is prime?  & Yes & Yes & Yes & Yes & $\cdots$ & Yes  & Yes  & No  
+    \end{tabular}
+    \end{table}
+\end{frame}
+
+\begin{frame}{Mathematical proving}
+  \begin{exampleblock}{Exercise}
+    \begin{itemize}
+      \item Prove that $n(n+1)$ is always divisble by 2
+      \item In a group of $366$ people, there must be at least two people with the same birthday
+      \item Prove that is impossible to write $\sqrt{2} = \frac{m}{n}$ where $m,n$ are integers
+      \item Let $x$ be a real number and $0<x<1$. Show that if $n$ is the smallest positive integer such that $x-1/n \geq 0$, then $x-1/n < 1/n$
+    \end{itemize}
+  \end{exampleblock}
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Data Compression}
+\begin{frame}{Data Compression}
+  \begin{itemize}
+    \item Using the counting techniques we have introduced, let's talk about some results on compression
+    \item \textbf{Data compression} is the process of representing encoding information using fewer bits than the original representation. 
+    \item A compression method is said to be \textbf{lossy} if some information is lost in the compression process and only partial data can be recovered when we decompress
+    \item In contrast, it is said to be \textbf{lossless} if the totality of the data can be recovered
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Lossless Compression}
+  \begin{itemize}
+    \item For example, some common lossless compression utilities are \textit{WinZip, WinRAR} and \textit{7Zip}
+  \end{itemize}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.4\textwidth]{img/winrar_winzip_7zip.jpg}
+  \end{figure}
+\end{frame}
+
+\begin{frame}{Lossy Compression}
+  \begin{itemize}
+    \item For lossy compression, common multimedia data formats like \textit{jpeg,mp4,mp3} are all lossily compressed
+    \item That's why if you repeatedly compress an image, the quality of an image will get worse and worse
+    \item An example of such effect can be found here \href{https://petapixel.com/2010/02/04/saving-jpeg-photos-hundreds-of-times/}{https://petapixel.com/2010/02/04/saving-jpeg-photos-hundreds-of-times/}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Data Compression (More Formal)}
+  \begin{itemize}
+    \item More formally, since files can be regarded as bit strings of length $n$
+    \item Compression is a process of taking a bit string of length $n$ and map it to a bit string of length $m$ where $m< n$
+    \item In a lossless compression the mapping between the original and compressed file is one-to-one and for lossy it's many to one
+  \end{itemize}
+\end{frame}
+\begin{frame}{Data Compression (More Formal)}
+  \begin{columns}
+    \column{0.5\textwidth}
+    \begin{figure}
+      \begin{tikzpicture}
+        \foreach[count=\i] \lseti/\lsetmi in {A/{file 1,file 2,file 3},B/{zip 1, zip 2, zip 3}} {
+            \begin{scope}[local bounding box=\lseti, x=2cm, y=0.5cm]
+            \foreach[count=\j] \lj in \lsetmi {
+                \node[minimum width=1em] (n-\j-\lseti) at (\i,-\j) {\lj};
+            }
+            \end{scope}
+            \node[ellipse, draw, fit=(\lseti), 
+            label={[name=l-\lseti]above:$\lseti$}] {};
+        }
+        \draw[->] (n-1-A) -- (n-1-B);
+        \draw[->] (n-2-A) -- (n-2-B);
+        \draw[->] (n-3-A) -- (n-3-B);
+        \draw[->] (l-A) -- node[above]{lossless}(l-A.center-|l-B.west);
+    \end{tikzpicture}
+    \caption{Lossless compression is a 1-1 map from input file to output file}
+    \end{figure}
+    \column{0.5\textwidth}
+    \begin{figure}
+      \begin{tikzpicture}
+        \foreach[count=\i] \lseti/\lsetmi in {A/{file 1,file 2,file 3},B/{zip 1, zip 2, zip 3}} {
+            \begin{scope}[local bounding box=\lseti, x=2cm, y=0.5cm]
+            \foreach[count=\j] \lj in \lsetmi {
+                \node[minimum width=1em] (n-\j-\lseti) at (\i,-\j) {\lj};
+            }
+            \end{scope}
+            \node[ellipse, draw, fit=(\lseti), 
+            label={[name=l-\lseti]above:$\lseti$}] {};
+        }
+        \draw[->] (n-1-A) -- (n-1-B);
+        \draw[->] (n-2-A) -- (n-1-B);
+        \draw[->] (n-3-A) -- (n-3-B);
+        \draw[->] (l-A) -- node[above]{lossy}(l-A.center-|l-B.west);
+    \end{tikzpicture}
+    \caption{Lossy compression is a many to one map from input file to output file}
+    \end{figure}
+    
+  \end{columns}
+\end{frame}
+
+\begin{frame}{No Perfect Lossless Compression}
+  \begin{itemize}
+    \item The observation that lossless compression is a bijection from bit strings of length $n$ to bit strings of length $m$ lead to the following theorem
+  \end{itemize}
+  \begin{theorem}[No Perfect Lossless Compression]
+    There does not exist a perfect compression algorithm that can compress \textbf{any} file to at most some fraction $p$ of the original file size. That is, there does not exist a compression algorithm such that for any file of size $n$ you put in, you are guarantee to get a file
+  \end{theorem}
+\end{frame}
+
+
+
+
+
+
+
+
+\begin{frame}{Naive approach}
+  \begin{algorithm}[H]
+    \caption{Naive shuffle}\label{alg:naive_shuffle}
+    \begin{algorithmic}[1]
+      \State{\textit{objects}} \Comment{List of all objects to be permuted}
+      \State{\textit{shuffle} $\gets$ []} \Comment{Create an empty list} 
+      \While {\textit{len(shuffle)} $\leq$ \textit{len(objects)}}
+        \State{\texttt{i} $\gets$ random number from $0$ to $len(objects)$ } \Comment{Get random elements}
+        \If {\textit{objects[i]} not in shuffle}
+          \State{Append \textit{objects[i]} into \textit{shuffle}} \Comment{Add to shuffle if not inside}
+        \EndIf
+      \EndWhile
+    \end{algorithmic}
+  \end{algorithm}
+\end{frame}
+
+\begin{frame}{Naive appraoch}
+\begin{itemize}
+  \item However, this approach is not efficient
+  \item To check if an element is inside \texttt{shuffle}, we need to loop over \texttt{shuffle}
+  \item Let $n$ be the length of \texttt{objects},then we need to loop a total of:
+  \begin{align*}
+    0 + 1 + 2 + \cdots + (n-1) + n = \frac{n(n+1)}{2}
+  \end{align*}
+  \item In other word when $n$ is large, we need to loop roughly $\approx n^2$ times (We also say the algorithm is $\mathcal{O}(n^2)$)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Naive approach}
+\begin{itemize}
+  \item To give a sense of the magnitude, consider we need to shuffle $1000$ elements
+  \item We would roughly need to loop $1000^2=10^6$ times
+  \item This is not very bad (We will define what is very bad soon), but still we want to do better
+  \item In particular, we want to do it so that we only need loop $\approx n$ times (i.e. $\mathcal{O}(n)$)
+\end{itemize}
+\end{frame}
+
+
+
+
+
+\begin{frame}{Beyond Linear?}
+  \begin{itemize}
+    \item All of the algorithms we have been talking about have linear run time 
+    \item But turns out we can go faster if we \textbf{sorted} our list
+    \item We will introduce how sorting algorithms works later
+    \item So let's just use python utilities \texttt{sorted} to do the sorting and focus on a faster searching method called \textbf{binary search}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Sorting with \texttt{sorted}}
+  \begin{itemize}
+    \item \texttt{sorted} is a default function that help us sort is list
+    \item The syntax of \texttt{sorted} is:
+\begin{lstlisting}[language=python]
+  sorted(iterable, key=None, reverse=False)
+\end{lstlisting}
+    \item Example of using \texttt{sorted} is:
+\begin{lstlisting}[language=python]
+nums = [65, 39, 28, 26, 11, 65, 61,  2, 10, 97]
+sorted(nums)
+print(nums) # [2, 10, 11, 26, 28, 39, 61, 65, 65, 97]
+
+sorted(nums,reverse=True)
+print(nums) # [97, 65, 65, 61, 39, 28, 26, 11, 10, 2]
+\end{lstlisting}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Sorting with \texttt{sorted}}
+  \begin{itemize}
+    \item We can also pass custom comparision function (you will learn what a function means exactly mean later) so to sort according to it
+\begin{lstlisting}[language=python]
+participant_list = [('Alison', 50, 18),('Terence', 75, 12),('David', 75, 20),('Jimmy', 90, 22),('John', 45, 12)] # (Name, marks, age)
+
+# Sort by name, marks and age
+by_name = sorted(participant_list,key=lambda item: (item[0]))
+by_marks = sorted(participant_list,key=lambda item: (item[1]))
+by_age = sorted(participant_list,key=lambda item: (item[2]))
+\end{lstlisting}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Binary Search}
+  \begin{itemize}
+    \item With that we can finally talk about \textbf{binary search}
+    \item Binary search is a efficient method for searching a \textit{sorted list} 
+    \item In particular, the \textbf{list must be sorted according to the key you wish to do searching with}
+    \item For example, for our student searcher, we need to first do the following:
+\begin{lstlisting}[language=python]
+studentInfo = sorted(studentInfo,key=lambda item: (item[0])) # Sort according to student ID
+\end{lstlisting}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Binary Search}
+  \begin{itemize}
+    \item The key idea of binary search is the following: For any partially ordered set (that is, a set where $x<y$, $x>y$ and $x=y$ is well defined)
+    \item 
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Insertion Sort}
+  \begin{exampleblock}{Problem} Let $\ell$ be a list of length $N$. Sort 
+    
+  \end{exampleblock}
+\end{frame}

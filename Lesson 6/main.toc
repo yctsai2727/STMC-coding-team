@@ -1,0 +1,23 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {1}{Class Goal}{2}{0}{1}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {2}{List operations}{3}{0}{2}
+\defcounter {refsection}{0}\relax 
+\beamer@subsectionintoc {2}{1}{List Membership}{3}{0}{2}
+\defcounter {refsection}{0}\relax 
+\beamer@subsectionintoc {2}{2}{List Concatenation}{4}{0}{2}
+\defcounter {refsection}{0}\relax 
+\beamer@subsectionintoc {2}{3}{List Slicing}{5}{0}{2}
+\defcounter {refsection}{0}\relax 
+\beamer@subsectionintoc {2}{4}{Multidimensional List}{10}{0}{2}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {3}{Bomberman Solver}{13}{0}{3}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {4}{Fisher-Yates shuffle}{21}{0}{4}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {5}{Permutation and Factorials}{32}{0}{5}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {6}{Linear Searching}{38}{0}{6}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {7}{Maximum Subarray Sum}{42}{0}{7}

@@ -1,0 +1,19 @@
+\frametitle{Example: Listing all permutations}
+\begin{itemize}
+    \item This allow us to write down a very simple recursive algorithm that does the job
+\begin{lstlisting}[language=python]
+def swap(l,i,j): # Swap element i,j in list l
+  temp = l[i]
+  l[i] = l[j]
+  l[j] = temp
+
+def Permutation(start,end,arr): # In-place permutation
+  if start == end:
+      print(arr)
+  else:
+      for i in range(start,end):
+          swap(arr,start,i)
+          Permutation(start+1,end,arr)
+          swap(arr,i,start)
+\end{lstlisting}
+  \end{itemize}

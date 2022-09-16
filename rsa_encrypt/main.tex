@@ -1,0 +1,375 @@
+% !TEX program = xelatex
+%% Requires compilation with XeLaTeX or LuaLaTeX
+\documentclass[10pt,xcolor={table,dvipsnames},t]{beamer}
+\usepackage{biblatex}
+\usepackage{caption}
+\setbeamertemplate{caption}[numbered]
+\addbibresource{reference.bib}
+\usepackage{hyperref}
+\hypersetup{ 
+pdfpagemode=FullScreen,  
+colorlinks=true,linkcolor=blue}
+\usepackage{enumerate}
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+% Flow chart config
+\usepackage{tikz}
+\usetikzlibrary{calc,trees,positioning,arrows,fit,shapes,calc}
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30]
+\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\usetheme{UCBerkeley}
+
+\title[Your Short Title]{STMC HKOI Training}
+\subtitle{RSA Encrpytion}
+\author{Chan Yan Mong}
+%\institute{}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% Uncomment these lines for an automatically generated outline.
+%\begin{frame}{Outline}
+%  \tableofcontents
+%\end{frame}
+
+\section{Class Goal}
+
+\begin{frame}{Goal today}
+
+\begin{itemize}
+  \item Learn theory behind RSA encrpytion
+  \item Implement proof-of-concept RSA encryption in Python
+\end{itemize}
+
+\end{frame}
+
+
+\section{Useful mathematical Results}
+\begin{frame}{Useful mathematical results}
+    \begin{theorem}[Chinese Remainder Theorem]
+      Let $m_1,m_2,\cdots,m_n$ be a set of $n$ relatively prime integers (i.e. $\gcd(m_i,m_j) = 1$ if $i\neq j$) the the following sysmtem of linear congruence:
+      \begin{align*}
+          x &\equiv a_1 \mod m_1\\
+          x &\equiv a_2 \mod m_2\\
+          &\cdots\\
+          x &\equiv a_n \mod m_n 
+      \end{align*}
+      has a unique solution $\mod m_1 m_2m_3\cdots m_n$
+    \end{theorem}
+\end{frame}
+
+\begin{frame}{Useful mathematical results}
+  \begin{corollary}[]
+    Let $n=pq$ and $p,q$ are distinct primes, then solving  
+    \begin{align*}
+      x \equiv a \mod n
+    \end{align*}
+    is equivalent as solving
+    \begin{align*}
+      x &\equiv a \mod p \\
+      x &\equiv a \mod q
+    \end{align*}
+  \end{corollary}
+\end{frame}
+
+\begin{frame}{Useful mathematical results}
+  \begin{theorem}[Fermat's Little Theorem]
+    Let $p$ be a prime number and $p\nmid a$, then
+    \begin{align*}
+      a^{p-1} \equiv 1 \mod p
+    \end{align*}
+  \end{theorem}
+  \begin{corollary}[Another form of Fermat's little theorem]
+    Let $a$ be any integers, then $$a^p \equiv a \mod p$$\\
+    \textbf{Proof:} If $p\nmid a$, then by the theorem above $a^{p-1} \equiv a \mod p$ and thus $a^p \equiv a \mod p$; Otherwise, $p|a$ and $a^{p} \equiv a \equiv 0 \mod p$
+    
+  \end{corollary}
+\end{frame}
+
+\begin{frame}{Useful mathematical results}
+  We can generalize Fermat's little theorem using the Euler Phi function to obtain the Euler's theorem
+  \begin{theorem}[Euler's Theorem]
+    Let $a$ be an integer with $\gcd(a,n) = 1$, then:
+    \begin{align*}
+      a^{\phi(n)} \equiv 1 \mod n
+    \end{align*}
+    where $\phi(n)$ denotes the Euler phi function
+  \end{theorem}
+\end{frame}
+
+
+\section{RSA Encryption}
+\begin{frame}{RSA Encrpytion: Motivation}
+  \begin{itemize}
+    \item We want to work out a way such that 
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{RSA Encryption: Preparation}
+  \begin{enumerate}
+    \item Find two large prime numbers $p,q$ 
+    \item Compute $n=pq$ and $\phi(n) = (p-1)(q-1)$
+    \item Choose an integer $c$ relatively prime to $\phi(n)$ (i.e. $\gcd(c,\phi(n))=1$)
+    \item Compute the multiplicative inverse of $c$ mod $\phi(n)$. Call it $d$ 
+    \begin{align*}
+      cd \equiv 1 \mod \phi(n)
+    \end{align*}
+    \item Keep $p,q,d,\phi(n)$ secret while make $(n,c)$ public
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{RSA Encryption: Encrypt and Decrypt}
+    Now, $d$ is your \textbf{private key} and $(n,c)$ is your \textbf{public key}. Let $M$ be your \textbf{message} and $M<n$ (Otherwise break $M$ into smaller parts that are less than $n$). To \textbf{encrypt} a message, compute:
+    \begin{align*}
+      E = M^c \mod n
+    \end{align*}
+    To \textbf{decrypt} a message, compute:
+    \begin{align*}
+      M = E^d \mod n
+    \end{align*}
+\end{frame}
+
+\begin{frame}{RSA Encryption: Example with context}
+  Ben has followed the procedure above and computed a public key $(n,c)$ and private key $d$ which he kept secret. Now let's say Amy wants to send him a secret message $M$. Now instead of sending $M$ unencrypted through the internet, she will first take Ben's private key $c$ and compute:
+  \begin{align*}
+    E = M^c \mod n
+  \end{align*}
+  She then send this encrypted message $E$ over the net. Ben, upon recieving $E$ will be able to decrypt her secret message by computing:
+  \begin{align*}
+    M = E^d \mod n
+  \end{align*}
+\end{frame}
+
+\begin{frame}{RSA Encryption: Why it works}
+  We will now prove the \textit{correctness} of the RSA algorithm (i.e. Prove that we can actually decrypt the original message $M$ from $E$ through the procedure)
+
+  \begin{proof} Recall $M < n$ and $n=pq$. So if we consider $\gcd(M,n)$, there are 4 cases:
+    \begin{enumerate}
+      \item $\gcd(M,n)=1$
+      \item $\gcd(M,n)=p$
+      \item $\gcd(M,n)=q$
+      \item $\gcd(M,n)=n$
+    \end{enumerate}
+    \phantom\qedhere
+  \end{proof}
+\end{frame}
+
+\begin{frame}{RSA Encryption: Why it works}
+  \begin{proof} \textbf{Case 1} $\gcd(M,n)=1$: Since $cd\equiv 1 \mod \phi(n)$, $cd = 1 + t\phi(n)$ for some integer $t$. Hence:
+    \begin{align*}
+      E^{d} = M^{cd} = M \,\left(M^{\phi(n)}\right)^t \equiv M \,(1) \equiv M \mod n
+    \end{align*}
+    Here we have used Euler Theorem $M^{\phi(n)}\equiv 1 \mod n$ if $\gcd(M,n)=1$
+    \phantom\qedhere
+  \end{proof}
+\end{frame}
+
+\begin{frame}{RSA Encryption: Why it works}
+  \begin{proof} \textbf{Case 2} $\gcd(M,n)=p$: We cannot apply Euler's theorem directly. However, we can use Chinese remainder theorem to convert our original congruence from:
+    \begin{align*}
+      E^{d}\equiv M^{cd} \mod n
+    \end{align*}
+    To 
+    \begin{align*}
+      E^{d} \equiv M^{cd} &\mod p \\
+      E^{d} \equiv M^{cd} &\mod q
+    \end{align*}
+    \phantom\qedhere
+  \end{proof}
+  
+\end{frame}
+
+\begin{frame}{RSA Encryption: Why it works}
+  \begin{proof} 
+    Now $\gcd(M,n)=p$, so $p|M$ and thus:
+    \begin{align*}
+      M^{cd} \equiv M \equiv 0 \mod p
+    \end{align*}
+    On the other hand, $\gcd(M,q)=1$ and $cd = 1+t\phi(n) = 1 + t(p-1)(q-1)$, so:
+    \begin{align*}
+      M^{cd} \equiv M\,\left(M^{q-1}\right)^{t(p-1)} \equiv M \,(1) \equiv M \mod q
+    \end{align*}
+    Here we used the Fermat's little theorem $M^{q-1} \equiv 1 \mod q$ if $\gcd(M,q)=1$
+    \phantom\qedhere
+  \end{proof}
+  
+\end{frame}
+
+
+\begin{frame}{RSA Encryption: Why it works}
+  \begin{proof} \textbf{Case 3} $\gcd(M,n)=q$: Same as Case 2 except $p,q$ swapped\\
+    \textbf{Case 4} $\gcd(M,n)=pq$: In this case $n|M$ so:
+    \begin{align*}
+      E^{d} \equiv M^{cd} \equiv M \equiv 0 \mod n
+    \end{align*}
+
+    So in all 4 cases we have $E^d \equiv M \mod n$. This means $E^d = M + nt$ for some integer $t$. But $M < n$, so $t=0$ and $E^d \mod n = M$ 
+  \end{proof}
+\end{frame}
+
+\begin{frame}{RSA Encryption: Finding the primes}
+  \begin{itemize}
+    \item To compute RSA keys, we need to find two large primes $p,q$
+    \item How can we find these primes?
+    \item The idea is simple: We find large numbers at random, and check if they are primes
+    \item But how to check primes \textit{efficiently}?
+  \end{itemize}
+\end{frame}
+
+\section{Primality test}
+\begin{frame}{Primality test: Trial division}
+  \begin{itemize}
+    \item This is the simplest but also slowest algorithm
+    \item To test the primality of $n$, we first find all the primes from $2$ to $\sqrt{n}$, call it $\{p_i\}$
+    \begin{align*}
+      \{p_i\} = \{p \text{ is prime} | 2 \leq p \leq \sqrt{n}\}
+    \end{align*}
+    \item We then loop over $p_i$ and check if $n$ is divisible by any of it; If so, it's not a prime, otherwise it is a prime
+    \item We will prove the \textit{correctness} of the algorithm in the next slide
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Primality test: Trial division}
+  \begin{theorem}[Correctness of Trial division]
+    Let $n$ be an integer and $\{p_i\}$ be the collection of all primes $\leq \sqrt{n}$, then $n$ is a prime if and only if $p_i \nmid n$ for all $p_i \in \{p_i\}$ 
+    \begin{proof}
+      (Only if): If $n$ is a prime, obviously it is not divisible by $p_i$. Done.\\
+      (If): Suppose not, $p_i \nmid n$ for all $p_i \in \{p_i\}$ but $n$ is composite. Then there exist some prime $q \notin \{p_i\}$ and $q|n$. Now $q>\sqrt{n}$, otherwise it would have been included in $\{p_i\}$. Furthermore, consider $h=n/q$. Obviously $h|n$ and $h<\sqrt{n}$ because $q>\sqrt{n}$. Now no matter if $h$ is composite or prime, there exist some prime number $s|h$ and so $s|n$ but $s<\sqrt{n}$, which is a contradiction.
+    \end{proof}
+  \end{theorem}
+\end{frame}
+
+
+\begin{frame}{Primality test: Fermat's test}
+  \begin{itemize}
+    \item Trial division is slow, so we wish to find something faster 
+    \item Here we introduce Fermat test, which can test if a number is \textbf{not} prime 
+    \begin{theorem}[Fermat Test]
+      Let $a,n$ be integers and $\gcd(a,n)=1$, $n$ is composite if 
+      \begin{align*}
+        a^{n-1} \not\equiv 1 \mod n
+      \end{align*} 
+      \begin{proof}
+        If $n$ is prime, then by Fermat's little theorem $a^{n-1} \equiv 1 \mod n$, which is a contradiction.
+      \end{proof}
+    \end{theorem}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Primality test: Fermat's test}
+  \begin{itemize}
+    \item Note that $n$ passing the Fermat test \textbf{does not imply} $n$ is a prime 
+    \item For example, $21 = 7\times 3$ is certainly not a prime and $\gcd(55,21)=1$. However,
+    \begin{align*}
+      55^{21-1} \equiv 1 \mod 21
+    \end{align*}
+    so $21$ passes the Fermat test to the base $55$
+    \item In general, suppose $\gcd(a,n)=1$ and $a^{n-1}\equiv 1 \mod n$. Then we said $n$ is a \textbf{pseudoprime base} $a$ 
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Primality test: Carmichael numbers}
+  \begin{itemize}
+    \item Worse still, there exist some $n$ such that for any $\gcd(a,n)=1$, $a^{n-1} \equiv 1 \mod n$
+    \item That is, even if you check all possible (reasonable) $a$ and find out $n$ passes all these Fermat tests, you will still not be able to conclude if $n$ is prime
+    \item These are called \textbf{Carmichael number}
+    \item For example, $561 = 3\times 11\times 17$ is a smallest carmichael number.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Primality test: Carmichael numbers}
+  \begin{theorem}561 is a Carmichael number
+    \begin{proof}
+      Note that $561=3\times 11\times 17$ satisfy some interesting properties. Namely:
+      \begin{align*}
+        (3-1) | (561-1) \\
+        (11-1) | (561-1) \\
+        (17-1) | (561-1)
+      \end{align*}
+      Furthermore, since $3,11,17$ are all primes. For any $\gcd(a,561)=1$, we have $3\nmid a$, $11\nmid a$, $17\nmid a$
+      \phantom\qedhere
+    \end{proof}
+  \end{theorem}
+\end{frame}
+
+\begin{frame}{Primality test: Carmichael numbers}
+  \begin{proof}
+    Hence by Fermat's little theorem:
+    \begin{align*}
+      a^{3-1} &\equiv 1 \mod 3\\
+      a^{11-1} &\equiv 1 \mod 11\\
+      a^{17-1} &\equiv 1 \mod 17
+    \end{align*}
+    \phantom\qedhere
+  \end{proof}
+\end{frame}
+
+\begin{frame}{Primality test: Carmichael numbers}
+  \begin{proof}
+    Furthermore, by the since $561$ satisfy those interesting properties above, we can raise each of the congruence equation to an integer power so that the exponent all becomes $561-1$
+    \begin{align*}
+      a^{561-1} &\equiv 1 \mod 3\\
+      a^{561-1} &\equiv 1 \mod 11\\
+      a^{561-1} &\equiv 1 \mod 17
+    \end{align*}
+    Thus, by Chinese remainder theorem: $a^{561-1} \equiv 1 561$ for any $\gcd(a,561)=1$
+  \end{proof}
+\end{frame}
+
+\begin{frame}{Primality test: Carmichael numbers}
+  \begin{itemize}
+    \item We can generalize the proof here easily to show the following theorem:
+    \begin{theorem}[Korselt's criterion]
+      A positive composite integer $n$ is a Carmichael number if and only if $n$ is square-free, and for all prime divisors $p$ of $n$, it's true that $p-1|n-1$
+      \begin{proof}
+        Refer to Theorem 5.3 of Elementary Number Theory by Burton (2011)
+      \end{proof}
+    \end{theorem}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Primality test: Miller-Rabin test}
+  \begin{itemize}
+    \item Since Fermat test have bad properties, we need a better test
+    \item Miller-Rabin test is another stronger test for testing if a number is \textbf{not} prime
+    \item Turns out, it avoids the problem of Fermat's test and allow use to test for primes \textit{probabilistically}
+  \end{itemize}
+\end{frame}
+\end{document}

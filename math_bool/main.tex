@@ -1,0 +1,137 @@
+% !TEX program = xelatex
+%% Requires compilation with XeLaTeX or LuaLaTeX
+\documentclass[10pt,xcolor={table,dvipsnames},t]{beamer}
+\usepackage{biblatex}
+\usepackage{caption}
+\setbeamertemplate{caption}[numbered]
+\addbibresource{reference.bib}
+\usepackage{hyperref}
+\hypersetup{ 
+pdfpagemode=FullScreen,  
+colorlinks=true,linkcolor=blue}
+\usepackage{enumerate}
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+% Flow chart config
+\usepackage{tikz}
+\usetikzlibrary{calc,trees,positioning,arrows,fit,shapes,calc}
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30]
+\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\usetheme{UCBerkeley}
+
+\title[Your Short Title]{STMC HKOI Training}
+\subtitle{Boolean arithemtic}
+\author{Chan Yan Mong}
+%\institute{}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% Uncomment these lines for an automatically generated outline.
+%\begin{frame}{Outline}
+%  \tableofcontents
+%\end{frame}
+
+\begin{frame}{Boolean arithmetic}
+  \begin{itemize}
+    \item We have just looked at conditional statements that are connected using not, or, and operators
+    \item In fact there are algebraic structure associated with these operators called \textbf{boolean arithmetic}
+    \item Understanding these arithmetic rules can help us simply and rewrite our conditional statements
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Properties of boolean operators}
+  \begin{itemize}
+    \item Associativity
+    \begin{enumerate}
+      \item $x\lor (y\lor z) = (x\lor y) \lor z$
+      \item $x\land (y\land z) = (x\land y) \land z$
+    \end{enumerate}
+    \item Commutativity
+    \begin{enumerate}
+      \item $x\lor y = y \lor x$
+      \item $x\land y  = y\land x$
+    \end{enumerate}
+    \item Distributive of $\land$ over $\lor$
+    \begin{enumerate}
+      \item $x \land (y\lor z) = (x \land y) \lor (x \land z)$\\
+      \item $x \lor (y\land z) = (x\lor y) \land (x\lor z)$
+    \end{enumerate}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Properties of boolean operations}
+  \begin{itemize}
+    \item Identities
+    \begin{enumerate}
+      \item $x\lor F = x$
+      \item $x \land T = x$
+    \end{enumerate}
+    \item Annihilators
+    \begin{enumerate}
+      \item $x\lor T = T$
+      \item $x\land F = F$
+    \end{enumerate}
+    \item Double negation
+    \begin{enumerate}
+      \item $\neg (\neg x) = x $
+    \end{enumerate}
+    \item De Morgan's law
+    \begin{enumerate}
+      \item $\neg (x \lor y) = \neg x \land \neg y$
+      \item $\neg (x \land y) = \neg x \lor \neg y$
+    \end{enumerate}
+  \end{itemize}
+\end{frame}
+\begin{frame}{Exercise}
+  Prove the following Identities:
+  \begin{enumerate}
+    \item $x\land (x\lor y) = x$
+    \item $\neg x \land y = \neg (\neg y) \land \neg x$
+    \item $a = b \land a$ if and only if $b = a \lor b$
+    \item Prove by the De Morgan's law by truth table
+    \item Prove by the distributive laws by truth table
+    \item Define $x\rightarrow y = \neg x \land y$. Show that $(x \land y) \rightarrow y = T$
+    \item Define $x \leftrightarrow y = (x \rightarrow y) \land (y \rightarrow x)$. Show that $x\leftrightarrow y = (x\land y)\lor (\neg x \land \neg y)$ 
+    \item Simplify$(x \lor y) \land \neg (\neg x \land y)$ 
+  \end{enumerate}
+\end{frame}
+
+\end{document}

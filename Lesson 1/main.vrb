@@ -1,0 +1,12 @@
+\frametitle{Explaining helloworld.py : Comments}
+Another type of comments available in Python (and many other languages) is the \textbf{block comment}. They look something like this:
+\begin{lstlisting}[language=python]
+  # This is the single line comment we just saw
+
+  """
+     This is a block comment,
+     anything inside this block will be ignored
+  """
+
+  """ This is also a block comment """
+\end{lstlisting}

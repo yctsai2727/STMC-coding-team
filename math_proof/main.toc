@@ -1,0 +1,15 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {1}{Class Goal}{2}{0}{1}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {2}{Proof in mathematics}{3}{0}{2}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {3}{Importance of proof}{15}{0}{3}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {4}{Implication}{18}{0}{4}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {5}{Contradiction}{22}{0}{5}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {6}{Contrapositive}{26}{0}{6}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {7}{Mathematical induction}{29}{0}{7}

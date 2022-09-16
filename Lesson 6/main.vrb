@@ -1,0 +1,25 @@
+\begin{lstlisting}[language=python]
+# Python example of Linear Search
+targetSID = input('Search Query (SID): ')
+studentInfo = [
+  ('s192830','Chan Tai Man'),
+  ('s192840','Lam Ching Yi'),
+  ...
+]
+targetName = ""
+
+# Linear Search
+for i in range(len(studentInfo)):
+  sid, name = studentInfo[i]
+  if sid == targetSID:
+    targetName = name
+    break
+
+# Print results
+if len(targetName) == 0:
+  print('No such entries is found')
+else:
+  print('The student you are looking for is: ', targetName)
+
+
+\end{lstlisting}
