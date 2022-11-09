@@ -1,9 +1,9 @@
-PWD c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3
+PWD c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4
 INPUT c:/Latex/texlive/2020/texmf.cnf
 INPUT c:/Latex/texlive/2020/texmf-dist/web2c/texmf.cnf
 INPUT c:/Latex/texlive/2020/texmf-var/web2c/xetex/xelatex.fmt
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.tex
-OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.log
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.tex
+OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.log
 INPUT c:/Latex/texlive/2020/texmf-dist/tex/latex/beamer/beamer.cls
 INPUT c:/Latex/texlive/2020/texmf-dist/tex/latex/beamer/beamer.cls
 INPUT c:/Latex/texlive/2020/texmf-dist/tex/latex/beamer/beamerbasemodes.sty
@@ -366,8 +366,8 @@ INPUT c:/Latex/texlive/2020/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librar
 INPUT c:/Latex/texlive/2020/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.multipart.code.tex
 INPUT c:/Latex/texlive/2020/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.multipart.code.tex
 INPUT c:/Latex/texlive/2020/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.multipart.code.tex
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/beamerthemeUCBerkeley.sty
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/beamerthemeUCBerkeley.sty
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/beamerthemeUCBerkeley.sty
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/beamerthemeUCBerkeley.sty
 INPUT c:/Latex/texlive/2020/texmf-dist/tex/latex/silence/silence.sty
 INPUT c:/Latex/texlive/2020/texmf-dist/tex/latex/silence/silence.sty
 INPUT c:/Latex/texlive/2020/texmf-dist/tex/latex/fontspec/fontspec.sty
@@ -379,10 +379,10 @@ INPUT c:/Latex/texlive/2020/texmf-dist/tex/latex/base/fontenc.sty
 INPUT c:/Latex/texlive/2020/texmf-dist/tex/latex/base/fontenc.sty
 INPUT c:/Latex/texlive/2020/texmf-dist/tex/latex/fontspec/fontspec.cfg
 INPUT c:/Latex/texlive/2020/texmf-dist/tex/latex/fontspec/fontspec.cfg
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/stmc-logo.png
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.aux
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.aux
-OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.aux
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/stmc-logo.png
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.aux
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.aux
+OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.aux
 INPUT c:/Latex/texlive/2020/texmf-dist/tex/latex/base/ts1cmr.fd
 INPUT c:/Latex/texlive/2020/texmf-dist/tex/latex/base/ts1cmr.fd
 INPUT c:/Latex/texlive/2020/texmf-dist/tex/latex/hyperref/nameref.sty
@@ -391,7 +391,13 @@ INPUT c:/Latex/texlive/2020/texmf-dist/tex/latex/refcount/refcount.sty
 INPUT c:/Latex/texlive/2020/texmf-dist/tex/latex/refcount/refcount.sty
 INPUT c:/Latex/texlive/2020/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 INPUT c:/Latex/texlive/2020/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
-OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.out
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.out
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.out
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.out
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.out
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.out
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.out
+OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.out
 INPUT c:/Latex/texlive/2020/texmf-dist/tex/latex/translator/translator-basic-dictionary-English.dict
 INPUT c:/Latex/texlive/2020/texmf-dist/tex/latex/translator/translator-basic-dictionary-English.dict
 INPUT c:/Latex/texlive/2020/texmf-dist/tex/latex/translator/translator-bibliography-dictionary-English.dict
@@ -406,9 +412,18 @@ INPUT c:/Latex/texlive/2020/texmf-dist/tex/latex/translator/translator-theorem-d
 INPUT c:/Latex/texlive/2020/texmf-dist/tex/latex/translator/translator-theorem-dictionary-English.dict
 INPUT c:/Latex/texlive/2020/texmf-dist/tex/latex/biblatex/lbx/english.lbx
 INPUT c:/Latex/texlive/2020/texmf-dist/tex/latex/biblatex/lbx/english.lbx
-OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.bcf
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/stmc-logo.png
-OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.xdv
+OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.bcf
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.bbl
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.bbl
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.bbl
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.bbl
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.nav
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.nav
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/stmc-logo.png
+OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.xdv
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/stmc-logo.png
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/stmc-logo.png
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/stmc-logo.png
 INPUT c:/Latex/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT c:/Latex/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT c:/Latex/texlive/2020/texmf-dist/tex/latex/amsfonts/umsa.fd
@@ -421,97 +436,6 @@ INPUT c:/Latex/texlive/2020/texmf-dist/tex/latex/amsfonts/umsb.fd
 INPUT c:/Latex/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT c:/Latex/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
 INPUT c:/Latex/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm5.tfm
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/stmc-logo.png
-INPUT c:/Latex/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmmi9.tfm
-INPUT c:/Latex/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm
-INPUT c:/Latex/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmsy9.tfm
-INPUT c:/Latex/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm
-INPUT c:/Latex/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex9.tfm
-INPUT c:/Latex/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
-INPUT c:/Latex/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
-INPUT c:/Latex/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam7.tfm
-INPUT c:/Latex/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
-INPUT c:/Latex/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
-INPUT c:/Latex/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmr9.tfm
-INPUT c:/Latex/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmr6.tfm
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/stmc-logo.png
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/stmc-logo.png
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/stmc-logo.png
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/stmc-logo.png
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/stmc-logo.png
-OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Latex/texlive/2020/texmf-dist/tex/latex/listings/lstlang1.sty
-INPUT c:/Latex/texlive/2020/texmf-dist/tex/latex/listings/lstlang1.sty
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/stmc-logo.png
-OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/stmc-logo.png
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/stmc-logo.png
-OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/stmc-logo.png
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/stmc-logo.png
-OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/stmc-logo.png
-OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/stmc-logo.png
-OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/stmc-logo.png
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/stmc-logo.png
-OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/stmc-logo.png
-OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/stmc-logo.png
-OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Latex/texlive/2020/texmf-dist/tex/latex/listings/lstlang1.sty
-INPUT c:/Latex/texlive/2020/texmf-dist/tex/latex/listings/lstlang1.sty
-INPUT c:/Latex/texlive/2020/texmf-dist/tex/latex/listings/lstlang1.sty
-INPUT c:/Latex/texlive/2020/texmf-dist/tex/latex/listings/lstlang1.sty
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/stmc-logo.png
-OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/stmc-logo.png
-OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/stmc-logo.png
-OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/stmc-logo.png
-OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/stmc-logo.png
-OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/stmc-logo.png
-OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/stmc-logo.png
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/stmc-logo.png
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/stmc-logo.png
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/stmc-logo.png
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/stmc-logo.png
 INPUT c:/Latex/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm
 INPUT c:/Latex/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm
 INPUT c:/Latex/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
@@ -524,42 +448,117 @@ INPUT c:/Latex/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.
 INPUT c:/Latex/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT c:/Latex/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmr17.tfm
 INPUT c:/Latex/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/stmc-logo.png
-OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/stmc-logo.png
-OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/stmc-logo.png
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/stmc-logo.png
-OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/stmc-logo.png
-OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/stmc-logo.png
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/stmc-logo.png
-OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/stmc-logo.png
-OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/stmc-logo.png
-OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.vrb
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/stmc-logo.png
-OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.nav
-OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.toc
-OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.snm
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.aux
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.out
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.out
-INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.run.xml
-OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 3/main.run.xml
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/stmc-logo.png
+OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/stmc-logo.png
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/img/print_first_n_flowchart.png
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/stmc-logo.png
+OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Latex/texlive/2020/texmf-dist/tex/latex/listings/lstlang1.sty
+INPUT c:/Latex/texlive/2020/texmf-dist/tex/latex/listings/lstlang1.sty
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/stmc-logo.png
+OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/stmc-logo.png
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/stmc-logo.png
+OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/stmc-logo.png
+OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/stmc-logo.png
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/stmc-logo.png
+OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/stmc-logo.png
+OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/stmc-logo.png
+OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/stmc-logo.png
+OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/stmc-logo.png
+OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/stmc-logo.png
+OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Latex/texlive/2020/texmf-dist/tex/latex/listings/lstlang1.sty
+INPUT c:/Latex/texlive/2020/texmf-dist/tex/latex/listings/lstlang1.sty
+INPUT c:/Latex/texlive/2020/texmf-dist/tex/latex/listings/lstlang1.sty
+INPUT c:/Latex/texlive/2020/texmf-dist/tex/latex/listings/lstlang1.sty
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/stmc-logo.png
+OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/stmc-logo.png
+OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/stmc-logo.png
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/stmc-logo.png
+OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/stmc-logo.png
+OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/stmc-logo.png
+OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/stmc-logo.png
+OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/stmc-logo.png
+OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/stmc-logo.png
+OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/stmc-logo.png
+OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/stmc-logo.png
+OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/stmc-logo.png
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/stmc-logo.png
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/stmc-logo.png
+OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.vrb
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/stmc-logo.png
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/stmc-logo.png
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/stmc-logo.png
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/stmc-logo.png
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/stmc-logo.png
+OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.nav
+OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.toc
+OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.snm
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.aux
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.out
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.out
+INPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.run.xml
+OUTPUT c:/Users/wincentsai/Documents/STMC coding team/STMC-coding-team/Lesson 4/main.run.xml

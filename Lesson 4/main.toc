@@ -6,8 +6,6 @@
 \defcounter {refsection}{0}\relax 
 \beamer@sectionintoc {3}{While loop}{8}{0}{3}
 \defcounter {refsection}{0}\relax 
-\beamer@sectionintoc {4}{for loop}{17}{0}{4}
+\beamer@sectionintoc {4}{for loop}{14}{0}{4}
 \defcounter {refsection}{0}\relax 
-\beamer@sectionintoc {5}{list in python}{26}{0}{5}
-\defcounter {refsection}{0}\relax 
-\beamer@sectionintoc {6}{Application: Weather by month}{37}{0}{6}
+\beamer@sectionintoc {5}{list in python}{22}{0}{5}

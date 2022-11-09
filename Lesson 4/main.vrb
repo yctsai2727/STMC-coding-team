@@ -1,0 +1,13 @@
+\frametitle{Sorting: naive approach}
+Let's take the most naive way to do so, we find the minimum for elements between $1$ to $n$, move it to the head, then do it again and again with fewer elements.
+\begin{lstlisting}[language=python]
+studentScore = [82,42,72,64,22]
+for i in range(0,len(studentScore)):
+  min=studentScore[i]
+  minPos=i
+  for j in range(i,len(studentScore)):
+    if(studentScore[j]<min):
+      min=studentScore[j]
+      minPos=j
+  studentScore[i],studentScore[minPos]=studentScore[minPos],studentScore[i]
+\end{lstlisting}

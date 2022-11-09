@@ -53,8 +53,8 @@ colorlinks=true,linkcolor=blue}
 \usetheme{UCBerkeley}
 
 \title[Your Short Title]{STMC HKOI Training}
-\subtitle{Lesson 5: Looping structure and arrays (I)}
-\author{Chan Yan Mong}
+\subtitle{Lesson 4: Looping and Array}
+\author{Tsai Yun Chen}
 %\institute{}
 \date{\today}
 
@@ -150,7 +150,7 @@ colorlinks=true,linkcolor=blue}
     \column{0.6\textwidth}
     \begin{itemize}
       \item Let's look at the flow chart
-      \item Basically, we repeat certain blocks of code until a given condition (in this case $i\leq N$) is \textit{false}
+      \item Basically, we repeat certain blocks of code until a given condition (in this case $i\leq N$) is $false$
       \item This condition is called the \textbf{loop condition}
       \item Notice "Set i = i + 1" is crucial otherwise i will always be smaller than N. This will cause an \textbf{infinite loop}
     \end{itemize}
@@ -191,31 +191,31 @@ print('End of story') # Just some useless print
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}{Example: Sum of first $n$ cubes}
-    Write a program that takes $n$ as an input and compute the sum of first $n$ cubes $S_n$:
-    \begin{align*}
-      S_1 &= 1^3\\
-      S_2 &= 1 + 2^3\\
-      \cdots \\ 
-      S_n &= 1^3 + 2^3 + \cdots  + (n-1)^3 + n^3
-    \end{align*}
-\end{frame}
+% \begin{frame}{Example: Sum of first $n$ cubes}
+%     Write a program that takes $n$ as an input and compute the sum of first $n$ cubes $S_n$:
+%     \begin{align*}
+%       S_1 &= 1^3\\
+%       S_2 &= 1 + 2^3\\
+%       \cdots \\ 
+%       S_n &= 1^3 + 2^3 + \cdots  + (n-1)^3 + n^3
+%     \end{align*}
+% \end{frame}
 
-\begin{frame}[fragile]{Example: Sum of first $n$ cubes}
-  \begin{itemize}
-    \item This is similar to our previous example:
-  \end{itemize}
-\begin{lstlisting}[language=python]
-N = int(input('Enter N: '))
-i = 1 # Index to loop over
-S = 0 # Storing the Sum
+% \begin{frame}[fragile]{Example: Sum of first $n$ cubes}
+%   \begin{itemize}
+%     \item This is similar to our previous example:
+%   \end{itemize}
+% \begin{lstlisting}[language=python]
+% N = int(input('Enter N: '))
+% i = 1 # Index to loop over
+% S = 0 # Storing the Sum
 
-while i <= N:
-  S = S + i**3 # New sum = Prev Sum + i^3
+% while i <= N:
+%   S = S + i**3 # New sum = Prev Sum + i^3
 
-print('Result: ',S)
-\end{lstlisting}
-\end{frame}
+% print('Result: ',S)
+% \end{lstlisting}
+% \end{frame}
 
 \begin{frame}{Example: Input validation}
   \begin{itemize}
@@ -263,24 +263,34 @@ print('Ok! Have a nice day!')
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}{\texttt{while} loop}
-  \begin{exampleblock}{Exercise: Fibonnaci number}
-    HKOI Online Judge (D201): \url{https://judge.hkoi.org/task/D201}
-  \end{exampleblock}
-  \begin{exampleblock}{Exercise: Statistical analysis}
-    HKOI Online Judge (J024): \url{https://judge.hkoi.org/task/J024}\\
-    \textit{Remarks: If you want to learn more about statistics and using python to analyze data, read the supplimentary materials: Simple Statistics with Python}
-  \end{exampleblock}
+\begin{frame}{Exercise: Fibonacci number}
+  \begin{itemize}
+    \item Let's try some exercise
+    \item Fibonacci number is defined such in a way such that first two number are $1$, $1$
+    \item then starting from the third, it is defined as the sum of previous two
+    \item so it will go like $1,1,2,3,5,8,...$
+    \item Now write a program which takes a input $n$ and print the $n$-th Fibonacci number
+  \end{itemize}
 \end{frame}
 
-\begin{frame}{\texttt{while} loop (Might need list)}
-  \begin{exampleblock}{Exercise: Stamps}
-    HKOI Online Judge (01014): \url{https://judge.hkoi.org/task/01014}
-  \end{exampleblock}
-  \begin{exampleblock}{Exercise: Bin packing}
-    HKOI Online Judge (01050): \url{https://judge.hkoi.org/task/01050}
-  \end{exampleblock}
-\end{frame}
+% \begin{frame}{\texttt{while} loop}
+%   \begin{exampleblock}{Exercise: Fibonnaci number}
+%     HKOI Online Judge (D201): \url{https://judge.hkoi.org/task/D201}
+%   \end{exampleblock}
+%   \begin{exampleblock}{Exercise: Statistical analysis}
+%     HKOI Online Judge (J024): \url{https://judge.hkoi.org/task/J024}\\
+%     \textit{Remarks: If you want to learn more about statistics and using python to analyze data, read the supplimentary materials: Simple Statistics with Python}
+%   \end{exampleblock}
+% \end{frame}
+
+% \begin{frame}{\texttt{while} loop (Might need list)}
+%   \begin{exampleblock}{Exercise: Stamps}
+%     HKOI Online Judge (01014): \url{https://judge.hkoi.org/task/01014}
+%   \end{exampleblock}
+%   \begin{exampleblock}{Exercise: Bin packing}
+%     HKOI Online Judge (01050): \url{https://judge.hkoi.org/task/01050}
+%   \end{exampleblock}
+% \end{frame}
 
 \section{for loop}
 \begin{frame}[fragile]{\texttt{for} loop}
@@ -366,7 +376,7 @@ print('Sum: ',S)
 \end{frame}
 
 \begin{frame}[fragile]{Example: Magic triangles+}
-  Modify the program previously to give the following output:
+Modify the program previously to give the following output:
 \begin{lstlisting}[language=bash]
 >>3           >>5         >>2
 *             *           *
@@ -381,27 +391,34 @@ print('Sum: ',S)
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{Example: Number of ways to queue up}
-  \begin{exampleblock}{Problem Statement:}
-    Let there be $n$ people. Write a program that computes the number of ways the people can form a queue
-  \end{exampleblock}
-  \begin{exampleblock}{Solution}
-    Let's look at the 1st, 2nd, 3rd, etc. positions of the queue one by one. For the first position, there are $n$ ways to assign someone to a queue; for the second position, there are $n-1$ ways, because one people have been placed on the queue. As we progress, we saw that the total number of ways $W=n\times (n-1)\times \cdots 2 \times 1$ ways.
-  \end{exampleblock}
+\begin{frame}[fragile]{Exercise: Magic triangle++}
+Modify the program previously to give the following output:
+\begin{lstlisting}[language=bash]
+>>3           >>5         >>2
+*             *           *
+***           ***         ***
+*****         *****       *
+***           *******
+*             *********
+              *******
+              *****
+              *** 
+              *
+\end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{Example: Number of ways to queue up}
-  \begin{exampleblock}{Solution}
-    Therefore, the required code is:
-\begin{lstlisting}[language=python]
-n = int(input('Enter number of people: '))
-W = 1 
-for i in range(1,n):
-  W = W*i
-print('Number of ways is:', W)
-\end{lstlisting}
-  \end{exampleblock}
-\end{frame}
+% \begin{frame}[fragile]{Example: Number of ways to queue up}
+%   \begin{exampleblock}{Solution}
+%     Therefore, the required code is:
+% \begin{lstlisting}[language=python]
+% n = int(input('Enter number of people: '))
+% W = 1 
+% for i in range(1,n):
+%   W = W*i
+% print('Number of ways is:', W)
+% \end{lstlisting}
+%   \end{exampleblock}
+% \end{frame}
 
 
 \section{list in python}
@@ -555,87 +572,68 @@ print('Highest score: ',largest) # Print highest score
 \end{frame}
 
 
-\begin{frame}{List: Loop over list}
-  \begin{exampleblock}{Challenge: Sorting}
-    Write a program that takes in a list of $N$ numbers and return a sorted list of the numbers. We will come back to sorting in next slide. You may google for keywords like \textit{bubble sort}, \textit{insert sort} or \textit{quicksort} for early exposure.
+\begin{frame}{Challenge}
+  \begin{exampleblock}{Sorting}
+    Write a program that takes in a list of $N$ numbers and return a sorted list of the numbers. We will come back to sorting in next slide. You may google for keywords like \textit{bubble sort}, \textit{insert sort} or \textit{quicksort}.
   \end{exampleblock}
 \end{frame}
 
-\section{Application: Weather by month}
-\begin{frame}{Application: Weather by month}
+\begin{frame}[fragile]{Sorting: naive approach}
+Let's take the most naive way to do so, we find the minimum for elements between $1$ to $n$, move it to the head, then do it again and again with fewer elements. 
+\begin{lstlisting}[language=python]
+studentScore = [82,42,72,64,22]
+for i in range(0,len(studentScore)):
+  min=studentScore[i]
+  minPos=i
+  for j in range(i,len(studentScore)):
+    if(studentScore[j]<min):
+      min=studentScore[j]
+      minPos=j
+  studentScore[i],studentScore[minPos]=studentScore[minPos],studentScore[i]
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{But how must time does it takes?}
   \begin{itemize}
-    \item The Hong Kong Observatory (HKO) has historic weather data available on their website
-    \item For instance, you can download daily average temperature from 1992 to now
-    \item In this exercise, we will try to use this data to compile the monthly average temperature of Hong Kong and plot some nice graphs on Excel
+    \item Let's have some basic assumption: say each comparison and assignment take constant amount of time, for example each take 0.0001s
+    \item let $n$ be the number of elements we have in the list
+    \item hence we have $i$ goes from $0$ to $n-1$
+    \item for $j$ we start at $i$ but and end at $n-1$
+    \item for each fixed $i,j$, we do at most 1 comparison and 2 assignment
+    \item for each $i$ we do also 2 assignment
+    \item to simplify the case, let's assume we do 5 operations in total for each $i,j$
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Step 1: Data preparation}
-  \begin{enumerate}
-    \item Browse HKO's open data site (\href{https://www.hko.gov.hk/en/abouthko/opendata_intro.htm}{Click Me})
-    \item Click \textbf{Data on daily maximum, mean and minimum temperatures}
-    \item This will lead you to a page listing all the different weather stations that you can download data from
-    \item Find the data for \textbf{Shatin}
-    \item Click the URL to download the data set
-    \item Open the file in Excel and take a look
-  \end{enumerate}
+\begin{frame}{Math time}
+let's just fix some $i$ there, then we consider the time needed for $j$ goes from $i$ to $n$, but since no matter what $j$ is we do at most $5$ operations there, therefore it is
+$$\underbrace{5+5+5+5+...+5}_{\text{\# of times for $j$ from $i$ to $n$}}=5(n-i+1)$$
+Next since $i$ goes from $1$ to $n$, we first observe
+\begin{itemize}
+  \item when $i=1$, $5(n-i+1)=5n$
+  \item when $i=2$, $5(n-i+1)=5(n-1)$
+  \item when $i=3$, $5(n-i+1)=5(n-2)$
+  \item when $i=n$, $5(n-i+1)=5$
+\end{itemize}
+Therefore, if we sum them all up, we can see that the total time needed will be 
+$$T=5n+5(n-1)+5(n-2)+...+5=5(1+2+3+...+n)$$
 \end{frame}
 
-\begin{frame}[fragile]{Step 2: Read data}
-  \begin{enumerate}
-    \item To save you from the trouble of file io, a piece of helper code has been written
-    \item Download the helper code \texttt{csv\_helper.py} from the course webpage
-    \item Copy the code and insert them at the \textbf{beginning} of your code
-\begin{lstlisting}[language=python]
-def cast(cast_type,val,fallback_val = -1):
-  ...
-def format_line(line,sep=','):
-  ...
-def read_hko_csv(path):
-  ... 
-
-# Your code starts here
-\end{lstlisting}
-  \end{enumerate}
+\begin{frame}{Sequence sum}
+So now we want to calculate the sum
+$$S=1+2+3+...+n$$
+Consider if we pair up the number one by one in the manner that $(1,n)$, $(2,n-1)$, $(3,n-2)$ etc. We notice that all these pairs sum up $n+1$\\
+But how many such pairs we can get? If $n$ is even, then we have $\frac{n}{2}$ such pairs, if $n$ is odd, but then $n-1$ is even, so we can get $\frac{n-1}{2}$ such pair with an addition $n$ there.\\
+In both case we have the sum
+$$S=\frac{n(n+1)}{2}$$
+Putting back to our total time we will have
+$$T=\frac{5n(n+1)}{2}=\frac{5}{2}n^{2}+\frac{5}{2}n$$
 \end{frame}
 
-\begin{frame}[fragile]{Step 2: Read the data}
-  \begin{enumerate}
-    \item Read the data by 
-\begin{lstlisting}[language=python]
-data = read_hko_csv('<path to your csv>')
-\end{lstlisting}
-    \item Inspect the data by:
-\begin{lstlisting}[language=python]
-print(data)
-\end{lstlisting}
-    \item You can access the data as follows:
-\begin{lstlisting}[language=python]
-data[0] # Get the first entry on csv (i.e. [1984,10,1,***,#]) 
-data[0][0] # 1984
-data[0][1] # 10
-\end{lstlisting}
-  \end{enumerate}
+\begin{frame}{Time complexity and some extra notes}
+When $n$ is large, we can observe that $n^{2}>>n$, therefore in many cases, we will drop the lower order term and only focus on the leading order, in our cases we will denote
+$$T=O(n^{2})$$
+This is call asymptotic time bound/complexity, it gives a rough bound on how slow the algorithm could be.\\\enspace\\
+Theoretically, general sorting can be improved to be $O(n\log n)$, and sometimes $O(n)$ if we have extra constraint on the data to be sorted.
 \end{frame}
-
-\begin{frame}{Step 3: Analysis the data}
-  Now \textit{you} are in charge. Try to do the following to obtain the monthly average temperature of Hong Kong:
-  \begin{enumerate}
-    \item Create two empty list with 12 \texttt{0} called \texttt{temp} and \texttt{count} 
-    \item Using a for loop, loop over the data set
-    \item For each entry, add the daily temperature to \texttt{temp} according to month and increase \texttt{count} of that month by 1. (Warning: On some date the data might be missing. Missing data are represented by -1)
-    \item After looping, divide each entry in the list by the number of valid entries. This will give you the average. Print the result and copy them to Excel
-  \end{enumerate}
-\end{frame}
-
-\begin{frame}{Step 4: Visualize}
-  \begin{itemize}
-    \item You can now visualize the data on Excel. This should give a graph similar to this
-    \begin{figure}
-      \centering
-      \includegraphics[width=0.6\textwidth]{img/month-temp.png}
-    \end{figure}
-  \end{itemize}
-\end{frame}
-
 \end{document}

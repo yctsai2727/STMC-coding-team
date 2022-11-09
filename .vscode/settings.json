@@ -158,5 +158,6 @@
                 "tectonic"
             ]
         }
-    ]
+    ],
+    "latex-workshop.latex.recipe.default": "lastUsed"
 }
