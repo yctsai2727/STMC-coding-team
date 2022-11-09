@@ -1,13 +1,18 @@
-\frametitle{Denoting hexadecimal in Python}
-\begin{itemize}
-    \item Similarly we can denote hexadecimal numbers like this: \texttt{0x<hex digits>}
-    \item For example, \texttt{17=0x11} because $17 = 1 \times 16^1 + 1$
-    \item So in python we write
-\begin{lstlisting}[language=python]
-x = 0x11 # same as x = 17
+\frametitle{Summary Exercises}
+\begin{enumerate}
+    \setcounter{enumi}{3}
+    \item Write a program that reads in 3 numbers and ouput the largest number. You are guaranteed that no two numbers are equal. Expected ouput
+\begin{lstlisting}[language=bash]
+$./main
+13 83 19
+2nd number is largest. The value is 83
+
+$./main
+77 21 3
+1st number is largest. The value is 77
+
+$./main
+0 21 88
+3rd number is largest. The value is 88
 \end{lstlisting}
-  \end{itemize}
-  \begin{exampleblock}{Exercise}
-    Convert the following numbers from hexadecimal to decimal and check your answer against that by python:\\
-    \texttt{0xA31, 0xD13, 0x12C, 0x14}
-  \end{exampleblock}
+  \end{enumerate}

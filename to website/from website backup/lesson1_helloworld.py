@@ -1,0 +1,1 @@
+print("Hello world!") #Printing Hello world

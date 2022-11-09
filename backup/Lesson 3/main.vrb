@@ -1,0 +1,13 @@
+\frametitle{Denoting hexadecimal in Python}
+\begin{itemize}
+    \item Similarly we can denote hexadecimal numbers like this: \texttt{0x<hex digits>}
+    \item For example, \texttt{17=0x11} because $17 = 1 \times 16^1 + 1$
+    \item So in python we write
+\begin{lstlisting}[language=python]
+x = 0x11 # same as x = 17
+\end{lstlisting}
+  \end{itemize}
+  \begin{exampleblock}{Exercise}
+    Convert the following numbers from hexadecimal to decimal and check your answer against that by python:\\
+    \texttt{0xA31, 0xD13, 0x12C, 0x14}
+  \end{exampleblock}

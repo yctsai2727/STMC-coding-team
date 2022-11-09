@@ -1,12 +1,7 @@
-\frametitle{Explaining helloworld.py : Comments}
-Another type of comments available in Python (and many other languages) is the \textbf{block comment}. They look something like this:
-\begin{lstlisting}[language=python]
-  # This is the single line comment we just saw
-
-  """
-     This is a block comment,
-     anything inside this block will be ignored
-  """
-
-  """ This is also a block comment """
-\end{lstlisting}
+\frametitle{More experiments}
+Let's try out something more:
+  \begin{itemize}
+    \item Change the variable \texttt{name} to sth else, say your favorite character or song or etc, does the code still works?
+    \item try to input something else when answering the question, like entering number, what you expect to get?
+    \item can youy modify the code to ask more question? thens print out all the information you gather in one line.
+  \end{itemize}

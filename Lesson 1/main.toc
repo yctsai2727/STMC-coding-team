@@ -4,8 +4,6 @@
 \defcounter {refsection}{0}\relax 
 \beamer@sectionintoc {2}{Installing python}{3}{0}{2}
 \defcounter {refsection}{0}\relax 
-\beamer@sectionintoc {3}{Running your first program}{8}{0}{3}
+\beamer@sectionintoc {3}{Running your first program}{6}{0}{3}
 \defcounter {refsection}{0}\relax 
-\beamer@sectionintoc {4}{Understanding helloworld.py}{10}{0}{4}
-\defcounter {refsection}{0}\relax 
-\beamer@sectionintoc {5}{Using an IDE}{17}{0}{5}
+\beamer@sectionintoc {4}{Understanding helloworld.py}{8}{0}{4}

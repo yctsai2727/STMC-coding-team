@@ -42,9 +42,9 @@ colorlinks=true,linkcolor=blue}
 
 \usetheme{UCBerkeley}
 
-\title[Your Short Title]{STMC HKOI Training}
+\title[Your Short Title]{STMC coding team Training}
 \subtitle{Lesson 1: Hello World}
-\author{Chan Yan Mong}
+\author{Tsai Yun Chen}
 %\institute{}
 \date{\today}
 
@@ -61,14 +61,13 @@ colorlinks=true,linkcolor=blue}
 
 \section{Class Goal}
 
-\begin{frame}{Goal today}
+\begin{frame}{What we are going to do today?}
 
-\begin{itemize}
-  \item Install python
-  \item Run your first program \texttt{helloworld.py}
-  \item Understand different parts of \texttt{helloworld.py}
-  \item Use VSCode as an integrated development environment (IDE) for coding
-\end{itemize}
+\begin{enumerate}
+  \item Setup Environment for coding
+  \item Run your first program \texttt{helloworld.ipynb}
+  \item Understand different parts of \texttt{helloworld.ipynb}
+\end{enumerate}
 %\begin{block}{Examples}
 %Some examples of commonly used commands and features are included, to help you get started.
 %\end{block}
@@ -77,105 +76,81 @@ colorlinks=true,linkcolor=blue}
 
 \section{Installing python}
 
-\begin{frame}{Installing python}
+\begin{frame}{Tools we are going to use}
   \begin{itemize}
-    \item As mentioned before, a interpreter is need to run our code
-    \item Now we shall learn how to install interpreter for python
+    \item As mentioned we need a compiler to translate our program to machine code
+    \item Unfortunately we do not have compiler installed in our computer yet
+    \item To solve this, we are going to use a online tool named \texttt{Google Colab}
   \end{itemize}
 \end{frame}
 
+\begin{frame}{What is Google Colab}
+  \begin{itemize}
+    \item Google Colab is a online notebook provided by Google
+    \item allows user to write and run python code online
+    \item It has several benefit over traditional local compiler:
+    \begin{enumerate}
+      \item code everywhere
+      \item free GPU usage
+      \item can share your code to others and work together (like google doc)
+    \end{enumerate}
+  \end{itemize}
+\end{frame}
 
-\begin{frame}{Installing python}
+\begin{frame}[fragile]{What you need to do}
   \begin{columns}
     \column{0.8\textwidth}
     \begin{enumerate}[Step 1:]
-      \item Go to Python's website (\href{https://www.python.org/}{https://www.python.org/})
-      \item Click \texttt{Downloads} and choose \texttt{Python 3.X}
-      \item Follow the link and download the installer
-    \end{enumerate}
-  \end{columns}
-  
-\end{frame}
-
-\begin{frame}{Installing python}
-  \begin{columns}
-    \column{0.8\textwidth}
-    \begin{enumerate}[Step 1:]
-      \setcounter{enumi}{3}
-      \item Double-click the installer and follow the installation instructions. Wait until it says installation success
-      \item Close the installer window
+      \item prepare a Google account
+      \item Login your Google account and go to your Google drive
+      \item Open a new folder to hold the files that you will use in this course
     \end{enumerate}
   \end{columns}
 \end{frame}
 
-\begin{frame}{Installing python}
-  \begin{columns}
-    \column{0.8\textwidth}
-    \begin{enumerate}[Step 1:]
-      \setcounter{enumi}{5}
-      \item Double click the installer again. Tick "Add Python 3.9 to PATH" and click "Custom Installation"
-    \end{enumerate}
-  \end{columns}
-  \vspace{1mm}
-  \begin{figure}
-    \includegraphics[width=0.7\textwidth]{img/install-menu.png}
-  \end{figure}
-\end{frame}
-
-\begin{frame}{Installing python}
-  \begin{columns}
-    \column{0.8\textwidth}
-    \begin{enumerate}[Step 1:]
-      \setcounter{enumi}{6}
-      \item Tick the following and press "Next" to install
-    \end{enumerate}
-  \end{columns}
-  \vspace{1mm}
-  \begin{figure}
-    \includegraphics[width=0.7\textwidth]{img/optional-feature.png}
-  \end{figure}
-\end{frame}
 
 \section{Running your first program}
 \begin{frame}{Running your first program (I)}
   \begin{columns}
     \column{0.8\textwidth}
     \begin{enumerate}[Step 1:]
-      \item Download \texttt{helloworld.py} from course webpage and paste it on your Desktop
-      \item Open CMD (Windows) / Terminal (Mac) 
-      \item Type \texttt{cd Desktop} (Windows) or \texttt{cd \char`~/Desktop/} (Mac)
-      \item Type \texttt{dir .} (Windows) or \texttt{ls .} (Mac). That should list all your files on Desktop, including \texttt{helloworld.py}
+      \item Download \texttt{HelloWorld.ipynb} from course webpage.
+      \item Upload the file you just downloaded to the Google drive folder
+      \item double click to open the file when the upload is finished
     \end{enumerate}
   \end{columns}
 \end{frame}
 
 \begin{frame}[fragile]{Running your first program (II)}
-  Now run the following command:
-
-  \begin{lstlisting}[language=Bash]
-python helloworld.py
-\end{lstlisting}
+  Now you should see the page below, click the start button beside the code:
 \vspace{1mm}
 You should see the following results:
-  \begin{lstlisting}
-  Hello world!\end{lstlisting}
-\end{frame}
-\section{Understanding helloworld.py}
-\begin{frame}[fragile]{Understand helloworld.py}
-  Congrats, you just compile your first program. Now, let's open \texttt{helloworld.py} and see what's under the hood:
-  \begin{lstlisting}[language=python]
-print("Hello world!") # Printing Hello world
+\begin{lstlisting}
+  Hello world!
 \end{lstlisting}
+\begin{figure}
+  \includegraphics[width=0.8\textwidth]{img/driveAddCollab.png}
+\end{figure}
 \end{frame}
 
+
+\section{Understanding helloworld.py}
+% \begin{frame}[fragile]{Understand helloworld.py}
+%   Congrats, you just compile your first program. Now, let's open \texttt{helloworld.py} and see what's under the hood:
+%   \begin{lstlisting}[language=python]
+%     print("Hello world!") #output Hello world!
+%     #name=input("What is you name?\n") #ask for your name
+%     #print("Hi,",name) #output hi, [user's name] #output hi, [user's name]
+% \end{lstlisting}
+% \end{frame}
+
 \begin{frame}[fragile]{Experiments}
-  Let's explore the function of different parts of the program by doing some experiments:
-  \begin{itemize}
+   Congrats, you just compile your first program. Now, let's explore the function of different parts of the program by doing some experiments:
+  \begin{enumerate}
     \item Change "Hello World" to "Bye bye world" and rerun, what do you observe?
     \item Similar to the first line, add more \texttt{print} to see if you can print multiple lines
-    \item Enter "Hello\textbackslash n World" and rerun, what do you observe? How about adding more "\textbackslash n"? What is the function of "\textbackslash n"?
-    \item Change the text behind \# and recompile, does it change anything about the code? Now try to add \# before \texttt{print}, what happens?
-  \end{itemize}
+    \item Change the text behind \# in line 1 and recompile, does it change anything about the code? Now try to add \# before \texttt{print}, what happens?
+  \end{enumerate}
 \end{frame}
 
 \begin{frame}[fragile]{Explaining helloworld.py: print}
@@ -191,30 +166,6 @@ print("Hello world!") # Printing Hello world
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Explaining helloworld.py: \textbackslash n}
-  \begin{itemize}
-    \item From your experiments, you can see that \textbackslash n is not printed literally as "\textbackslash" and  "n"
-    \item \textbackslash n turns out are one of those we called \textbf{escape characters}
-    \item Escape characters are \textit{treated differently} by computer 
-    \item For example, \textbackslash n is interpreted as new line (Enter) by Python
-    \item Usually it takes the form "\textbackslash"+"<another character>"
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Explaining helloworld.py: \textbackslash n}
-  Here are more escape characters. Try them out!
-  \begin{table}[]
-    \begin{tabular}{ll}
-    \textbackslash{}n                & New Line         \\
-    \textbackslash{}r                & Carriage Return  \\
-    \textbackslash{}t                & Tab (Horizontal) \\
-    \textbackslash{}\textbackslash{} & Backslash        \\
-    \textbackslash{}'                & Single Quote     \\
-    \textbackslash{}"                & Double Quote    
-    \end{tabular}
-    \end{table}
-\end{frame}
-
 \begin{frame}{Explaining helloworld.py : Comments}
   \begin{itemize}
     \item Those lines after \texttt{\#} are called \textbf{comments}
@@ -224,37 +175,60 @@ print("Hello world!") # Printing Hello world
   \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Explaining helloworld.py : Comments}
-  Another type of comments available in Python (and many other languages) is the \textbf{block comment}. They look something like this:
-\begin{lstlisting}[language=python]
-  # This is the single line comment we just saw
-
-  """ 
-     This is a block comment,
-     anything inside this block will be ignored
-  """
-
-  """ This is also a block comment """
-\end{lstlisting}
-\end{frame}
-
-\section{Using an IDE}
-\begin{frame}{Using an IDE}
+\begin{frame}[fragile]{Second step}
   \begin{itemize}
-    \item As you can probably experience just now, using command line is sometimes a bit troublesome
-    \item Hence programmers invented \textbf{integrated development environment (IDE)} to aid coding
-    \item Here we will setup one of the most popular IDE / text editor on the market: \textbf{VSCode}
+    \item Now the computer knows how to talk with you, but we can't talk to the computer !?
+    \item Next step we are going to communicate with it, slightly click any blank space of the second block
+    \item then you should see the start button appear at the left side similar to what you just did, now click it
+    \item the computer will probably ask you a question, answer it by typing, click enter after your input and see what it answer.
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Setting up VSCode for Python}
-  \begin{columns}
-    \column{0.8\textwidth}
-    \begin{enumerate}[Step 1:]
-      \item Download \textbf{Visual Studio Code} from \href{https://code.visualstudio.com/}{https://code.visualstudio.com/}
-      \item Follow the instructions in \href{https://code.visualstudio.com/docs/python/python-tutorial}{https://code.visualstudio.com/docs/python/python-tutorial} to install learn how to integrate python with VSCode
-    \end{enumerate}
-  \end{columns}
-  
+\begin{frame}[fragile]{Explaining helloworld.py : Input}
+  \begin{itemize}
+    \item As you can probably see, \texttt{input} ask you a question which you can answer 
+    \item You answer by typing some input and press enter to submit
+    \item Furthermore, the text inside \texttt{input} is displayed when it prompts for answer
+    \item So in our program you see the following line is acutally asking your name and waiting for you input:
+    \begin{lstlisting}[language=python]
+      input("What is your name? ")
+\end{lstlisting}
+    \item But here is a problem: How can we save and manipulate these input?
+  \end{itemize}
+\end{frame}
+\begin{frame}{Variables - Your handy storage box}
+  \begin{itemize}
+    \item Imagine that if you never remember things, then how can you answer questions?
+    \item To store data, a computer uses something called a \textbf{variable}
+    \item A variable is a ”storage box” with a name
+    \item It stores data temporarily so that the value inside can be retrieved for further processing
+  \end{itemize}
+  \begin{figure}
+    \centering 
+    \includegraphics[width=0.6\textwidth]{img/variable.png}
+    \caption*{Source: \href{https://stevenpcurtis.medium.com/what-is-a-variable-3447ac1331b9}{https://stevenpcurtis.medium.com/what-is-a-variable-3447ac1331b9}}
+  \end{figure}
+\end{frame}
+\begin{frame}[fragile]{Explaining helloworld.py : Input}
+  \begin{itemize}
+    \item So back to our example, we see that the full line of our program is actually
+    \begin{lstlisting}[language=python]
+      name=input("What is your name? ")\end{lstlisting}
+    \item now we know that name is a variable that stores your input, which is your name.
+    \item Further we see the line follows,
+    \begin{lstlisting}[language=python]
+      print("Hi,",name)\end{lstlisting}
+    \item here we are trying to response to what user input
+    \item so refering to our experiment before we can expect the response is what we expect in the comment: \texttt{Hi, [your\_name]}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{More experiments}
+  Let's try out something more:
+  \begin{itemize}
+    \item Change the variable \texttt{name} to sth else, say your favorite character or song or etc, does the code still works?
+    \item try to input something else when answering the question, like entering number, what you expect to get?
+    \item can youy modify the code to ask more question? thens print out all the information you gather in one line.
+  \end{itemize}
 \end{frame}
 \end{document}

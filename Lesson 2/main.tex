@@ -13,6 +13,8 @@ colorlinks=true,linkcolor=blue}
 
 \usepackage{listings}
 \usepackage{xcolor}
+\usepackage{xpatch}
+\usepackage{realboxes}
 
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
@@ -38,6 +40,10 @@ colorlinks=true,linkcolor=blue}
     tabsize=2
 }
 
+\makeatletter
+\xpretocmd\lstinline{\Colorbox{backcolour}\bgroup\appto\lst@DeInit{\egroup}}{}{}
+\makeatother
+
 \lstset{style=mystyle}
 
 % Flow chart config
@@ -51,9 +57,9 @@ colorlinks=true,linkcolor=blue}
 
 \usetheme{UCBerkeley}
 
-\title[Your Short Title]{STMC HKOI Training}
-\subtitle{Lesson 2: Input, variables and data types}
-\author{Chan Yan Mong}
+\title[Your Short Title]{STMC coding team Training}
+\subtitle{Lesson 2: Variables, data types}
+\author{Tsai Yun Chen}
 %\institute{}
 \date{\today}
 
@@ -73,15 +79,20 @@ colorlinks=true,linkcolor=blue}
 \begin{frame}{Goal today}
 
 \begin{itemize}
-  \item Reading input with \texttt{input}
-  \item Introduce the concept of variable 
-  \item Introduce concept of data type: \texttt{int}, \texttt{float}, \texttt{char}, \texttt{str}
-  \item Perform basic arithmetics with numerical values to complete a temperature converter
+  \item Formally introduce the concept of variable 
+  \item Introduce concept of data type: \texttt{int}, \texttt{char}, \texttt{str} and \texttt{boolean}
+  \item Perform basic arithmetics and complete some simple exercise
 \end{itemize}
-%\begin{block}{Examples}
-%Some examples of commonly used commands and features are included, to help you get started.
-%\end{block}
 
+\end{frame}
+
+\begin{frame}{A small recap}
+  So What we have learnt so far?
+  \begin{itemize}
+    \item Asking a computer to output something -- \texttt{print}
+    \item Entering something to computer -- \texttt{input}
+    \item Storing something in computer -- \texttt{xxx=}
+  \end{itemize}
 \end{frame}
 
 \begin{frame}{Input, process and output}
@@ -92,144 +103,6 @@ colorlinks=true,linkcolor=blue}
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Example: Temperature conversion}
-  \begin{itemize}
-    \item We usually use SI units in our data life 
-    \item But some places (like the U.S.) uses imperial units
-  \end{itemize}
-  \vspace{2mm}
-  \begin{figure}
-    \centering
-    \includegraphics[width=0.6\textwidth]{img/fahrenheit.PNG}
-    \caption*{Source: \href{https://youtu.be/Ke9niDoM3f8}{https://youtu.be/Ke9niDoM3f8}}
-  \end{figure}
-\end{frame}
-
-\begin{frame}{Example: Temperature conversion}
-  \begin{itemize}
-    \item In imperial units, temperature are represented using Fahrenheit (${}^o \text{F}$)
-    \item In this system, $0 {}^o \text{F}$ is defined to be the freezing point of a solution of brine and $96 {}^o \text{F}$ is defined to be average human body temperature
-    \item To convert Fahrenheit to Celsius, one will need to use the following (inconvenient) formula:
-    \begin{align*}
-      T_C = \frac{5}{9} \left(T_F - 32.0\right)
-    \end{align*}
-    \item For example, in the picture above, the temperature  $90 {}^o \text{F} = \frac{5}{9} (90-32) \approx 32 {}^o \text{C}$
-    \item As you can see, its' pretty cumbersome. So let's write a program to do it for us
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Designing a program}
-  \begin{itemize}
-    \item Let's try to design the program
-    \item First of all, let's identify the input, process and output:
-    \begin{itemize}
-      \item Input: Degree in Fahrenheit
-      \item Process: Convert Fahrenheit to Celsius using formula
-      \item Output: Print Degree in Celsius
-    \end{itemize}
-    \item This can be summarized using a \textbf{flowchart}, which describe the flow of the program
-  \end{itemize}
-  
-\end{frame}
-
-\begin{frame}{Flow chart}
-  \begin{figure}
-    \begin{tikzpicture}[node distance=1.2cm]
-      \node (start) [startstop] {Start};
-      \node (readF) [io, below of=start] {Read temp (F)};
-      \node (convert) [process, below of=readF] {Convert F to C};
-      \node (outC) [io, below of=convert] {Output temp (C)};
-      \node (end) [startstop, below of=outC] {End};
-      \draw [arrow] (start) -- (readF);
-      \draw [arrow] (readF) -- (convert);
-      \draw [arrow] (convert) -- (outC);
-      \draw [arrow] (outC) -- (end);
-    \end{tikzpicture}
-  \end{figure}
-\end{frame}
-
-\begin{frame}{Let's implement}
-  \begin{itemize}
-    \item Now we know how the program flows, let's put our ideas in code! 
-    \begin{itemize}
-      \item Input: We don't know how to do
-      \item Process: We don't know how to do 
-      \item Output: We already know how to do with \texttt{print}
-    \end{itemize}
-    \item By the way, the action of converting ideas to code is sometimes called \textbf{implementation}
-  \end{itemize}
-\end{frame}
-
-\section{Reading inputs}
-\begin{frame}[fragile]{Reading inputs}
-  \begin{itemize}
-    \item Inputs in python are read using \texttt{raw\_input} and \texttt{input} function
-    \item We shall first try \texttt{input}
-    \item According to the \href{https://www.w3schools.com/python/ref_func_input.asp}{documentation},the syntax of \texttt{input} is:
-\begin{lstlisting}[language=python]
-      input(prompt)
-\end{lstlisting}
-  where \texttt{prompt} is a string representing a default message before the input.
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Reading input}
-  \begin{itemize}
-    \item What does that even mean?
-    \item Let's experiment by opening up the python interactive console
-    
-  \end{itemize}
-  
-  \begin{figure}
-    \centering
-    \includegraphics[width=0.8\textwidth]{img/repl.PNG}
-  \end{figure}
-\end{frame}
-
-\begin{frame}{Reading input}
-  \begin{itemize}
-    \item Type in \texttt{input("Enter here:")} and enter
-    \item The following should show:
-  \end{itemize}
-  \begin{figure}
-    \centering 
-    \includegraphics[width=0.8\textwidth]{img/repl-input-prompt.PNG}
-  \end{figure}
-\end{frame}
-
-\begin{frame}{Reading input}
-  \begin{itemize}
-    \item Type something and press enter 
-    \item You should see your input displaying:
-  \end{itemize}
-  \begin{figure}
-    \centering 
-    \includegraphics[width=0.8\textwidth]{img/repl-input-done.PNG}
-  \end{figure}
-\end{frame}
-
-\begin{frame}[fragile]{Reading input}
-  \begin{itemize}
-    \item As you can probably see, \texttt{input} ask you a question which you can answer 
-    \item You answer by typing some input and press enter to submit
-    \item Furthermore, the text inside \texttt{input} is displayed when it prompts for answer
-    \item So you can imagine in our final program the code would have something like this:
-    \begin{lstlisting}[language=python]
-      input("Enter temperature in (F): ")
-\end{lstlisting}
-    \item But here is a problem: How can we save and manipulate these input?
-  \end{itemize}
-\end{frame}
-
-\section{Variables}
-\begin{frame}{Why do we need to store?}
-  \begin{itemize}
-    \item But you may ask, why do we need to save results anyway?
-    \item The answer is actually quite obvious: \textit{If you don't remember anything, you can't process anything}
-    \item \textit{Example: Guy who forgot everything he heard}
-    \item \textit{Imagine asking a forgetful guy what is the difference in age between you and your friends. One by one, you and your friend told the guy your ages. Being forgetful, he never remembers anything he heard. You can see such a guy will never be able to answer your question, because he would have forgotten your age by the time he listen to your friend's!}
-  \end{itemize}
-\end{frame}
 \begin{frame}{Variables - Your handy storage box}
   \begin{itemize}
     \item To store data, a computer uses something called a \textbf{variable}
@@ -283,10 +156,10 @@ colorlinks=true,linkcolor=blue}
 
 \begin{frame}{Data types: Character}
   \begin{itemize}
-    \item \textbf{Character} is \textit{a single character}
+    \item \textbf{Character} is \textit{a single alphabet/symbol}
     \item Usually quoted by \textbf{single quotes ('')}
-    \item Examples of characters numbers: \texttt{'a'},\texttt{'F'},\texttt{'<space>'},\texttt{'@'},\texttt{'0'},\texttt{'+'}
-    \item Examples of character data: \textit{grades}
+    \item Examples of characters numbers: \texttt{'a'},\texttt{'F'},\texttt{'@'},\texttt{'0'},\texttt{'+'}
+    \item Examples of character data: \textit{letter grades},\textit{biological gender},\textit{T/F}
   \end{itemize}
 \end{frame}
 
@@ -308,13 +181,15 @@ colorlinks=true,linkcolor=blue}
 \end{frame}
 
 
-\begin{frame}{Case study I}
+\begin{frame}[fragile]{Case study I}
   \begin{columns}
     \column{0.6\textwidth}
     \begin{itemize}
       \item Variable name is \textbf{myInt}
       \item The value stored is \textbf{4}
       \item The data are numbers \textit{without decimal points}, so the data type is \textbf{integer}
+      \item Python Code:\\\begin{lstlisting}[language=python]
+    myInt=4\end{lstlisting}
     \end{itemize}
     \column{0.4\textwidth}
     \begin{figure}
@@ -323,28 +198,15 @@ colorlinks=true,linkcolor=blue}
   \end{columns}
 \end{frame}
 
-\begin{frame}{Case study II}
-  \begin{columns}
-    \column{0.6\textwidth}
-    \begin{itemize}
-      \item Variable name is \textbf{myReal}
-      \item The value stored is \textbf{2.5}
-      \item The data are numbers \textit{with decimal points}, so the data type is \textbf{floating point number}
-    \end{itemize}
-    \column{0.4\textwidth}
-    \begin{figure}
-      \includegraphics[width=0.8\textwidth]{img/variable-float.png}
-    \end{figure}
-  \end{columns}
-\end{frame}
-
-\begin{frame}{Case study III}
+\begin{frame}[fragile]{Case study II}
   \begin{columns}
     \column{0.6\textwidth}
     \begin{itemize}
       \item Variable name is \textbf{myChar}
       \item The value stored is \textbf{"a"}
       \item The data is a \textit{single character}; The data type is \textbf{character}
+      \item Python Code:\\\begin{lstlisting}[language=python]
+    myChar='a'\end{lstlisting}
     \end{itemize}
     \column{0.4\textwidth}
     \begin{figure}
@@ -353,13 +215,15 @@ colorlinks=true,linkcolor=blue}
   \end{columns}
 \end{frame}
 
-\begin{frame}{Case study IV}
+\begin{frame}[fragile]{Case study III}
   \begin{columns}
     \column{0.6\textwidth}
     \begin{itemize}
       \item Variable name is \textbf{myString}
       \item The value stored is \textbf{"hello"}
       \item The data is a \textit{sequence of characters}; The data type is \textbf{string}
+      \item Python Code:\\\begin{lstlisting}[language=python]
+    myString="hello"\end{lstlisting}
     \end{itemize}
     \column{0.4\textwidth}
     \begin{figure}
@@ -368,47 +232,6 @@ colorlinks=true,linkcolor=blue}
   \end{columns}
 \end{frame}
 
-\section{Doing things in python}
-\subsection{Declaring variables}
-\begin{frame}[fragile]{Declaring variables}
-  \begin{itemize}
-    \item Let's see how all these turn into code:
-    \item To \textbf{declare} a variable, do the following
-  \begin{lstlisting}[language=python]
-    <variable name> = <value>
-\end{lstlisting}
-    \item For example:
-    \begin{lstlisting}[language=python]
-      myName = "John" # String variable myName storing "John"
-
-      age = 19 # Integer variable age storing 19
-      
-      temp = 23.3 # Float variable called temp storing 23.3
-
-      isOk = False # Boolean variable called isOK storing False 
-\end{lstlisting}
-  \end{itemize}
-\end{frame}
-
-\subsection{Accessing values}
-\begin{frame}[fragile]{Accessing values}
-  \begin{itemize}
-    \item After declaration, we can access the values stored by the variable name:
-\begin{lstlisting}[language=python]
-name = "John"
-# This will output "Your name is: John"
-print("Your name is:", name) 
-
-temp = 22.1
-temp + 1 # 23.1 
-temp - 10 # 13.1
-# Output: "Temp minus 10: 13.1"
-print("Temp minus 10: ", temp - 10) 
-\end{lstlisting}
-  \end{itemize}
-\end{frame}
-
-\subsection{Checking data type}
 \begin{frame}[fragile]{Checking data type}
   \begin{itemize}
     \item We can also look at the data type of things using \texttt{type()} function
@@ -456,20 +279,14 @@ True
 >>> myName  = "rs132"
 >>> type(myName) is str
 True
-
->>> isDone = False
->>> type(isDone) is bool
-True
->>> type(isDone) is int
-False
 \end{lstlisting}
   \end{itemize}
 \end{frame}
 
-\subsection{Doing Operations}
-\begin{frame}[fragile]{Doing operations with variables}
+%\subsection{Doing Operations}
+\begin{frame}[fragile]{Operator}
   \begin{itemize}
-    \item We can also manipulate the values stored in the variable using various operators. For example, if the varaibles are \texttt{int} or \texttt{float}:
+    \item We can also manipulate the value stored in the variable using various operators. For example, if the varaible is \texttt{int} or \texttt{float}:
 \begin{lstlisting}[language=python]
 >>> 1.0 + 2.0     # Addition
 3.0
@@ -481,6 +298,10 @@ False
 1.3333333333333333
 >>> 4**5          # Exponent (4**5 = 4*4*4*4*4)
 1024
+>>> 17//3         # Integer division, only applicable to Int
+5
+>>> 17%3          # Modulo/Remainder, only applicable to Int
+2
 \end{lstlisting}
   \end{itemize}
 \end{frame}
@@ -527,11 +348,11 @@ TypeError: unsupported operand type(s) for -: 'str' and 'str'
   \end{itemize}
 \end{frame}
 
-\section{Combining everything}
+%\section{Combining everything}
 
-\begin{frame}[fragile]{Combining everything}
+\begin{frame}[fragile]{A simple example}
   \begin{itemize}
-    \item Combining everything, this give us the following code:
+    \item Let's see a simple example which perform the temperature conversion,
 \begin{lstlisting}[language=python]
 tempF = input("Enter temperature in (F): ")
 tempC = 5.0*(tempF - 32.0)/9.0
@@ -569,8 +390,8 @@ TypeError: unsupported operand type(s) for -: 'str' and 'float'
 \begin{lstlisting}[language=python]
 tempF = input("Enter temperature in (F): ")
 print('Type of tempF: ',type(tempF))
-tempC = 5.0*(tempF - 32.0)/9.0
-print("Temperature in (C): ",tempC)
+#tempC = 5.0*(tempF - 32.0)/9.0
+#print("Temperature in (C): ",tempC)
 \end{lstlisting}
   \end{itemize}
 \end{frame}
@@ -582,10 +403,6 @@ print("Temperature in (C): ",tempC)
 >>> python3 temp.py
 Enter temperature in (F): 80
 Type of tempF:  <class 'str'>    <---- Ops! tempF is a string!!!
-Traceback (most recent call last):
-  File "temp.py", line 3, in <module>
-    tempC = 5.0*(tempF-32.0)/9.0
-TypeError: unsupported operand type(s) for -: 'str' and 'float'
 \end{lstlisting}
   \end{itemize}
 \end{frame}
@@ -603,8 +420,8 @@ TypeError: unsupported operand type(s) for -: 'str' and 'float'
 \begin{frame}[fragile]{What is the error?}
   \begin{itemize}
     \item So basically, \texttt{input} will convert everything we input, regardless of it's original form, into string!
-    \item To battle this, we need to \textit{manually} turn \texttt{str} back to \texttt{float}
-    \item This is done by wrapping \texttt{float()} in front of \texttt{input}, i.e. from:
+    \item To battle this, we need to \textit{manually} turn \texttt{str} back to \texttt{Int}
+    \item This is done by wrapping \texttt{Int()} in front of \texttt{input}, i.e. from:
 \begin{lstlisting}[language=python]
 input("Enter temperature in (F): ")
 \end{lstlisting}
@@ -651,131 +468,173 @@ Temperature in (C):  26.666666666666668
   \end{itemize}
 \end{frame}
 
-\section{More exercise}
+%\section{More exercise}
 
-\subsection{Radius from circumference}
-\begin{frame}[fragile]{Radius from circumference}
+%\subsection{Radius from circumference}
+\begin{frame}[fragile]{Let's try an exercise}
   \begin{itemize}
     \item Write a program that takes in the circumference of a circle and output the radius of the circle
-    \item \textbf{Solution}:
-\begin{lstlisting}[language=python]
-C  = float(input("Enter circumference")) # Circumference
-PI = 3.1415926535 # Pi
-r = C/(2*PI)      # Circumference/2 Pi
-print("Radius is: ",r)
-\end{lstlisting}
+    \item Recall that the circumference of a circle is calculated as $2\pi r$
+    \item Now you got the circumference, how can you get back the radius?
   \end{itemize}
 \end{frame}
 
-\subsection{Swapping numbers}
+\begin{frame}[fragile]{Answer}
+  \begin{lstlisting}[language=python]
+    circum=float(input('Enter the circumference: '))
+    PI=3.14159265354
+    r=circum/(2*PI)
+    print("The radius is:",r)\end{lstlisting}
+\end{frame}
+
+% \subsection{Swapping numbers}
+\begin{frame}[fragile]{Some more exercise}
+  \begin{itemize}
+    \item Say now you have two variables \texttt{a} and \texttt{b}, you want to swap their value
+    \item but notice that the following does not work
+    \begin{lstlisting}[language=python]
+      a=b
+      b=a\end{lstlisting}
+    \item Why?
+  \end{itemize}
+\end{frame}
+
 \begin{frame}[fragile]{Swapping numbers}
   \begin{itemize}
-    \item Complete the following code that swap the values in \texttt{i} and \texttt{j}
-\begin{lstlisting}[language=python]
-i = 4
-j = 6
-print("i: ",i, " j: ",j)      # i: 4 j: 6 
-# Do something here to swap i,j. Can define new variable
-print("i: ",i, " j: ",j)      # i: 6 j: 4
-\end{lstlisting}
-  \item \textbf{Solution:}
-\begin{lstlisting}[language=python]
-temp = i
-i = j
-j = temp
-\end{lstlisting}
+    \item The reason behind is that, after we evaluate the first line, \texttt{a} stored the value of \texttt{b}
+    \item Then when evaluating the second line, \lstinline[language=python,columns=fixed]{b=a} simply put back value of \texttt{b} to \texttt{b} itself
+    \item However a common trick is that we can have another variable to temporarily storing the value of \texttt{a} to avoid forgetting it
+    \item Now try to complete the code.
   \end{itemize}
 \end{frame}
 
-\subsection{Length converter}
-\begin{frame}[fragile]{Length converter}
-  \begin{exampleblock}{Problem}
-    We will write something similar to the Fahrenheit to Celsius converter. Instead of converting temperature, we will write code that convert length from miles to kilometer. Write a program that read in length in miles, then output length in kilometer. (Remark: 1 miles $\approx$ 1.60934 km)
-  \end{exampleblock}
-  \begin{exampleblock}{Expected output}
-\begin{lstlisting}
-Please enter length in miles: 2.7
-Length in kilometer: 4.345218
-\end{lstlisting}
-  \end{exampleblock}
-\end{frame}
-
-\begin{frame}[fragile]{Average Calculator}
-  \begin{exampleblock}{Problem}
-    Write a program that takes in 5 numbers $x_1,x_2,\cdots,x_5$ and calculate the average of the numbers $\bar{x} = (x_1 + x_2 + x_3 + x_4 + x_5)/5$
-  \end{exampleblock}
-  \begin{exampleblock}{Expected output}
-\begin{lstlisting}
-2.5
-2.1
-4.5
-1.2
-4.5
-Average of these numbers is 2.96
-\end{lstlisting}
-      \end{exampleblock}
-\end{frame}
-
-
-\subsection{Challenging: Number of hand shakes}
-\begin{frame}{Challenging: Number of hand shakes}
-
-  \begin{exampleblock}{Problem}
-    $n$ business people meet for lunch and shake hands with each other. How many handshakes are there? (Obviously $n\in \mathbb{Z}^+$)\\
-    (Hint: Consider the case when $n=1,2,3,4,5$, can you see a pattern?)
-  \end{exampleblock}
-\end{frame}
-
-\begin{frame}{Challenging: Number of hand shakes (Answer)}
-
-  \begin{alertblock}{Answer}
-    Let $n$ be the number of people and $S_n$ be the number of handshakes.
-    \begin{table}[]
-      \begin{tabular}{llllllll}
-      $n$ & 1 & 2 & 3 & 4 & 5 & 6 & 7\\
-      $S_n$ & 0 & 1 & 3 & 6 & 10 & 15 & 21 
-      \end{tabular}
-      \end{table}
-      Observe that $S_n = S_{n-1} + (n-1)$ for $n>1$
-  \end{alertblock}
-\end{frame}
-
-\begin{frame}{Challenging: Number of handshakes (Answer)}
-  Thefore:
-  \begin{align*}
-    S_n &= S_{n-1} + (n-1) \\
-    &= (S_{n-2} + (n-2)) + (n-1)\\
-    &= (S_{n-3} + (n-3)) + (n-2) + (n-1)\\
-    &= \cdots\\
-    &= (S_{2} + 2) + 3 + \cdots + (n-2) + (n-1)\\
-    &= (S_{1} + 1) + 2 + 3 + \cdots + (n-2) + (n-1)\\
-    &= \mathbf{0 + 1 + 2 + 3 + \cdots + (n-2) + (n-1)}
-  \end{align*}
-  
-\end{frame}
-
-\begin{frame}{Challenging: Number of handshakes (Answer)}
-  \begin{equation*}
-    S_n = 0 + 1 + 2 + 3 + \cdots + (n-2) + (n-1)
-  \end{equation*}
+\begin{frame}[fragile]{Answer}
+  \begin{lstlisting}[language=python]
+    a=int(input('Give me the first number: '))
+    b=int(input('Give me the second number: '))
+    temp=a
+    a=b
+    b=temp
+    print("Now the number is swapped, a=",a,",b=",b)\end{lstlisting}
   \begin{itemize}
-    \item In fact, it can be shown that $S_n = n(n-1)/2$
-    \item This is because each people shakes with $n-1$ people
-    \item Since there are $n$ peoples, the number of shakes should be $n(n-1)$
-    \item But A shakes B and B shakes A are count the same, so we double counted
-    \item Therefore $S_n = n(n-1)/2$
-  \end{itemize} 
+    \item The above trick works for any kind of variable
+    \item However we have an extra variable declared, which might be problematic when the variable size is really large
+    \item Can we do it without having an extra variable?
+  \end{itemize}
 \end{frame}
 
-
-\begin{frame}[fragile]{Challenging: Number of handshakes (Answer)}
-  Implementation in code:
-\begin{lstlisting}[language=python]
-n = input('Enter number of people: ')
-n = int(n)
-Sn = n*(n-1)//2 # // for integer division
-print('Total number of handshakes: ', Sn)
-\end{lstlisting}
+\begin{frame}[fragile]{Yes, by the power of Math}
+  \begin{itemize}
+    \item Unsurprisingly, yes we can do it, below is the code
+    \item \begin{lstlisting}[language=python]
+      a=int(input('Give me the first number: '))
+      b=int(input('Give me the second number: '))
+      a=a+b
+      b=a-b
+      a=a-b
+      print("Now the number is swapped, a=",a,",b=",b)\end{lstlisting}
+  \end{itemize}
 \end{frame}
+
+\begin{frame}[fragile]{Finally, Homework}
+  \begin{itemize}
+    \item Homework 1 is posted on the course website, namely the HW1.ipynb
+    \item it contains 3 problems, sorted in ascending order of difficulty
+    \item no submission is needed, the homework only serves as way for you to practice
+    \item answer will be released two weeks later, on 29/10
+    \item Though no submission is required, you are still encouraged to finish the homework to practice what you have learnt, so that you don't get lost in the coming lesson.
+  \end{itemize}
+\end{frame}
+
+% \subsection{Length converter}
+% \begin{frame}[fragile]{Length converter}
+%   \begin{exampleblock}{Problem}
+%     We will write something similar to the Fahrenheit to Celsius converter. Instead of converting temperature, we will write code that convert length from miles to kilometer. Write a program that read in length in miles, then output length in kilometer. (Remark: 1 miles $\approx$ 1.60934 km)
+%   \end{exampleblock}
+%   \begin{exampleblock}{Expected output}
+% \begin{lstlisting}
+% Please enter length in miles: 2.7
+% Length in kilometer: 4.345218
+% \end{lstlisting}
+%   \end{exampleblock}
+% \end{frame}
+
+% \begin{frame}[fragile]{Average Calculator}
+%   \begin{exampleblock}{Problem}
+%     Write a program that takes in 5 numbers $x_1,x_2,\cdots,x_5$ and calculate the average of the numbers $\bar{x} = (x_1 + x_2 + x_3 + x_4 + x_5)/5$
+%   \end{exampleblock}
+%   \begin{exampleblock}{Expected output}
+% \begin{lstlisting}
+% 2.5
+% 2.1
+% 4.5
+% 1.2
+% 4.5
+% Average of these numbers is 2.96
+% \end{lstlisting}
+%       \end{exampleblock}
+% \end{frame}
+
+
+% \subsection{Challenging: Number of hand shakes}
+% \begin{frame}{Challenging: Number of hand shakes}
+
+%   \begin{exampleblock}{Problem}
+%     $n$ business people meet for lunch and shake hands with each other. How many handshakes are there? (Obviously $n\in \mathbb{Z}^+$)\\
+%     (Hint: Consider the case when $n=1,2,3,4,5$, can you see a pattern?)
+%   \end{exampleblock}
+% \end{frame}
+
+% \begin{frame}{Challenging: Number of hand shakes (Answer)}
+
+%   \begin{alertblock}{Answer}
+%     Let $n$ be the number of people and $S_n$ be the number of handshakes.
+%     \begin{table}[]
+%       \begin{tabular}{llllllll}
+%       $n$ & 1 & 2 & 3 & 4 & 5 & 6 & 7\\
+%       $S_n$ & 0 & 1 & 3 & 6 & 10 & 15 & 21 
+%       \end{tabular}
+%       \end{table}
+%       Observe that $S_n = S_{n-1} + (n-1)$ for $n>1$
+%   \end{alertblock}
+% \end{frame}
+
+% \begin{frame}{Challenging: Number of handshakes (Answer)}
+%   Thefore:
+%   \begin{align*}
+%     S_n &= S_{n-1} + (n-1) \\
+%     &= (S_{n-2} + (n-2)) + (n-1)\\
+%     &= (S_{n-3} + (n-3)) + (n-2) + (n-1)\\
+%     &= \cdots\\
+%     &= (S_{2} + 2) + 3 + \cdots + (n-2) + (n-1)\\
+%     &= (S_{1} + 1) + 2 + 3 + \cdots + (n-2) + (n-1)\\
+%     &= \mathbf{0 + 1 + 2 + 3 + \cdots + (n-2) + (n-1)}
+%   \end{align*}
+  
+% \end{frame}
+
+% \begin{frame}{Challenging: Number of handshakes (Answer)}
+%   \begin{equation*}
+%     S_n = 0 + 1 + 2 + 3 + \cdots + (n-2) + (n-1)
+%   \end{equation*}
+%   \begin{itemize}
+%     \item In fact, it can be shown that $S_n = n(n-1)/2$
+%     \item This is because each people shakes with $n-1$ people
+%     \item Since there are $n$ peoples, the number of shakes should be $n(n-1)$
+%     \item But A shakes B and B shakes A are count the same, so we double counted
+%     \item Therefore $S_n = n(n-1)/2$
+%   \end{itemize} 
+% \end{frame}
+
+
+% \begin{frame}[fragile]{Challenging: Number of handshakes (Answer)}
+%   Implementation in code:
+% \begin{lstlisting}[language=python]
+% n = input('Enter number of people: ')
+% n = int(n)
+% Sn = n*(n-1)//2 # // for integer division
+% print('Total number of handshakes: ', Sn)
+% \end{lstlisting}
+% \end{frame}
 
 \end{document}

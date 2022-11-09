@@ -1,8 +1,8 @@
-\frametitle{Challenging: Number of handshakes (Answer)}
-Implementation in code:
-\begin{lstlisting}[language=python]
-n = input('Enter number of people: ')
-n = int(n)
-Sn = n*(n-1)//2 # // for integer division
-print('Total number of handshakes: ', Sn)
-\end{lstlisting}
+\frametitle{Finally, Homework}
+\begin{itemize}
+    \item Homework 1 is posted on the course website, namely the HW1.ipynb
+    \item it contains 3 problems, sorted in ascending order of difficulty
+    \item no submission is needed, the homework only serves as way for you to practice
+    \item answer will be released two weeks later, on 29/10
+    \item Though no submission is required, you are still encouraged to finish the homework to practice what you have learnt, so that you don't get lost in the coming lesson.
+  \end{itemize}

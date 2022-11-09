@@ -2,18 +2,24 @@
 \defcounter {refsection}{0}\relax 
 \beamer@sectionintoc {1}{Class Goal}{2}{0}{1}
 \defcounter {refsection}{0}\relax 
-\beamer@sectionintoc {2}{Division Algorithm}{3}{0}{2}
+\beamer@sectionintoc {2}{Making decisions}{3}{0}{2}
 \defcounter {refsection}{0}\relax 
-\beamer@subsectionintoc {2}{1}{Division algorithm}{3}{0}{2}
+\beamer@sectionintoc {3}{Boolean expressions}{6}{0}{3}
 \defcounter {refsection}{0}\relax 
-\beamer@subsectionintoc {2}{2}{Uniqueness of quotient and remainder}{6}{0}{2}
+\beamer@sectionintoc {4}{Comparision operators}{7}{0}{4}
 \defcounter {refsection}{0}\relax 
-\beamer@subsectionintoc {2}{3}{Divisibility}{8}{0}{2}
+\beamer@sectionintoc {5}{If statement}{14}{0}{5}
 \defcounter {refsection}{0}\relax 
-\beamer@sectionintoc {3}{Modulo operator}{9}{0}{3}
+\beamer@sectionintoc {6}{if-else statement}{17}{0}{6}
 \defcounter {refsection}{0}\relax 
-\beamer@sectionintoc {4}{Number system}{31}{0}{4}
+\beamer@sectionintoc {7}{nested if statement}{20}{0}{7}
 \defcounter {refsection}{0}\relax 
-\beamer@sectionintoc {5}{More on binary numbers}{46}{0}{5}
+\beamer@sectionintoc {8}{if-elif-else statement}{21}{0}{8}
 \defcounter {refsection}{0}\relax 
-\beamer@sectionintoc {6}{Bit and byte}{49}{0}{6}
+\beamer@sectionintoc {9}{Boolean operators}{26}{0}{9}
+\defcounter {refsection}{0}\relax 
+\beamer@subsectionintoc {9}{1}{AND Operator}{30}{0}{9}
+\defcounter {refsection}{0}\relax 
+\beamer@subsectionintoc {9}{2}{OR operator}{33}{0}{9}
+\defcounter {refsection}{0}\relax 
+\beamer@subsectionintoc {9}{3}{NOT operator}{36}{0}{9}
