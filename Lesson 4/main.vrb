@@ -1,13 +1,10 @@
-\frametitle{Sorting: naive approach}
-Let's take the most naive way to do so, we find the minimum for elements between $1$ to $n$, move it to the head, then do it again and again with fewer elements.
-\begin{lstlisting}[language=python]
-studentScore = [82,42,72,64,22]
-for i in range(0,len(studentScore)):
-  min=studentScore[i]
-  minPos=i
-  for j in range(i,len(studentScore)):
-    if(studentScore[j]<min):
-      min=studentScore[j]
-      minPos=j
-  studentScore[i],studentScore[minPos]=studentScore[minPos],studentScore[i]
-\end{lstlisting}
+\frametitle{Homework}
+\begin{itemize}
+    \item Homework 3 is posted on the course website, namely the HW3.ipynb
+    \item same as last time, 3 problems, sorted in ascending order of difficulty
+    \item submit the homework to \href{https://drive.google.com/drive/folders/1TqSFSwu8-KdzIHZcQWB7PjgqPJen4dsO?usp=sharing}{the same place}, inside the folder of \texttt{HW3 submission}
+    \item remember to include all your group member's name in the document
+    \item deadline: before next lesson, i.e. 1/4
+    \item the solution will be disclosed one week after the deadline, i.e. 8/4
+    \item comments and solution on HW1 are released, for HW2 will be released before next week (23/3).
+  \end{itemize}

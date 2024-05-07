@@ -1,10 +1,1 @@
-\defcounter {refsection}{0}\relax 
-\beamer@slide {alg:bomberman_solver}{20}
-\defcounter {refsection}{0}\relax 
-\beamer@slide {alg:fisher_yates}{23}
-\defcounter {refsection}{0}\relax 
-\beamer@slide {alg:linear_search}{39}
-\defcounter {refsection}{0}\relax 
-\beamer@slide {alg:max_subarr_naive}{46}
-\defcounter {refsection}{0}\relax 
-\beamer@slide {alg:max_subarr_kadane}{52}
+\beamer@slide {DP}{27}

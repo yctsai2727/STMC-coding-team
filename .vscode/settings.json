@@ -159,5 +159,12 @@
             ]
         }
     ],
-    "latex-workshop.latex.recipe.default": "lastUsed"
+    "latex-workshop.latex.recipe.default": "lastUsed",
+    "files.associations": {
+        "*.rmd": "markdown",
+        "stack": "cpp",
+        "iostream": "cpp",
+        "xstring": "cpp",
+        "algorithm": "cpp"
+    }
 }

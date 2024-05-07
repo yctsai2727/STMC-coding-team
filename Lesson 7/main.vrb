@@ -1,18 +1,7 @@
-\begin{algorithm}[H]
-    \caption{Compute Prefix Function}\label{alg:kmp_prefix}
-    \begin{algorithmic}
-      \State{$P[1\cdots m],\pi[1\cdots m] \gets \text{Empty List}$}
-      \State{$\pi[1] = 0$}
-      \State{$k=0$}
-      \ForAll {$q=2$ to $m$}
-        \While{$k>0$ and $P[k+1]\neq P[q]$}
-          \State{$k \gets \pi[k]$}
-        \EndWhile
-        \If{$P[k+1]==P[q]$}
-        \State{$k\gets k+1$}
-        \EndIf
-        \State{$\pi[q]\gets k$}
-      \EndFor
-      \State{Return $\pi$}
-    \end{algorithmic}
-  \end{algorithm}
+\frametitle{Challenge IV}
+\begin{itemize}
+    \item Continue with the previous setting, the exit is locked
+    \item Now the floor of each grid will disappear after you walked over it, there is lava below it
+    \item This means you cannot walk through the same grid twice
+    \item Now how do you find the new shortest path?
+  \end{itemize}

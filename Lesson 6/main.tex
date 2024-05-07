@@ -6,7 +6,7 @@
 \setbeamertemplate{caption}[numbered]
 \addbibresource{reference.bib}
 \usepackage{hyperref}
-\hypersetup{ 
+\hypersetup{
 pdfpagemode=FullScreen,  
 colorlinks=true,linkcolor=blue}
 \usepackage{enumerate}
@@ -14,6 +14,7 @@ colorlinks=true,linkcolor=blue}
 \usepackage{algpseudocode}
 \usepackage{listings}
 \usepackage{xcolor}
+\usepackage{graphicx}
 
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
@@ -54,9 +55,9 @@ colorlinks=true,linkcolor=blue}
 
 \usetheme{UCBerkeley}
 
-\title[Your Short Title]{STMC HKOI Training}
-\subtitle{Lesson 6: Looping structure and arrays (II)}
-\author{Chan Yan Mong}
+\title[Your Short Title]{STMC coding team Training}
+\subtitle{Lesson 6: Recaps and problem solving}
+\author{Tsai Yun Chen}
 %\institute{}
 \date{\today}
 
@@ -74,827 +75,607 @@ colorlinks=true,linkcolor=blue}
 \section{Class Goal}
 
 \begin{frame}{Goal today}
-Today we will look at more list features and see how we can combine it with loops to do more advance applications
+Today we will have a brief recap on what is taught in previous lesson, then we will demonstrate how to solve some real life problem using all the thing taught so far.
 \begin{itemize}
-  \item List slicing, concatenation and membership
-  \item Multiple dimensions list
-  \item Loop breaks
-  \item Many applications:
-  \begin{itemize}
-    \item Bomberman Solver 
-    \item Fisher-Yates shuffle algorithm
-    \item Linear Search
-    \item Maximum Subarray Sum
-  \end{itemize}
+  \item Recap
+  \item Hanoi Tower problem
+  \item Knapsack problem
+  \item 0-1 Knapsack problem
 \end{itemize}
-
 \end{frame}
 
 
-\section{List operations}
-\subsection{List Membership}
-\begin{frame}[fragile]{List: Membership}
+\section{Recap}
+\begin{frame}[fragile]{A brief recap}
   \begin{itemize}
-    \item Sometimes we want to check if a member belongs to a list
-    \item Python provide us with an easy way to do it using \texttt{in} keyword
-    \item Here are some examples:
+    \item So far we have been go through quite a few things in Python
+    \item input, output, variable, if-then-else, looping, array, function, recursion...
+    \item these are the basic building block of all kinds of programming languages
+    \item you can easily tranfer from one language to another once you mastered programming
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Input/Output}
+  \begin{itemize}
+    \item The first thing is input and output
+    \item so that we can observe what is the computer doing
+    \item i.e.
 \begin{lstlisting}[language=python]
-  >> 3 in [1,2,3]
-  True
-  >> "Tim" in ['John','Jerry','May']
-  False
+  print("Hello world")
+  input("Tell me something about you: ")
 \end{lstlisting}
   \end{itemize}
 \end{frame}
 
-\subsection{List Concatenation}
-\begin{frame}[fragile]{List: Concatenation}
+\begin{frame}[fragile]{Variable}
   \begin{itemize}
-    \item We can also \textit{"add"} two list by joining them together
-    \item This is called \textbf{concatenation}
-    \item This is done using the \texttt{+} operator
-    \item For example:
+    \item The second thing is variable
+    \item so that we can store what are we doing
+    \item i.e.
 \begin{lstlisting}[language=python]
-  >> [4,5,6] + [1,2,3]
-  [4,5,6,1,2,3]
-  >> ["Tim","Katy"] + ['John','Jerry','May']
-  ['Tim', 'Katy', 'John', 'Jerry', 'May']
+  a=int(input("give an integer to me: "))
+  b=a*a
+  print("square of your number is:",b)
 \end{lstlisting}
   \end{itemize}
 \end{frame}
 
-\subsection{List Slicing}
-\begin{frame}[fragile]{List: Slicing}
+\begin{frame}[fragile]{If-then-else}
   \begin{itemize}
-    \item Sometimes we want to make a copy of \textit{part} of the list
-    \item This operation is called \textbf{slicing}
-    \item The basic syntax of slicing is:
+    \item The third thing is conditional statement
+    \item so that we can let the computer decide the thing by itself
+    \item i.e.
 \begin{lstlisting}[language=python]
-  mylist[start:end]
-\end{lstlisting}
-    \item The slice \textbf{includes start but exclude end}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{List: Slicing}
-  \begin{itemize}
-    \item Here are some examples:
-    \begin{lstlisting}[language=python]
-mylist = [0,1,2,3,4,5,6]
-
-mylist[0:1] # Return [0]
-mylist[0:3] # Return [0,1,2]
-mylist[3:5] # Return [3,4]
-mylist[1:5] # Return [1,2,3,4]
+  a=int(input("give an even integer to me: "))
+  if a%2==0:
+    print("Thank you")
+  else:
+    print("come on, I need an even number,",a,"is not an even number")
 \end{lstlisting}
   \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{List: Slicing}
+\begin{frame}[fragile]{Looping}
   \begin{itemize}
-    \item One can also either start or end as blank
-    \item If start is left blank, it's equivalent as putting zero as start 
-    \item If end is left blank, it's equivalent as putting \texttt{len(<the list you slice>)} as end
-    \item More explicitly
+    \item The Fouth thing is looping
+    \item so that we can do the thing repeatly
+    \item i.e.
 \begin{lstlisting}[language=python]
-  mylist[:4] # Same as mylist[0:4]
-  mylist[3:] # Same as mylist[3:len(mylist)]
+  a=int(input("give an integer to me: "))
+  print("all the even number between 1 to",a,"are:")
+  for j in range(1,a+1):
+    if j%2==0:
+      print(j)
 \end{lstlisting}
   \end{itemize}
-  
 \end{frame}
 
-\begin{frame}[fragile]{List: Slicing}
+\begin{frame}[fragile]{Array}
   \begin{itemize}
-    \item Here are some explicit examples:
+    \item The fouth thing is array
+    \item so that we can store more (and arbitrary number of) thing
+    \item i.e.
 \begin{lstlisting}[language=python]
-
-  mylist = [0,1,2,3,4,5,6]
-  
-  mylist[:4] # Same as mylist[0:4] so [0, 1, 2, 3]
-  mylist[2:] # Same as mylist[2:len(mylist)] so [2, 3, 4, 5, 6]
-  \end{lstlisting}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{List: Slicing}
-  \begin{itemize}
-    \item We can also specify the interval of slicing via the following syntax:
-\begin{lstlisting}[language=python]
-  mylist[0:6:2] # This will give [0,2,4]
-  mylist[1:6:2] # This will give [1,3,5]
-  mylist[2:6:2] # This will give [2,4]
-  mylist[2:6:3] # This will give [2,5]
+  n=int(input("How many number you have: "))
+  arr=[]
+  sum=0
+  for i in range(n):
+    temp=int(input("give me a number:"))
+    arr.append(temp)
+    sum=sum+temp
+  mean=sum/n
+  max=abs(arr[0]-mean)
+  for i in range(1,n-1):
+    if abs(arr[i]-mean)>max:
+      max=abs(arr[i]-mean)
+  print("The largest deviation from the mean is:",max)
 \end{lstlisting}
-  \item Again, you can see the end is always excluded
   \end{itemize}
 \end{frame}
 
-\subsection{Multidimensional List}
-\begin{frame}[fragile]{List: Multidimensional List}
+\begin{frame}[fragile]{Function}
   \begin{itemize}
-    \item We can also put list inside list to create multidimensional lists (Or multidimensional array as other language will call)
-    \item For example, the following is a 2-dimensional array with $3$ rows and $4$ columns. We shall denote such array \texttt{List(3,4)}
-    \begin{align*}
-      \left[
-      \begin{array}{cccc}
-        \rowcolor{red!0}
-        1 & 2 & 3 & 4 \\
-        \rowcolor{red!0}
-        5 & 6 & 7 & 8\\
-        \rowcolor{red!0}
-        9 & 10 & 11 & 12\\
-      \end{array}
-      \right]
-    \end{align*}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{List: Multidimensional List}
-  \begin{itemize}
-    \item One can implement the list above using the following python code:
-  \end{itemize}
+    \item The last thing is function
+    \item so that we can reuse the code and make use of recursion
+    \item i.e.
 \begin{lstlisting}[language=python]
-twoDim = [
-  [1,2,3,4],
-  [5,6,7,8],
-  [9,10,11,12]
-]
-
-# Be careful about the order of the index 
-twoDim[0]    # [1,2,3,4]
-twoDim[1]    # [5,6,7,8]
-twoDim[0][0] # 1
-twoDim[1][0] # 5
-twoDim[0][2] # 3
-twoDim[2][3] # 12
+  def Fib(n):
+  if n == 1 or n == 2:
+    return 1
+  else:
+    return Fib(n-1) + Fib(n-2)
 \end{lstlisting}
-\end{frame}
-
-
-\begin{frame}[fragile]{List: Multidimensional List}
-  \begin{itemize}
-    \item We can also go higher dimension by keep wrapping list inside list. For example to create a list of form \texttt{List(2,2,2)}
   \end{itemize}
-\begin{lstlisting}[language=python]
-threeDim = [
-  [
-    [0,1],
-    [2,3]
-  ],
-  [
-    [4,5],
-    [6,7]
-  ]
-]
-\end{lstlisting}
 \end{frame}
 
-\section{Bomberman Solver}
-\begin{frame}{Example: Bomberman (I)}
-  \textbf{Reference: Ch.3 Sec.2 \textit{"Aha! Visualizing Algorithms: The Basics"} (ISBN: 9863474363)}
-  \begin{columns}
-    \column{0.6\textwidth}
-    \begin{itemize}
-      \item Bomberman is an arcade-style maze-based video game developed by Hudson Soft on 1983.
-      \item Since then multiple versions of the game have been released and it remained on the classics
-      \item In the game, players have to place bombs in certain locations to remove walls and eliminate all enemies from the map
-    \end{itemize}
-    \column{0.4\textwidth}
-    \begin{figure}
-      \includegraphics[width=\textwidth]{img/bomberman_nes.png}
-    \end{figure}
-  \end{columns}
-\end{frame}
-
-\begin{frame}{Example: Bomberman (I)}
+\subsection{Problem Solving}
+\begin{frame}[fragile]{Problem Solving}
   \begin{itemize}
-    \item We will now consider a simplified version of the game to explore what we can do with list
-    \item We will make the following simplifications:
+    \item So we know how to let Python do the things we want
+    \item But...
+    \item We are not solving problem (yet)!
+    \item so far what we are learning is just \textbf{coding}, which everyone can easily learn it like a normal language
+    \item What important and hard to learn is \textbf{programming}, the skills of solving problem from coding
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{First Problem: Tower of Hanoi}
+  \begin{itemize}
+    \item The Tower of Hanoi is a mathematical puzzle first introduced by Édouard Lucas in 1883
+    \item It begins with the disks stacked on one rod in order of decreasing size, the smallest at the top, thus approximating a conical shape. 
+     \item The objective of the puzzle is to move the entire stack to the last rod, obeying the following rules: 
     \begin{enumerate}
-      \item The player only has one bomb
-      \item The bomb is incredibly powerful. It blows up everything along the row and column it's placed and only stop when it hits a wall 
-      \item All walls are unbreakable
-      \item Enemies will not move
+      \item Only one disk may be moved at a time.
+      \item Each move consists of taking the upper disk from one of the stacks and placing it on top of another stack or on an empty rod.
+      \item No disk may be placed on top of a disk that is smaller than it.
     \end{enumerate}
-    \item Now we ask a question: \textbf{\textit{Given a map of walls and enemies, where can I put the bomb such that the largest number of enemies are eliminated?}}
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Example: Bomberman (I)}
-  
-  \begin{columns}
-    \column{0.6\textwidth}
-    We will now formulate the problem:
-    \begin{itemize}
-      \item \texttt{map[n][m]} is a $n\times m$ grid index from 0
-      \item Each grid holds a number from $0-2$:
-      \begin{itemize}
-        \item $0$ are empty showspaces 
-        \item $1$ are walls 
-        \item $2$ are enemies
-      \end{itemize}
-      \item A bomb can only be placed on grid that holds $0$
-      \item For simplicity we will always make the outmost part of the list walls
-    \end{itemize}
-    \column{0.4\textwidth}
-    For example, a $6\times 8$ play grid can look like:
-    \begin{align*}
-      \left[
-      \begin{array}{cccccccc}
-        \rowcolor{red!0}
-        1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 \\
-        \rowcolor{red!0}
-        1 & 0 & 2 & 0 & 1 & 0 & 0 & 1 \\
-        \rowcolor{red!0}
-        1 & 1 & 1 & 0 & 1 & 2 & 0& 1 \\
-        \rowcolor{red!0}
-        1 & 0 & 2 & 0 & 2 & 0 & 1 & 1 \\
-        \rowcolor{red!0}
-        1 & 0 & 0 & 1 & 1 & 0 & 0 & 1 \\
-        \rowcolor{red!0}
-        1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 
-      \end{array}
-      \right]
-    \end{align*}
-  \end{columns}
+\begin{frame}{Exercise: Tower of Hanoi}
+\begin{figure}
+\includegraphics[width=0.8\textwidth]{img/hanoi.jpeg}
+\end{figure}
 \end{frame}
 
-\begin{frame}{Example: Bomberman (I)}
-  What happens if we place a bomb? For example, let's say we placed a bomb in \texttt{map[3][1]}
-  \begin{align*}
-    \left[
-    \begin{array}{cccccccc}
-      \rowcolor{red!0}
-      1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 \\
-      \rowcolor{red!0}
-      1 & 0 & 2 & 0 & 1 & 0 & 0 & 1 \\
-      \rowcolor{red!0}
-      1 & 1 & 1 & 0 & 1 & 2 & 0& 1 \\
-      \rowcolor{red!0}
-      1 & \fcolorbox{black!0}{green!30}{$0$} & 2 & 0 & 2 & 0 & 1 & 1 \\
-      \rowcolor{red!0}
-      1 & 0 & 0 & 1 & 1 & 0 & 0 & 1 \\
-      \rowcolor{red!0}
-      1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 
-    \end{array}
-    \right]
-  \end{align*}
+\begin{frame}{Exercise: Tower of Hanoi}
+\begin{itemize}
+\item We would like to program an algorithm that would \textit{solves} the tower of hanoi
+\item Given a stack of $n$ disk to begin with, derive a program that will teach you how should you move the disks to solve the puzzle
+\item Let's try to play around with the game to gain some insights and familiarity
+\item Here is a link to the game: \href{https://www.mathsisfun.com/games/towerofhanoi.html}{https://www.mathsisfun.com/games/towerofhanoi.html}
+\end{itemize}
 \end{frame}
 
-
-\begin{frame}{Example: Bomberman (I)}
-  Then it will destroy everything in the red block
-  \begin{align*}
-    \left[
-    \begin{array}{cccccccc}
-      \rowcolor{red!0}
-      1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 \\
-      \rowcolor{red!0}
-      1 & 0 & 2 & 0 & 1 & 0 & 0 & 1 \\
-      \rowcolor{red!0}
-      1 & 1 & 1 & 0 & 1 & 2 & 0& 1 \\
-      \rowcolor{red!0}
-      1 & \fcolorbox{black!0}{green!30}{$0$} & \fcolorbox{black!0}{red!30}{$2$} & \fcolorbox{black!0}{red!30}{$0$} & \fcolorbox{black!0}{red!30}{$2$} & \fcolorbox{black!0}{red!30}{$0$} & 1 & 1 \\
-      \rowcolor{red!0}
-      1 & \fcolorbox{black!0}{red!30}{$0$} & 0 & 1 & 1 & 0 & 0 & 1 \\
-      \rowcolor{red!0}
-      1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 
-    \end{array}
-    \right]
-  \end{align*}
+\begin{frame}{Solution: Tower of Hanoi}
+\begin{exampleblock}{Observations:}
+Suppose there are $n$ disks and suppose we know how to move $n-1$ disks from rod 1 to rod 2. Then to move $n$ disks, we just need to:
+\begin{enumerate}
+  \item Move all $n-1$ disk above to the rod in the middle rod
+  \item Place the bottom disk to the final rod
+  \item Move the $n-1$ disks to the final rod 
+\end{enumerate}
+\end{exampleblock}
 \end{frame}
 
-\begin{frame}{Example: Bomberman (I)}
-  Now we can restate our problem
-  \begin{exampleblock}{Bomberman (I)}
-    Let \texttt{grid[m][n]} be a $m\times n$ grid with walls and enemies defined above. If we can only put one bomb on an empty grid, what is the best position such that we can eliminate most enemies?
-  \end{exampleblock}
-  To solve that, we will use \textit{brute-force searching}
+\begin{frame}{Solution: Tower of Hanoi}
+\begin{itemize}
+\item In other words, once we know how to move $n-1$ disks, moving $n$ disks is easy
+\item But how do we know how to move $n-1$ disks?
+\item Well, to move $n-1$ disk, we just need to know how to move $n-2$ disks!
+\item Wait how about $n-2$? We don't know how to do that right?
+\item Well, we just have to figure out how to move $n-3$ disks!
+\item $\cdots$
+\item But how to move $2$ disks?
+\item Well, to move $2$ disks, we just need to know how to move $1$ disk
+\item \textbf{But moving 1 disk is trivial!}
+\end{itemize}
 \end{frame}
 
-\begin{frame}{Example: Bomberman (I)}
+\begin{frame}[fragile]{Coding Time}
   \begin{itemize}
-    \item \textbf{Brute-force searching} is a algorithmic paradigm that consists of systematically enumerating all possible candidates for the solution and checking whether each candidate satisfies the problem's statement. 
-    \item In short, it means finding the solution by checking all possible combinations
-    \item Although brute-force searching is the easiest to implement, it's also often the slowest to run 
-    \item However, it is a good starting point for small problems
+    \item Now it's your time to code
+    \item To help you with the starting point, consider you need to implement the function below
+\begin{lstlisting}[language=python]
+  def Hanoi(n,tar,emt):
+    #n is the number of pile at the rod you looking at
+    #tar is the number (or name) of the rod you wish to move the n pile to
+    #emt is the number (or name) of the rod that is currently empty
+    ###your code start below###
+
+  #Then we ask the user to provide the number of pile to be solved, and call the function we just implemented.
+  n=int(input("Enter the number of pile: "))
+  Hanoi(n,3,2)
+\end{lstlisting}
   \end{itemize}
 \end{frame}
 
-\begin{frame}{}
-  \begin{algorithm}[H]
-    \caption{Bomberman Solver}\label{alg:bomberman_solver}
-    \begin{algorithmic}[1]
-      \State{\textit{best\_cell} $\gets$ \textit{None}}
-      \State{\textit{max\_kill} $\gets$ 0}
-
-      \ForAll{\textit{cell} \textbf{in} \textit{grid}}
-      \If {\textit{cell} \textbf{is empty}}
-        \State{Place bomb at \textit{cell}}
-        \State{\textit{kill\_count} $\gets$ Get kill count for cell}
-        \If {\textit{kill\_count} > \textit{max\_kill}}
-          \State{\textit{max\_kill} $\gets$ \textit{kill\_count}}
-          \State{\textit{best\_cell} $\gets$ \textit{cell} }
-        \EndIf
-        \State{Remove bomb at \textit{cell}}
-      \EndIf
-    \EndFor
-    \end{algorithmic}
-  \end{algorithm}
-\end{frame}
-
-\section{Fisher-Yates shuffle}
-\begin{frame}{Example: Card shuffling}
-  \begin{columns}
-    \column{0.6\textwidth}
-    \begin{itemize}
-      \item Suppose you want to write a poker game in computer
-      \item One essential element of a poker game will be to shuffle the cards
-      \item \textit{How can you produce a random permutation of cards efficiently?}
-    \end{itemize}
-    \column{0.4\textwidth}
-    \begin{figure}
-      \includegraphics[width=\textwidth]{./img/poker_cards.JPG}
-    \end{figure}
-  \end{columns}
-\end{frame}
-
-\begin{frame}{Fisher-Yates shuffle}
+\begin{frame}[fragile]{Knapsack problem}
   \begin{itemize}
-    \item An efficient way to do it is to use the \textbf{Fisher-Yates algorithm}
-    \item The idea is related to how we actually shuffle cards
-    \item Suppose we have $3$ cards and we want to put them in random order 
-    \item Each time we will draw one out, and place it one after another 
-    \item We don't need to check if there are repetition, because the card drawn out is \textbf{removed}
-    \item This insight lead to the following algorithm
+    \item Now we look at another problem, assuming you are a jeweller (a person who sell jewelry) and you got a chance to sell on a large market, you only get one knapsack (backpack) to carry the jewelry to the market.
+    \item Certainly you want to get as many jewelries as possible so you earn more, however the size of the backpack is limited so you cannot always put all the jewelries into the backpack.
+    \item Therefore you want to plan ahead to decide which jewelry and how much you should bring. However, the calculation is so annoying you want to design a program to help you so that you don't have to do it again in the future.
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Fisher-Yates shuffle}
-  \begin{algorithm}[H]
-    \caption{Fisher-Yates shuffle}\label{alg:fisher_yates}
-    \begin{flushleft}
-      \textbf{Input:} $Items$ - List of length $n$\\
-      \textbf{Output:} Shuffled list of length $n$\\
-      \textbf{Program:} 
-    \end{flushleft}
-    \begin{algorithmic}
-      \ForAll {$i=0$ to $n-2$} 
-        \State{$j \gets $ Random number from $i$ to $n-1$} (inclusive)
-        \State{Swap $Items[i]$ and $Items[j]$}
-      \EndFor
-    \end{algorithmic}
-  \end{algorithm}
+\begin{frame}[fragile]{Knapsack problem, formally}
+  \begin{itemize}
+    \item Let's try to state the problem formally, assume there are $K$ kind of jewelries, each with total value as $v_{i}$ and number $w_{i}$, then the problem statement is
+    \begin{center}
+      \begin{eqnarray*}
+        \text{Input:}&\enspace&W\text{ : Backpack capacity}\\
+        &\enspace&\{v_{1},v_{2},...,v_{K}\}\text{ : value of each jewelry}\\
+        &\enspace&\{w_{1},w_{2},...,w_{K}\}\text{ : number of each jewelry}\\
+        \text{Output:}&\enspace&\{n_{1},n_{2},...,n_{K}\}\text{ : number of each type of jewelry taken}\\
+        \text{Subject to:}&\enspace&w_{1}n_{1}+w_{2}n_{2}+...+w_{K}n_{K}\leq W\\
+        &\enspace&v_{1}n_{1}+v_{1}n_{2}+...+v_{K}n_{K}\text{ should be as large as possible}
+      \end{eqnarray*}
+    \end{center}
+  \end{itemize}
 \end{frame}
 
-\begin{frame}{Fisher-Yates shuffle}
+\begin{frame}[fragile]{First Attempt}
   \begin{itemize}
-    \item Let's actually shuffle one array using the algorithm to see how it works
-    \item Consider the following list of numbers:
-    \begin{align*}
-      \rowcolors{1}{}{}
-      \begin{bmatrix}
-        1 & 2 & 3 & 4
-      \end{bmatrix}
-    \end{align*}
-    \item Now because the length of the array is 4, $n = 4$. 
-    \item Also, when we first begin the loop $i=0$ so we draw a number between $0-3$
-    
+    \item Let's start with a simple solution
+    \item Take whatever that is the most expensive!
+    \item Then we only need to sort by the price and take from the tail until we cannot fit any of them.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Does it works?}
+  \begin{itemize}
+    \item Consider the following case, your backpack capacity is $100$ kg
+    \item You got three types of Jewelry to choose from
+    \begin{enumerate}
+      \item Diamond, Total price: $\$90$, weight: $90$ kg
+      \item Gold, Total price: $\$70$, weight: $20$ kg
+      \item Emerald, Total price: $\$50$, weight: $20$ kg
+    \end{enumerate}
+    \item Our solution: Take $90$ kg Diamond then take $10$ kg Gold
+    \item Total price: $100+70/2=\$135$
+    \item What if: Take $20$ kg Gold, $20$ kg Emerald, $40$ kg Diamond?
+    \item Total Price: $70+50+90*4/9=\$160>\$135$
+    \item What's wrong with our solution?
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Second Attempt}
+  \begin{itemize}
+    \item The price is total instead of unit, the diamond does not worth so much here
+    \item Modified solution: Take whatever that is the most expensive \textbf{in unit price}
+    \item New approach:
+    \begin{enumerate}
+      \item For each Jewelry, compute $u_i=v_i/w_i$, which is their unit price
+      \item Sort the list by $u_i$
+      \item Take the most out of the largest whenever possible
+    \end{enumerate}
+  \end{itemize}
+\end{frame}
+
+
+% \begin{frame}[fragile]{Example}
+%   \begin{figure}
+%     \includegraphics[width=0.8\textwidth]{img/knapsack.png}
+%   \end{figure}
+% \end{frame}
+
+\begin{frame}[fragile]{Implementation}
+\begin{lstlisting}[language=python]
+  def Knapsack(W,v,w):
+    #Treat the first two lines below as some magic, it generates a list u, each element in u is a pair with the the index and the unit price, then u is sorted in descending order
+    u=[(idx,v[idx]/w[idx]) for idx in range(len(v))]
+    u.sort(key=(lambda pair:pair[1]),reverse=True)
+    knapsack=[]
+    for jew in u:
+      if w[jew[0]]<=W:
+        knapsack.append((jew[0],w[jew[0]]))
+        print("Take",w[jew[0]],"kg of Jewelry",jew[0])
+        W=W-w[jew[0]]
+      else:
+        knapsack.append((jew[0],W))
+        print("Take",W,"kg of Jewelry",jew[0])
+        break
+    return knapsack
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Let's Try it}
+  \begin{itemize}
+    \item Let's try to run the code
+    \item We use the same example demonstrated above, we do the following
+\begin{lstlisting}[language=python]
+  W=100
+  v=[90,70,50]
+  w=[90,20,20]
+  Knapsack(W,v,w)
+\end{lstlisting}
+    \item Can you come up with other example?
+    \item Is there any situation where this solution can fail to find the best combination?
   \end{itemize}  
 \end{frame}
 
-\begin{frame}{Fisher-Yates shuffle}
+\begin{frame}[fragile]{Variation: 0-1 Knapsack problem}
   \begin{itemize}
-    \item Let's say we draw $j=2$, then according to the algorithm we have to swap item $0$ and $2$, that is:
-    \begin{gather*}
-      \rowcolors{1}{}{}
-      \begin{bmatrix}
-        \fcolorbox{black!0}{red!30}{$1$} & 2 & \fcolorbox{black!0}{green!30}{$3$} & 4
-      \end{bmatrix}\\
-      \downarrow\\
-      \rowcolors{1}{}{}
-      \begin{bmatrix}
-        \fcolorbox{black!0}{green!30}{$3$} & 2 & \fcolorbox{black!0}{red!30}{$1$} & 4
-      \end{bmatrix}
-    \end{gather*}
-    \item This completed the first loop and $i=1$ now
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Fisher-Yates shuffle}
-  \begin{itemize}
-    \item Now since $i=1$, according to the algorithm we should draw $j$ in between $1-3$ (Instead of $0-3$ in last run)
-    \item So you can see that element 0 has been fixed. No later steps in the algorithm can change it's position. 
-  \end{itemize}
-  \begin{align*}
-    \rowcolors{1}{}{}
-      \begin{bmatrix}
-        \fcolorbox{black!0}{gray!30}{$3$} & 2 & 1 & 4
-      \end{bmatrix}
-  \end{align*}
-\end{frame}
-
-\begin{frame}{Fisher-Yates shuffle}
-  \begin{itemize}
-    \item Suppose now we draw $j=3$, then according to the algorithm we have to swap $i=1$ and $j=3$, that is:
-    \begin{gather*}
-      \rowcolors{1}{}{}
-      \begin{bmatrix}
-        \fcolorbox{black!0}{gray!30}{$3$} & \fcolorbox{black!0}{red!30}{$2$} & 1 & \fcolorbox{black!0}{green!30}{$4$}
-      \end{bmatrix}\\
-      \downarrow\\
-      \rowcolors{1}{}{}
-      \begin{bmatrix}
-        \fcolorbox{black!0}{gray!30}{$3$} & \fcolorbox{black!0}{green!30}{$4$} & 1 & \fcolorbox{black!0}{red!30}{$2$}
-      \end{bmatrix}\\
-      \downarrow\\
-      \rowcolors{1}{}{}
-      \begin{bmatrix}
-        \fcolorbox{black!0}{gray!30}{$3$} & \fcolorbox{black!0}{gray!30}{$4$} & 1 & \fcolorbox{black!0}{red!0}{$2$}
-      \end{bmatrix}
-    \end{gather*}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Fisher-Yates shuffle}
-  \begin{itemize}
-    \item Now $i=2$ and $j$ is a random number from $2-3$. Suppose this time $j$ is $2$. Then we need to wap element $2$ with itself (i.e. not swapping)
-    \begin{gather*}
-      \rowcolors{1}{}{}
-      \begin{bmatrix}
-        \fcolorbox{black!0}{gray!30}{$3$} & \fcolorbox{black!0}{gray!30}{$4$} & \fcolorbox{black!0}{red!30}{$1$} & \fcolorbox{black!0}{red!0}{$2$}
-      \end{bmatrix}\\
-      \downarrow\\
-      \rowcolors{1}{}{}
-      \begin{bmatrix}
-        \fcolorbox{black!0}{gray!30}{$3$} & \fcolorbox{black!0}{gray!30}{$4$} & \fcolorbox{black!0}{red!30}{$1$} & \fcolorbox{black!0}{red!0}{$2$}
-      \end{bmatrix}\\
-      \downarrow\\
-      \rowcolors{1}{}{}
-      \begin{bmatrix}
-        \fcolorbox{black!0}{gray!30}{$3$} & \fcolorbox{black!0}{gray!30}{$4$} & \fcolorbox{black!0}{gray!30}{$1$} & \fcolorbox{black!0}{red!0}{$2$}
-      \end{bmatrix}
-    \end{gather*}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Fisher-Yates shuffle}
-  \begin{itemize}
-    \item But now $i=4-2=2$ so the algorithm said we are done! 
-    \item This make sense because we only have one element left: If we have permuted element $1$ to $n-1$, then autoamtically the $n$th element will also falls in place because there is only one slot left in the queue 
-    \item So finally our shuffled list is:
-    \begin{gather*}
-      \rowcolors{1}{}{}
-      \begin{bmatrix}
-        \fcolorbox{black!0}{gray!30}{$3$} & \fcolorbox{black!0}{gray!30}{$4$} & \fcolorbox{black!0}{gray!30}{$1$} & \fcolorbox{black!0}{gray!30}{$2$}
-      \end{bmatrix}
-    \end{gather*}
-  \end{itemize}
-\end{frame}
-
-
-\begin{frame}[fragile]{Python implementation}
-  \begin{lstlisting}[language=python]
-  # Fisher-Yates shuffle in python 
-  # Items - List of length n
-  import random
-  
-  for i in range(len(Items)-1):
-    j = random.randint(i,len(Items)-1) # Get random number 
-    
-    # Swapping 
-    temp = Items[i]
-    Items[i] = Items[j]
-    Items[j] = temp
-  \end{lstlisting}
-  \end{frame}  
-
-\begin{frame}{Correctness and Complexity}
-  \begin{itemize}
-    \item As one can easily see, the method does produce a randomly permuted list
-    \item Furthermore to shuffle a list of $n$ we need to loop $n-1$ times 
-    \item So when $n$ is large, the number of steps we need is roughly $n$ (i.e. $\mathcal{O}(n)$)
-  \end{itemize}
-\end{frame}
-
-\section{Permutation and Factorials}
-\begin{frame}{Permutations}
-  \begin{itemize}
-    \item Now the previous problem also raised an interesting question: How many \textbf{permutation} are there in general?
-    \item A permutation refers to the rearrangement of orders of a set of objects
-    \item Order matters (Unlike combinations)
-    \item For example, the following all the different permutations of three numbers $\{A,B,C\}$
-    \begin{align*}
-      \{A,B,C\},\{A,C,B\}\\
-      \{B,A,C\},\{B,C,A\}\\
-      \{C,A,B\},\{C,B,A\}
-    \end{align*}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Counting Permutations}
-  \begin{itemize}
-    \item In general, if we have $n$ distinct objects, what is the number of permutations?
-    \item We can count this way:
-    \begin{enumerate}
-      \item Imagine putting the $n$ objects in queue
-      \item Consider the 1st element in the queue. Since we $n$ objects, there are $n$ choice.
-      \item Consider the 2nd element. We are left with $n-1$ objects, so there are $n-1$ choice. 
-      \item Consider the 3rd element. We are left with $n-2$ objects, so there are $n-2$ choices 
-      \item $\cdots$
-    \end{enumerate}
-    \item One can quickly see the total number of ways is $n\times(n-1)\times(n-2)\times\cdots 3\times 2\times 1$
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Counting Permutations}
-  \begin{itemize}
-    \item We can also generalize this counting strategy to the case when we have $n$ distinct objects, but only $r$ slots
-    \item For example, if we want to form a queue of $3$ out of $5$ students, we can count the following way:
-    \begin{enumerate}
-      \item For the 1st position, there are $5$ possibilities
-      \item For the 2nd position, there are $4$ possibilities 
-      \item For the 3rd position, there are $3$ possibilities
-      \item So totally we have $5\times4\times3=36$ ways of doing it
-    \end{enumerate}
-    \item One can see readily see the general formula is: $n\times(n-1)\cdots\times(n-r+2)\times(n-r+1)$ 
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Permutations}
-  To summarize
-  \begin{theorem}[Permutations of $n$ distinct objects]
-    The number of ways to form a queue of length $n$ using $n$ distinct objects is:
-    \begin{align*}
-      n\times(n-1)\times(n-2)\cdots \times 2\times 1
-    \end{align*}
-    We can also write it as $n!$ to save space. This symbol pronouced as \textbf{n factorial}.
-  \end{theorem}
-\end{frame}
-
-\begin{frame}{Permutations}
-  \begin{theorem}[Permutations of $n$ distinct objects in $r$ slots]
-    The number of ways to form a queue of length $r$ using $n$ distinct objects is:
-    \begin{align*}
-      P^n_r &= \frac{n!}{(n-r)!}\\ &
-      = n(n-1)\cdots(n-r+2)(n-r+1)
-    \end{align*}
-    The symbol $P^n_r$ is called the \textbf{r-permutation of n} and is often referred as \textbf{nPr}
-  \end{theorem}
-\end{frame}
-
-\begin{frame}{Some exercise}
-  \begin{exampleblock}{Examples}
-    \begin{enumerate}
-      \item What are the number of ways for $5$ student to form queue? (Ans: $5!$)
-      \item $30$ students from a class is invited to form a queue of $5$. What is the numbers of ways to do that? (Ans: $P^{30}_5$)
-      \item What are the total numbers of ways to shuffle a deck of $52$ cards? (Ans: $52!$)
-      \item What is the number of ways to put $10$ \textit{indistinguishable} particles into two bags? (Ans: $2^{10}$) (Hint: You cannot use the results previously, just count from scratch)
-    \end{enumerate}
-  \end{exampleblock}
-\end{frame}
-
-\section{Linear Searching}
-\begin{frame}{Linear Searching}
-  \begin{itemize}
-    \item Now we will talk about searching
-    \item Let's say you are a teacher and you want to have a name list in your hand 
-    \item Now you want to write a program that helps you look up student name from their SID 
-    \item How can you do it?
-  \end{itemize}
-\end{frame}
-
-\begin{frame}
-  \begin{algorithm}[H]
-    \caption{Linear Search} \label{alg:linear_search}
-    \begin{flushleft}
-      \textbf{Input:}\\ 
-      $TargetSID$ - Target SID \\
-      $StudentInfo$ -  List of student info in format: ($SID$,$Name$)\\
-      \textbf{Output:} Name of student with $TargetSID$\\
-      \textbf{Program:} 
-    \end{flushleft}
-    \begin{algorithmic}
-      \ForAll{$SID$, $Name$ in $StudentInfo$}
-        \If{$SID$ equals to $TargetSID$}
-          \State{Output $Name$ and Exit} 
-        \EndIf
-      \EndFor
-      \State{Output "No entries found"}
-    \end{algorithmic}
-  \end{algorithm}
-\end{frame}
-
-\begin{frame}[fragile]
+    \item Now consider on top of the knapsack problem setting, we have one more rule
+    \item \texttt{All or Nothing}, you either take all of one item or none of them
+    \item Does our previous solution still work?
+    \item No! Our method may take a portion of them item in the last step.
+    \item What if we fix that? Changing the loop to 
 \begin{lstlisting}[language=python]
-# Python example of Linear Search
-targetSID = input('Search Query (SID): ')
-studentInfo = [
-  ('s192830','Chan Tai Man'),
-  ('s192840','Lam Ching Yi'),
-  ...
-]
-targetName = ""
+  for jew in u:
+      if w[jew[0]]<=W:
+        knapsack.append((jew[0],w[jew[0]]))
+        print("Take",w[jew[0]],"kg of Jewelry",jew[0])
+        W=W-w[jew[0]]
+\end{lstlisting}
+  \end{itemize}
+\end{frame}
 
-# Linear Search
-for i in range(len(studentInfo)):
-  sid, name = studentInfo[i]
-  if sid == targetSID:
-    targetName = name 
-    break 
+\begin{frame}{Counter Example}
+  \begin{itemize}
+    \item Consider the same case but with one more jewelry, with backpack capacity $100$ kg
+    \begin{enumerate}
+      \item Diamond, Total price: $\$90$, weight: $90$ kg --> unit price: $\$1/kg$
+      \item Gold, Total price: $\$70$, weight: $20$ kg --> unit price: $\$3.5/kg$
+      \item Emerald, Total price: $\$50$, weight: $20$ kg --> unit price: $\$2.5/kg$
+      \item Ruby, Total price: $\$80$, weight: $80$ kg --> unit price: $\$1/kg$
+    \end{enumerate}
+    \item Our solution: Take $20$ kg Gold, $20$ kg Emerald
+    \item Total Price: $70+50=\$120$
+    \item What if: Take $20$ kg Gold, $80$ kg Ruby
+    \item Total Price: $70+80=\$150>\$120$
+  \end{itemize}
+\end{frame}
 
-# Print results
-if len(targetName) == 0:
-  print('No such entries is found')
-else:
-  print('The student you are looking for is: ', targetName)
-  
+\begin{frame}{Greedy Algorithm and its downside}
+  \begin{itemize}
+    \item What we have been using is called the Greedy algorithm
+    \item We also take the best choice we have at each step
+    \item Benefits:
+    \begin{itemize}
+      \item Easy to implement
+      \item Intuitive to reason
+      \item Efficient, the most time taken in sorting
+    \end{itemize}
+    \item Problem: May not always be optimal
+  \end{itemize}
+\end{frame}
 
+\begin{frame}{Dynamic Programming to the rescue!}
+  \begin{itemize}
+    \item As in recursion, we will try to break the problem into smaller problem
+    \item Consider you have the solution to $n$ items with any weight limit $W$, denote it as $OPT(n,W)$
+    \item Now we add one more item into the list, what is the new solution?
+    \item Observation: You either take the new item, with value $v$ and weight $w$, or you don't.
+    \item Sounds obvious right? But that what we want, so now we know
+    \begin{equation}
+      OPT(n+1,W) = \max(OPT(n,W),OPT(n,W-w)+v)\label{DP}
+    \end{equation}
+    \item But wait, aren't we trying to make the problem smaller?
+    \item We can start from $n=1$ and gradually increase it.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Solution}
+  \begin{enumerate}
+    \item Build up a table $DP$ with $n+1$ rows and $W$ column
+    \item Set $DP[0][w]$ to be $0$ if $w_0<w$ and $v_0$ otherwise
+    \item Loop from $k=1$ to $n$ and $w=0$ to $W$, fill in the table $DP[k][w]$ according to equation (\ref{DP})
+    \item return $DP[n][W]$
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]{Implementation}
+\begin{lstlisting}[language=python]
+  def DPKnapsack(W,v,w):
+    DP=[[0]*(W+1)]
+    DP[0][w[0]:]=[v[0]]*(W-w[0]+1)
+    for i in range(1,len(v)):
+      DP.append([0]*(W+1))
+      for j in range(W+1):
+        if j<w[i]:
+          DP[i][j] = DP[i-1][j]
+        else:
+          DP[i][j] = max(DP[i-1][j],DP[i-1][j-w[i]]+v[i])
+    return DP[len(v)-1][W]
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}{Complexity}
+\begin{frame}{Exercise}
   \begin{itemize}
-    \item Since we at most need to find the required entry, the worse case complexity is $n$ (i.e. $\mathcal{O}(n)$)
-    \item Or we are very lucky and are able to find the answer in the first trial, so the best case is $1$ iteration (i.e. $\mathcal{O}(1)$)
-    \item On average, since the element we want to search have $1/n$ probability to be in any of the positions, we will have:
-    \begin{align*}
-      \frac{1+2+3+\cdots+(n-1)+n}{n} = \frac{n+1}{2}
-    \end{align*}
-    So when $n$ is large it's $\approx n/2$
+    \item Let's try to test the code against our previous counter example and see what is the result
+    \item Challenge: Modify the above code so that we also know which jewelries are taken
   \end{itemize}
 \end{frame}
+% \begin{frame}[fragile]{First problem!}
+%   \begin{itemize}
+%     \item Suppose now you work as a cashier, you job is to collect bills from customer and make changes
+%     \item The shop is small and the things are cheap so most of the customers are paying by coin, but still there are some customers pay by notes.
+%     \item So when customers pay be notes, you need to make changes, let's say you have a bunch (much more than the amount u need to change) of coin, which are of value $1$, $2$ and $5$ respectively.
+%     \item Clearly no one like to receive a bunch of coin in change, so in order not to piss off anyone you need to find a way to minimize the number of coin used for changes.
+%   \end{itemize}
+% \end{frame}
 
-\section{Maximum Subarray Sum}
-\begin{frame}{Maximum subarray sum}
-  \begin{itemize}
-    \item Finally let's talk about an interesting problem 
-    \item Consider an arbitrary 1D list:
-    \begin{align*}
-      \rowcolors{1}{}{}
-      \begin{bmatrix}
-        -1 & 2 & 4 & -3 & 5 & 2 & -5 & 2
-      \end{bmatrix}
-    \end{align*}
-    \item \textbf{Problem:} Can we find a subarray within the list so that the sum of the list is maximum?
-  \end{itemize}
-\end{frame}
+% \begin{frame}[fragile]{Problem statement}
+%   \begin{itemize}
+%     \item Now clearly you have a problem to solve, but it is complicated and contain a lot of unnecessary information, we need to simplify it.
+%     \item Recall the framework of program that we emphasize in previous lectures, a program is usually in the form of
+%     \begin{itemize}
+%       \item input
+%       \item process
+%       \item output
+%     \end{itemize}
+%     \item But as a user to use the program you designed, they don't really care what is the process happened behind the code, all they care is if the output correctly answer their input!
+%     \item So we need to first make it clear what are the input and expected output of the problem, then work out the process between
+%   \end{itemize}
+% \end{frame}
 
-\begin{frame}{Maximum subarray sum}
-  \begin{itemize}
-    \item For example, if we have the list $\left[1,-3,6\right]$. Then the set of all subarrays are:
-    \begin{align*}
-      \{[1],[-3],[6],[1,-3],[-3,6],[1,-3,6]\}
-    \end{align*}
-    \item And the corresponding subarray sums are:
-    \begin{align*}
-      \{1,-3,6,4,3,4\}
-    \end{align*}
-    \item So the maximum subarray sum is $6$ and that corresponds to subarray $[6]$
-  \end{itemize}
-\end{frame}
+% \begin{frame}[fragile]{Change making problem}
+%   \begin{center}
+%     \begin{eqnarray*}
+%       \text{Input:}&\enspace&\$C\text{ :changes to be made}\\
+%       \text{Output:}&\enspace&\{n_{1},n_{2},n_{5}\}\text{ : number of each type of coins used}\\
+%       \text{Subject to:}&\enspace&n_{1}+2n_{2}+5n_{5}=C\\
+%       &\enspace&n_{1}+n_{2}+n_{5}\text{ should be as small as possible}
+%     \end{eqnarray*}
+%   \end{center}
+% \end{frame}
 
-\begin{frame}{Maximum subarray sum}
-  \begin{itemize}
-    \item Another example: If the list is $[2,-1,7]$ then the subarrays are:
-    \begin{align*}
-      \{[2],[-1],[7],[2,-1],[-1,7],[2,-1,7]\}
-    \end{align*}
-    \item The corresponding sums are therefore:
-    \begin{align*}
-      \{2,-1,7,1,6,8\}
-    \end{align*}
-    \item So this time the maximum subarray sum is $8$ and it corresponds to subarray $[2,-1,7]$
-  \end{itemize}
-\end{frame}
+% \begin{frame}[fragile]{First Attempt}
+%   \begin{itemize}
+%     \item Now let's think about how to solve the problem
+%     \item our main target is to give as less coin as possible
+%     \item what would be the easiest way to do so?
+%   \end{itemize}
+% \end{frame}
 
-\begin{frame}{Maximum subarray sum}
-  \begin{itemize}
-    \item Can you design a program that do it? \item (Hint: You can brute force the problem very easily)
-  \end{itemize}
-\end{frame}
+% \begin{frame}[fragile]{First Attempt}
+%   \begin{itemize}
+%     \item Now let's think about how to solve the problem
+%     \item our main target is to give as less coin as possible
+%     \item what would be the easiest way to do so?
+%     \item Perhaps always use the largest coin possible?
+%   \end{itemize}
+% \end{frame}
 
-\begin{frame}
-  \begin{algorithm}[H]
-    \caption{Maximum subarray sum (Naïve)} \label{alg:max_subarr_naive}
-    \begin{flushleft}
-      \textbf{Input:} $n$ - Length of array; $arr$ - The array \\
-      \textbf{Output:} $best$ maximum subarray sum\\
-      \textbf{Program:} 
-    \end{flushleft}
-    
-    \begin{algorithmic}
-      \State{$best\gets 0$}
-      \ForAll{$i$ in $0$ to $n-1$}
-        \ForAll{$j$ in $i$ to $n-1$}
-          \State{$sum \gets 0$}
-          \ForAll{$k$ in $i$ to $j$}
-            \State{$sum \gets sum + arr[k]$}
-          \EndFor
-          \State{$best \gets \max(sum,best)$}
-        \EndFor
-      \EndFor
-      \State{Output $best$}
-    \end{algorithmic}
-  \end{algorithm}
-\end{frame}
+% \begin{frame}[fragile]{Example}
+%   \begin{itemize}
+%     \item Let's try it on a actual example!
+%     \item Let's say the change we need to make is \$$9$
+%     \item Then we first use the largest coin, which is \$$5$, then we still need to change for \$$4$
+%     \item Next since $4<5$, we cannot use \$$5$ coin, so our choice will be \$$2$, then we are remained with \$$2$
+%     \item Finally the result is trivial that we shall use one more \$$2$ coin to change
+%     \item So our solution would be $\{0,2,1\}$, which stands for we use $0$ \$$1$ coin, $2$ \$$2$ coin and $1$ \$$5$ coin.
+%     \item But is it optimal?
+%   \end{itemize}
+% \end{frame}
 
-\begin{frame}{Naïve method is slow}
-  \begin{itemize}
-    \item Note that the naive method is \textbf{very slow}
-    \item It has 3 for loops so in general it will take $\mathcal{O}(n^3)$ to run
-    \item We need something faster
-    \item In fact, someone have solved it for us in $\mathcal{O}(n)$ time. The algorithm is named \textbf{Kadane's algorithm}
-  \end{itemize}
-\end{frame}
+% \begin{frame}[fragile]{Example cont'd}
+%   \begin{itemize}
+%     \item Yes! But how can we prove it?
+%     \item For this case we used three coins, obviously we cannot make the changes using one coin only since there is no \$ $9$ coin, but what about two?
+%     \item $1+1=2$,$2+2=4$,$5+5=10$,$1+2=3$,$1+5=6$,$2+5=7$
+%     \item None of the combinations equal to $9$!
+%     \item So it is also impossible to make the changes using only two coins
+%     \item Therefore three is optimal!
+%   \end{itemize}
+% \end{frame}
 
-\begin{frame}{Interesting backstory}
-  \begin{itemize}
-    \item The problem was proposed by Ulf Grenander in 1977 in his research in computer graphics. He derived an algorithm of $\mathcal{O}(n^2)$ himself.
-    \item Later, when the problem is presented to Michael Shamos, another mathematician. He derived a divide and conquer algorithm of $\mathcal{O}(n\log n)$ overnight.
-    \item Yet later, Shamos presented the problem at a seminar which was attended by Jay Kadane and he designed within a minute an $\mathcal{O}(n)$-time algorithm, which is as fast as possible.
-    \item Now we will look at the algorithm by \textit{Kadane}
-  \end{itemize}
-\end{frame}
+% \begin{frame}[fragile]{Implementation}
+%   \begin{itemize}
+%     \item So now we have an idea, let's try to implement it!
+% \begin{lstlisting}[language=python]
+%   price=int(input("Enter the bill:"))
+%   payment=int(input("Enter the payment:"))
+%   while payment<price:  #check whether customer pay enough money
+%     print("payment not enough, please pay again")
+%     payment=int(input("Enter the payment:"))
+%   C=payment-price
+%   n5=C//5   #here we use C//5 instead of C-5
+%   C=C%5
+%   n2=C//2
+%   C=C%2
+%   n1=C
+%   print("change:",n1,"$1 coin,"n2,"$2 coin",n5,"$5 coin")
+% \end{lstlisting}
+%   \end{itemize}
+% \end{frame}
 
-\begin{frame}{Kadane's Algorithm}
-  \begin{itemize}
-    \item Kadane begins by solving a similar but simpler problem: \textit{What is the maximum subarray sum that ends in $k$}?
-    \item To illustrate that, we will consider the following array:
-    \begin{align*}
-      \{1,-2,5,-10,1,10\}
-    \end{align*}
-    \item Just like before, we will try to brute force all the subarrays (Side question: How many subarrays are there? What about the general case? )
-    \item This time, however, we will group the subarrays that ends at the same elements together
-  \end{itemize}
-\end{frame}
+% \begin{frame}[fragile]{Improvement}
+%   \begin{itemize}
+%     \item In the program, we assumed the coin we have is always fixed, i.e. \$$1$,\$$2$ and \$$5$
+%     \item let's make it more flexible (so that perhaps it can be used in other countries' store)
+%     \item To do some we need to borrow the power of math
+%     \item let's $K$ be the number of distinct value of coin we have
+%     \item then let's $c_{1},c_{2},...,c_{K}$ be the value of each of the coin
+%     \item for simplicity we assume the coin is given in ascending order, i.e.
+%     $$c_{1}>c_{2}>...>c_{K}$$
+%     \item also we always assume $c_{K}=1$, so that any change can be made
+%   \end{itemize}
+% \end{frame}
 
-\begin{frame}{Kadane's Algorithm}
-  \begin{table}[]
-    \begin{tabular}{rrrrrr}
-    \multicolumn{6}{c}{Subarrays Ends at element $k$}                                                                                               \\
-    \multicolumn{1}{c}{1} & \multicolumn{1}{c}{2} & \multicolumn{1}{c}{3} & \multicolumn{1}{c}{4} & \multicolumn{1}{c}{5} & \multicolumn{1}{c}{6} \\
-    \textcolor{red}{\{1\}}                 & \textcolor{red}{\{1,-2\}}              & \{1,-2,5\}            & \{1,-2,5,-10\}        & \{1,-2,5,-10,1\}      & \{1,-2,5,-10,1,10\}   \\
-                          & \{-2\}                & \{-2,5\}              & \{-2,5,-10\}          & \{-2,5,-10,1\}        & \{-2,5,-10,1,10\}     \\
-                          &                       & \textcolor{red}{\{5\}}                 & \textcolor{red}{\{5,-10\}}             & \{5,-10,1\}           & \{5,-10,1,10\}        \\
-                          &                       &                       & \{-10\}               & \{-10,1\}             & \{-10,1,10\}          \\
-                          &                       &                       &                       & \textcolor{red}{\{1\}}                 & \textcolor{red}{\{1,10\}}              \\
-                          &                       &                       &                       &                       & \{10\}               
-    \end{tabular}
-    \end{table}
-    The maximum subarray sum is the largest among the red subarrays ($\{1,10\}$)
-\end{frame}
+% \begin{frame}[fragile]{New problem statement}
+%   \begin{itemize}
+%     \item Then we can rewrite our problem as
+%     \begin{center}
+%       \begin{eqnarray*}
+%         \text{Input:}&\enspace&C\text{ : changes to be made}\\
+%         &\enspace&\{c_{1},c_{2},...,c_{K}\}\text{ : value of each coin}\\
+%         \text{Output:}&\enspace&\{n_{1},n_{2},...,n_{K}\}\text{ : number of each type of coins used}\\
+%         \text{Subject to:}&\enspace&c_{1}n_{1}+c_{2}n_{2}+...+c_{K}n_{K}=C\\
+%         &\enspace&n_{1}+n_{2}+...+n_{K}\text{ should be as small as possible}
+%       \end{eqnarray*}
+%     \end{center}
+%   \end{itemize}
+% \end{frame}
 
-\begin{frame}{Kadane's Algorithm}
-  \begin{itemize}
-    \item The key observation is: It is easy to obtain the maximum subarray sum that ends in $k+1$th element given that of $k$
-    \item In fact, the maximum subarray can that ends in $k+1$th element must either:
-    \begin{enumerate}
-      \item Begins at an element from $0$ to $k$ and ends at $k+1$; or
-      \item Begins at $k+1$ and ends at $k+1$ (i.e. contain only the $k+1$th element)
-    \end{enumerate}
-    \item For the first case, the maximum subarray must be the maximum subarray that ends in $k$ + the $k+1$th element
-    \item So to find the maximum subarray sum that ends in $k+1$, we only need to compute $\max(\text{Max sum ends at }k + arr[k+1],arr[k+1])$
-    \item Finally $bestSum = \max_{0 \leq k \leq n-1} \{\text{Max sum ends at k}\}$
-  \end{itemize}
-\end{frame}
+% \begin{frame}[fragile]{New Implementation}
+%   \begin{itemize}
+%     \item Then we update the implementation
+% \begin{lstlisting}[language=python]
+%   #we skipped the part of getting payment, price and C.
+%   N=int(input("Input number of types of coin:"))
+%   coins=[]
+%   for i in range(N):
+%     coins.append(int(input("Input the coin value:")))
+%   coins.sort(reverse=True)
+%   n=[];
+%   for i in range(N):
+%     n.append(C//coins[i])
+%     C=C%coins[i]
+%   print("change:",n)
+% \end{lstlisting}
+%   \end{itemize}
+% \end{frame}
 
-\begin{frame}
-  This condense to the following, very neat looking algorithm:
-  \begin{algorithm}[H]
-    \caption{Maximum subarray sum (Kadane's Algorithm)} \label{alg:max_subarr_kadane}
-    \begin{flushleft}
-      \textbf{Input:} $n$ - Length of array; $arr$ - The array \\
-      \textbf{Output:} $bestSum$ - maximum subarray sum\\
-      \textbf{Program:} 
-    \end{flushleft}
-    
-    \begin{algorithmic}
-      \State{$prevSum,bestSum \gets arr[0],arr[0]$}
-      \ForAll{$i$ in $1$ to $n-1$}
-        \State{$prevSum \gets \max(arr[i],prevSum+arr[i])$}
-        \State{$bestSum \gets \max(prevSum,bestSum)$}
-      \EndFor
-      \State{Output $bestSum$}
-    \end{algorithmic}
-  \end{algorithm}
-\end{frame}
+% \begin{frame}[fragile]{Greedy Algorithm}
+%   \begin{itemize}
+%     \item What we just did is a kind of approach call Greedy Algorithm
+%     \item As the name \textbf{Greedy} suggest, it means the program always make the best choice it can made at each step and construct the solution
+%     \item Advantage:
+%     \begin{itemize}
+%       \item Simple to understand
+%       \item Easy to implement
+%       \item Efficient
+%     \end{itemize}
+%     \item Application: Minimum spanning tree, Travelling salesman problem...
+%     \item But what about the disadvantage?
+%   \end{itemize}
+% \end{frame}
 
-\begin{frame}{Complexity and Discussion}
-  \begin{itemize}
-    \item As mentioned before, since we only need to loop the array once. The time complexity is $\mathcal{O}(n)$ - fastest one can get
-    \item \textbf{Question:} Can you modify the algorithm above to compute also the beginning and ending position of the subarray with maximum sum?
-  \end{itemize} 
-\end{frame}
+% \begin{frame}[fragile]{Further example}
+%   \begin{itemize}
+%     \item Let's consider the same problem, but this time we have different coins
+%     \item we have \$$1$, \$$10$ and \$$25$
+%     \item Then let's say this time we need to give a change of \$$30$
+%     \item What will our program give?
+%   \end{itemize}
+% \end{frame}
 
-\begin{frame}{List practices}
-  \begin{exampleblock}{Exercise: Number Search}
-    HKOI Online Judge (01023): \href{https://judge.hkoi.org/task/01023}{https://judge.hkoi.org/task/01023}
-  \end{exampleblock}
-\end{frame}
+% \begin{frame}[fragile]{Further example}
+%   \begin{itemize}
+%     \item Let's consider the same problem, but this time we have different coins
+%     \item we have \$$1$, \$$10$ and \$$25$
+%     \item Then let's say this time we need to give a change of \$$30$
+%     \item What will our program give?
+%     \item Since we are always taking the largest possible coin, it will gives $5\times \$1$ and $1\times \$25$, which is $6$ coin in total
+%     \item Is this optimal?
+%   \end{itemize}
+% \end{frame}
 
+% \begin{frame}[fragile]{Further example}
+%   \begin{itemize}
+%     \item Let's consider the same problem, but this time we have different coins
+%     \item we have \$$1$, \$$10$ and \$$25$
+%     \item Then let's say this time we need to give a change of \$$30$
+%     \item What will our program give?
+%     \item Since we are always taking the largest possible coin, it will gives $5\times \$1$ and $1\times \$25$, which is $6$ coins in total
+%     \item Is this optimal?
+%     \item No! We can simply give $3\times \$10$ which gives only $3$ coins!
+%   \end{itemize}
+% \end{frame}
 
+% \begin{frame}[fragile]{Problem of Greedy Algorithm}
+%   \begin{itemize}
+%     \item Since we only consider the best solution we can obtain at each step of our program
+%     \item It might not be the best choice for the overall problem
+%     \item Greedy algorithm may not lways give the best answer
+%     \item Does that means Greedy algorithm is useless?
+%   \end{itemize}
+% \end{frame}
 
+% \begin{frame}[fragile]{Problem of Greedy Algorithm}
+%   \begin{itemize}
+%     \item Since we only consider the best solution we can obtain at each step of our program
+%     \item It might not be the best choice for the overall problem
+%     \item Greedy algorithm may not lways give the best answer
+%     \item Does that means Greedy algorithm is useless?
+%     \item No, we still use Greedy algorithm in practice, there are two cases we will use it
+%     \begin{enumerate}
+%       \item The greedy algorithm can be proven to be optimal
+%       \item We accept approximated solution (not optimal, but not too far from it)
+%     \end{enumerate}
+%   \end{itemize}
+% \end{frame}
 
 \end{document}

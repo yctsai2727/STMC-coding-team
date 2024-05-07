@@ -14,6 +14,7 @@ colorlinks=true,linkcolor=blue}
 \usepackage{algpseudocode}
 \usepackage{listings}
 \usepackage{xcolor}
+\usepackage{graphicx}
 
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
@@ -54,9 +55,9 @@ colorlinks=true,linkcolor=blue}
 
 \usetheme{UCBerkeley}
 
-\title[Your Short Title]{STMC HKOI Training}
-\subtitle{Lesson 8: Function and Recursion}
-\author{Chan Yan Mong}
+\title[Your Short Title]{STMC Coding Team Training}
+\subtitle{Lesson 8: Introduction to AI, ML and their applications}
+\author{Tsai Yun Chen}
 %\institute{}
 \date{\today}
 
@@ -74,574 +75,197 @@ colorlinks=true,linkcolor=blue}
 \section{Class Goal}
 
 \begin{frame}{Goal today}
-String and list are similar so we can do similar operations (Slice, membership, elementwise access etc.) on it. 
+Today we will briefly talk about the history, development and concept of AI, the definition and examples of Machine Learning Model, we will try out two different state-of-the-art ML models.
 \begin{itemize}
-  \item Introduce function to modularize code
-  \item Using function to make previous code cleaner
-  \item Introduce recursion
-  \item Use recursion to solve problems:
-  \begin{itemize}
-    \item Fibonacci problem
-    \item Tower of Hanoi
-    \item Permutations
-  \end{itemize}
+  \item What is AI?
+  \item A brief history timeline of AI
+  \item Overview of ML
+  \item ML model 1: Stable Diffusion
+  \item ML model 2: GPT-4
+  \item What's in the future?
 \end{itemize}
-
 \end{frame}
 
-\section{Function}
-\begin{frame}[fragile]{Code Reusability}
-  \begin{itemize}
-    \item \textbf{Code reuse} is the use of existing software, or software knowledge, to build new software 
-    \item Many times in programming, certain segment of code (e.g. search for name in contact for example) will be used again and again 
-    \item We would therefore want to reuse those code without keep typing it again and again 
-    \item Here is an example:
-  \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]
-\begin{lstlisting}[language=python]
-# Searching for names in contact
-
-contact = ['Billy','Damon','Leon','Mary','Shirley']
-searchName = input('Enter a name: ')
-inContact = False 
-for name in contact:
-  if searchName == name:
-    inContact = True 
-if inContact:
-  print(f'{searchName} is in contact')
-
-# Search another one
-searchName = input('Enter a name again: ')
-inContact = False 
-for name in contact:
-  if searchName == name:
-    inContact = True 
-if inContact:
-  print(f'{searchName} is in contact')
-  \end{lstlisting}
-\end{frame}
-
-\begin{frame}[fragile]{Code Reusability}
-  \begin{itemize}
-    \item As shown in the code, line 13 to 19 is completely identical to the above
-    \item It would be great if we can put them into one line like this:
-\begin{lstlisting}[language=python]
-if haveName(contact, name):
-  print(f'{name} is in contact')
-\end{lstlisting}
-    \item \textit{function} provide exactly what we want
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Function}
+\begin{frame}{What is AI?}
   \begin{columns}
     \begin{column}[T]{0.6\textwidth}
       \begin{itemize}
-        \item \textbf{Function}, in the simplest term, is a machine that takes in some input $x$ and perform some action on $x$, producing an output $f(x)$
-        \item For example, we may define the following functions:
+        \item Artificial Intelligence (AI)
+        \item Alan Turing, the father of Theoretical Computer Science and AI
+        \item Central Question: Can machine think and behave like a human?
+        \item In 1950s, the field of study in AI was founded
+      \end{itemize}
+    \end{column}
+    \begin{column}[T]{0.4\textwidth}
+      \begin{figure}
+        \includegraphics[width=0.6\textwidth]{img/Alan-Turing.png}
+        \caption{retrieved from: \href{https://www.britannica.com/biography/Alan-Turing}{Alan Turing, B.J. Copeland}}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{First and Second AI Winter}
+  \begin{itemize}
+    \item In late 1970s, development in AI slow down
+    \item Reasons:
+    \begin{itemize}
+      \item Computational Power
+      \item Lack of Framework
+    \end{itemize}
+    \item In the 1980s, Expert System is proposed
+    \item It failed due to similar reasons
+  \end{itemize}
+  \begin{figure}
+    \includegraphics[width=0.6\textwidth]{img/AIwinter.png}
+    \caption{\textcolor{white}{retrieved from: } \href{https://link.springer.com/article/10.1007/s10506-022-09309-8}{The winter, the summer and the summer dream of artificial intelligence in law, Enrico Francesconi}}
+  \end{figure}
+\end{frame}
+
+\begin{frame}{Rise of Machine Learning}
+  \begin{itemize}
+    \item The concept of Machine Learning was raised in 1960s
+    \item Central Question: Can machine learn knowledge like a human?
+    \item But... How do we define learn? How do we prove we learnt something?
+    \item We need a bit Mathematics to help with that
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Function: Pattern of numbers}
+  \begin{itemize}
+    \item Imagine we are learning about the concept of even number
+    \item It contains a set of numbers, $\{2,4,6,8,...\}$
+    \item But to the machine, it is just a bunch of numbers...
+    \item Pattern is the key!
+    \item (mathematic) function is good for capturing pattern of numbers
+    \item In this example, they all lies on the line $y=2x$
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Regression}
+  \begin{columns}
+    \begin{column}[T]{0.6\textwidth}
+      \begin{itemize}
+        \item In general, consider you have a bunch of data
+        \item The way we \texttt{learn} the data is by finding a (good) function that contain all the points
+        \item But... There may not always exist such a function
+        \item To make our life easier, we accept the function that is \texttt{close} too most of the data points
+        \item Such technique is called Regression
+      \end{itemize}
+    \end{column}
+    \begin{column}[T]{0.4\textwidth}
+      \begin{figure}
+        \includegraphics[width=0.8\textwidth]{img/Linear_regression.png}
+        \caption{retrieved from: \href{https://en.wikipedia.org/wiki/Regression_analysis}{Regression analysis, Wikipedia}}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Artificial Neural Network (ANN)}
+  \begin{columns}
+    \begin{column}[T]{0.6\textwidth}
+      \begin{itemize}
+        \item Regression is good, but there's a problem\dots
+        \item How do I know a function is good for my data?
+        \item We need a more general way of representing function
+        \item Neural Network is all you need!
+        \item A Neural Network consist of\dots
         \begin{itemize}
-          \item $f(x) = x^2$
-          \item $f(x) = x^x$
-          \item $f(x) = \text{Last digit of x in decimal}$
-          \item $f(x) = \{x \quad \text{if} \quad x\geq 0, -x \quad \text{if} \quad x < 0\}$
-          \item $f(x,y) = xy^2 + x^2 y^4$
+          \item Input Layers
+          \item Zero or more Hidden Layers
+          \item Output Layers
         \end{itemize}
-      \end{itemize}
-    \end{column}
-    \begin{column}[T]{0.4\textwidth}
-      \includegraphics[width=\textwidth]{img/function_as_machine.png}
-    \end{column}
-  \end{columns}
-\end{frame}
-
-\begin{frame}{Function}
-  \begin{itemize}
-    \item To \textit{evaluate} a function, we put in an input and perform the actions as described by the definition of the $f$. For example:
-    \begin{table}[]
-      \begin{tabular}{cccc}
-                               & \multicolumn{3}{c}{$f(x)$}                                                                            \\ \cline{2-4} 
-      \multicolumn{1}{c|}{$x$} & \multicolumn{1}{c|}{$x^2$}    & \multicolumn{1}{c|}{$x^x$}         & $x$ if $x\geq 0$, $-x$ otherwise \\ \hline
-      \multicolumn{1}{c|}{-1}  & \multicolumn{1}{c|}{$(-1)^2$} & \multicolumn{1}{c|}{$(-1)^{(-1)}$} & 1                                \\ \cline{1-1}
-      \multicolumn{1}{c|}{1}   & \multicolumn{1}{c|}{$(1)^2$}  & \multicolumn{1}{c|}{$(1)^{(1)}$}   & 1                                \\ \cline{1-1}
-      \multicolumn{1}{c|}{2}   & \multicolumn{1}{c|}{$(2)^2$}  & \multicolumn{1}{c|}{$(2)^{(2)}$}   & 2                                \\ \cline{1-1}
-      \multicolumn{1}{c|}{11}  & \multicolumn{1}{c|}{$(11)^2$} & \multicolumn{1}{c|}{$(11)^{(11)}$} & 11                              
-      \end{tabular}
-      \end{table}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Function}
-  \begin{itemize}
-    \item By defining functions, we can simply expressions by "calling" them in our expressions 
-    \item For example, $\text{lerp}(a,b,t) = a(1-t) + bt \quad 0\leq t \leq 1$ performs a linear interpolation from $a$ to $b$
-    \item By nesting $\text{lerp}$ we can perfrom complicated interpolation
-    \begin{align*}
-      f(a,b,c,t) = \text{lerp}(\text{lerp}(a,b,t),\text{lerp}(b,c,t),t) 
-    \end{align*}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Functions in programming}
-  \begin{itemize}
-    \item In programming, functions are "self contained" modules of code that accomplish a specific task.
-    \item A function takes in certain inputs called the \textbf{arguments} and produce outputs called \textbf{return value}
-    \item For example, you may write a \texttt{UserLookup} function that takes in the username as argument, and return user info as return value.
-  \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{Function in programming}
-  \begin{itemize}
-    \item In python, a function have the following syntax
-\begin{lstlisting}[language=python]
-def func(arg1,arg2,...):
-  # Operations
-  return val1,val2,...
-\end{lstlisting}
-  \item For example, the \texttt{lerp} function just now:
-\begin{lstlisting}[language=python]
-def lerp(a,b,t):
-  return (1-t)*a + t*b
-\end{lstlisting}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Function Exercises}
-  Complete the following exercises
-  \begin{enumerate}
-    \item Write a function \texttt{Square(x)} that square a number 
-    \item Write a function \texttt{IsBigger(x,y)} that compares two number $x$,$y$ and return True if $x>y$
-    \item Write a function \texttt{HaveSubstring(str,substr)} that returns True if \texttt{substr} is contained in \texttt{str} and False otherwise 
-    \item Write a function \texttt{SumAll(num\_list)} that return the sum of a list of numbers \texttt{num\_list}
-    \item Write a function \texttt{MinMax(num\_list)} that returns in maximum and mininum number from the list \texttt{num\_list}
-  \end{enumerate}
-\end{frame}
-
-\begin{frame}{Application: Tic-Tac-Toe}
-  \begin{itemize}
-    \item To demonstrate how function can be used to simply code, we will write a \textit{Tic-Tac-Toe} game
-    \item In a Tic-Tac-Toe game, people place \texttt{X} and \texttt{O} in turns until a winning position is obtained
-    \item Let's be more specific and write down the actual game flow
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Application: Tic-Tac-Toe}
-  Here is a possible flow of the game:
-  \begin{enumerate}
-    \item Prepare an empty $3\times 3$ grid. Assume the game starts with \texttt{X}
-    \item Each round, a player enter a pair of numbers $(\text{row},\text{col})$ to specify the row and column he or she wants to place the \texttt{X} (or \texttt{O})
-    \item If the position $(\text{row},\text{col})$ is occupied, go back to 2 and ask for re-entry; Otherwise continue
-    \item Check if ending position is reached. If so declare the winner and end the game; Otherwise continue 
-    \item Change the player from \texttt{X} to \texttt{O} (or \texttt{O} to \texttt{X}) and go back to 2
-  \end{enumerate}
-\end{frame}
-
-\begin{frame}[fragile]
-  With that we can lay down the structure of our code:
-\begin{lstlisting}[language=python]
-def main():
-  grid = [[0,0,0],[0,0,0],[0,0,0]] # Empty 3x3 list
-  playerNow = 'X'
-
-  while IsEndPosition(grid) == False:
-      row, col = int(input('Row: ')), int(input('Col: '))
-      if not Grid_InRange(row,col):
-          print(f'The position ({row},{col}) is not in range!')
-      elif not Grid_IsEmpty(row,col,grid):
-          print(f'The position ({row},{col}) is occupied!')
-      else:
-          grid[row][col] = playerNow
-          playerNow = GetNextPlayer(playerNow)
-          Print_Grid(grid)
-
-  winner = IsEndPosition(grid)
-  if winner == 'Tie':
-      print('Tie!')
-  else:
-      print(f'{winner} is the winner')
-  input()
-\end{lstlisting}
-\end{frame}
-
-
-\begin{frame}{Application: Tic-Tac-Toe}
-  \begin{itemize}
-    \item But wait, what are \texttt{IsEndPosition}, \texttt{Grid\_IsEmpty}, \texttt{GetNextPlayer}, \texttt{Print\_Grid} and  \texttt{Grid\_InRange}
-    \item They are \textit{functions} to be defined
-    \item As one can see, function allow us to break a program into smaller parts that can be implemented individually
-    \item This makes the code cleaner and more maintainable
-  \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]
-For example, we can implement \texttt{Print\_Grid} like this
-\begin{lstlisting}[language=python]
-def Print_Grid(grid):
-  for i in range(3):
-      for j in range(3):
-          if grid[i][j] != 0:
-              print(grid[i][j],end='')
-          else:
-              print('-',end='')
-      print('')
-\end{lstlisting}
-ans similarly:
-\begin{lstlisting}[language=python]
-def Grid_IsEmpty(row,col,grid):
-  return grid[row][col] == 0
-
-def Grid_InRange(row,col):
-  return 0<=row and row <=2 and 0 <= col and col <= 2
-
-def GetNextPlayer(playerNow):
-  if playerNow == 'X':
-      return 'O'
-  else:
-      return 'X'
-\end{lstlisting}
-\end{frame}
-
-\begin{frame}[fragile]
-  For the implementation of \texttt{IsEndPosition}, please refer to the code posted online. Here we will look at some core logic. Basically, we want to check if the grid configuration is in any of these ending positions:
-  \begin{itemize}
-    \item 3 identical \texttt{X} or \texttt{O} along row 
-    \item 3 identical \texttt{X} or \texttt{O} along column
-    \item 3 identical \texttt{X} or \texttt{O} along diagonal 
-    \item All cells are filled but it is not in any of the ending positions above
-  \end{itemize}
-  The first two can be done in something like this:
-\begin{lstlisting}[language=python]
-for i in range(3):
-  # Check all rows 
-  if grid[i][0] == grid[i][1] and grid[i][0] == grid[i][2] and grid[i][0] != 0:
-      return grid[i][0]
-  # Check all columns
-  if grid[0][i] == grid[1][i] and grid[0][i] == grid[2][i] and  grid[0][i] != 0:
-      return grid[0][i]
-\end{lstlisting}
-\end{frame}
-
-
-\begin{frame}[fragile]
-  The third one can be done like this:
-\begin{lstlisting}[language=python]
-# Check Diagonals
-if grid[0][0] == grid[1][1] and grid[0][0] == grid[2][2] and grid[1][1] != 0:
-    return grid[1][1]
-if grid[0][2] == grid[1][1] and grid[0][2] == grid[2][0] and grid[1][1] != 0:
-    return grid[1][1]
-\end{lstlisting}
-and the last one can be checked by using this code after excluding all the three cases above:
-\begin{lstlisting}[language=python]
-# Check if all cells filled
-isFull = True
-for i in range(3):
-    for j in range(3):
-        if grid[i][j] == 0:
-            isFull = False
-            break
-\end{lstlisting}
-\end{frame}
-
-\section{Recursion}
-
-\begin{frame}[fragile]{Recursion}
-  \begin{columns}
-    \begin{column}{0.6\textwidth}
-      \begin{itemize}
-        \item Function also allow us to easily implement algorithms that involve \textbf{recursion}
-        \item That is, solutions that depends on solutions to smaller instances of the same problem
-        \item As we will illustrate, recursion sometimes allow us to solve complicated problems in very neat way
+        \item Most of the function can be approximated as a Neural Network
       \end{itemize}
     \end{column}
     \begin{column}[T]{0.4\textwidth}
       \begin{figure}
-        
-        \includegraphics[width=0.7\textwidth]{img/RecursiveTree.JPG}
-        \caption{Recursive Tree (\href{https://upload.wikimedia.org/wikipedia/commons/f/f7/RecursiveTree.JPG}{Source})}
+        \includegraphics[width=0.8\textwidth]{img/Colored_neural_network.png}
+        \caption{retrieved from: \href{https://en.wikipedia.org/wiki/Neural_network_(machine_learning)}{Neural network (machine learning), Wikipedia}}
       \end{figure}
     \end{column}
   \end{columns}
 \end{frame}
 
-\begin{frame}{Example: Fibonacci Sequence}
+\begin{frame}{Learning, Training and Testing}
   \begin{itemize}
-    \item Recall the Fibonacci sequence that we discuss long time ago
-    \begin{align*}
-        &F(n+2) = F(n+1) + F(n)\\
-        &F(1) = F(2) = 1
-    \end{align*}
-    \item We had implemented that using loops before, we will now try to do it in recursion 
+    \item Just like we have exam in schools
+    \item We let the function we learnt to do a test to see how close is it to our data set
+    \item This process is called testing
+    \item Training refers to the process of feeding in data to find the good function we need
+    \item Usually we separate data into training set and testing set
+    \item The process of training, testing and fine-tuning is how we conduct Machine Learning (usually)
   \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Example: Fibonacci Sequence}
-  \begin{lstlisting}[language=python]
-# Fibonacci sequence using recursion
-def Fib(n):
-  if n == 1 or n == 2:
-    return 1
-  else:
-    return Fib(n-1) + Fib(n-2)
-  \end{lstlisting}
-\end{frame}
-
-
-\begin{frame}{Example: Fibonacci Sequence}
-  \begin{itemize}
-    \item As shown in the code, calling $F(4)$ returns $F(3)+F(2)$ 
-    \item To return $F(3)+F(2)$, we must evaluate $F(3)$ and $F(2)$
-    \item $F(2)$ by line 3,4 of the code returns $1$
-    \item $F(3)$ on the otherhand calls $F(1)+F(2)$, which both evaluates to $1$ according to line 3,4
-    \item So we "backsubstitute" the values layer by layer up and evaluate $F(4) = ((1+1)) + (1) = 3$
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Example: Fibonacci Sequence}
-  \begin{itemize}
-    \item To see what happens for larger $n$, we can consider the following figure
-    \begin{figure}
-      \centering
-      \includegraphics[width=0.8\textwidth]{img/fib-tree.png}      
-      \caption*{Source: \href{https://stackoverflow.com/questions/35959100/explanation-on-fibonacci-recursion}{StackOverflow}}
-    \end{figure}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Take away}
-  This simple exmaple in illustrate some general features of recursive algorithm
-  \begin{itemize}
-  \item In recursion, we often call a function inside itself (e.g. Here we call $F(3),F(2)$ inside $F(4)$)
-  \item Solutions that depends on solutions to
-  smaller instances of the same problem (e.g. Finding $F(4)$ involves finding $F(3)$,$F(2)$ )
-  \item We combine solutions of smaller problems to solve a larger problem 
-  \end{itemize}
-\end{frame}
-
-  
-\begin{frame}{Example: Tower of Hanoi}
-  \begin{itemize}
-    \item The Tower of Hanoi is a mathematical puzzle first introduced by Édouard Lucas in 1883
-    \item It begins with the disks stacked on one rod in order of decreasing size, the smallest at the top, thus approximating a conical shape. 
-     \item The objective of the puzzle is to move the entire stack to the last rod, obeying the following rules: 
-    \begin{enumerate}
-      \item Only one disk may be moved at a time.
-      \item Each move consists of taking the upper disk from one of the stacks and placing it on top of another stack or on an empty rod.
-      \item No disk may be placed on top of a disk that is smaller than it.
-    \end{enumerate}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Example: Tower of Hanoi}
-\begin{figure}
-\includegraphics[width=0.8\textwidth]{img/hanoi.jpeg}
-\end{figure}
-\end{frame}
-
-\begin{frame}{Example: Tower of Hanoi}
-\begin{itemize}
-\item We would like to program an algorithm that would \textit{solves} the tower of hanoi
-\item Given a stack of $n$ disk to begin with, derive a program that will teach you how should you move the disks to solve the puzzle
-\item Let's try to play around with the game to gain some insights and familiarity
-\item Here is a link to the game: \href{https://www.mathsisfun.com/games/towerofhanoi.html}{https://www.mathsisfun.com/games/towerofhanoi.html}
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Example: Tower of Hanoi}
-\begin{exampleblock}{Observations:}
-Suppose there are $n$ disks and suppose we know how to move $n-1$ disks from rod 1 to rod 2. Then to move $n$ disks, we just need to:
-\begin{enumerate}
-  \item Move all $n-1$ disk above to the rod in the middle rod
-  \item Place the bottom disk to the final rod
-  \item Move the $n-1$ disks to the final rod 
-\end{enumerate}
-\end{exampleblock}
-\end{frame}
-
-\begin{frame}{Example: Tower of Hanoi}
-\begin{itemize}
-\item In other words, once we know how to move $n-1$ disks, moving $n$ disks is easy
-\item But how do we know how to move $n-1$ disks?
-\item Well, to move $n-1$ disk, we just need to know how to move $n-2$ disks!
-\item Wait how about $n-2$? We don't know how to do that right?
-\item Well, we just have to figure out how to move $n-3$ disks!
-\item $\cdots$
-\item But how to move $2$ disks?
-\item Well, to move $2$ disks, we just need to know how to move $1$ disk
-\item \textbf{But moving 1 disk is trivial!}
-\end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{Example: Tower of Hanoi}
-\begin{itemize}
-\item Now we know how to solve the problem by recursion
-\end{itemize}
-\begin{lstlisting}[language=python]
-# Solving Tower of Hanoi using recursion 
-
-def Hanoi(n,rod_from,rod_to):
-  if n == 1:
-    print(f'Move the disk from rod {rod_from} to rod {rod_to}')
-  else:
-    rod_middle = 6 - rod_from - rod_to
-    Hanoi(n-1,rod_from,rod_middle,lv+1)
-    print(f'Move the disk from rod {rod_from} to rod {rod_to}')
-    Hanoi(n-1,rod_middle,rod_to,lv+1)
-\end{lstlisting}
-\end{frame}
-
-\begin{frame}{Example: Listing all permutations}
-  \begin{itemize}
-    \item Recall the permutations of a set is a set of all possible rearrangements of its elements
-    \item For example, the permutations of \texttt{\{A,B,C\}} are:\\ \texttt{\{A,B,C\}} ,\texttt{\{A,C,B\}},\texttt{\{B,A,C\}},\texttt{\{B,C,A\}},\texttt{\{C,A,B\}},\texttt{\{C,B,A\}}     
-    \item As mentioned before, the total number of permutations of a $n$-element set is $n!$
-    \item Now we wish to write an algorithm that generates all the permutations
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Example: Listing all permutations}
-  \begin{itemize}
-    \item Let's see how we can approach the problem 
-    \item First, note that the permutation of 1-element set is trivial, it's just the element itself 
-    \item Second, to generate the permutations for $n+1$ elements, we just need to make each element appear once in front, and generate permutations for the remaining $n$ elements
-    \item For example, Permutations of $\{1,2,3,4\}$:
-    \begin{align*}
-      &\{1,\text{Permute } 2,3,4\}\\
-      &\{2,\text{Permute } 1,3,4\}\\
-      &\{3,\text{Permute } 1,2,4\}\\
-      &\{4,\text{Permute },1,2,3\}
-    \end{align*}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{Example: Listing all permutations}
-  \begin{itemize}
-    \item This allow us to write down a very simple recursive algorithm that does the job
-\begin{lstlisting}[language=python]
-def swap(l,i,j): # Swap element i,j in list l
-  temp = l[i]
-  l[i] = l[j]
-  l[j] = temp
-
-def Permutation(start,end,arr): # In-place permutation
-  if start == end:
-      print(arr)
-  else:
-      for i in range(start,end):
-          swap(arr,start,i)
-          Permutation(start+1,end,arr)
-          swap(arr,i,start)
-\end{lstlisting}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Example: Koch Snowflake}
+\begin{frame}{Deep Learning}
   \begin{columns}
     \begin{column}[T]{0.6\textwidth}
       \begin{itemize}
-        \item This example is unrelated to problem solving, but it introduce some interesting mathematics of fractals
-        \item Koch snowflake is one of the earliest fractals to have been described
+        \item the technique to use multiple hidden layers for constructing complicated function
+        \item Since numbers of layers increase, parameter increase as well
+        \item We need a really large data set to find out which function we need
       \end{itemize}
     \end{column}
     \begin{column}[T]{0.4\textwidth}
       \begin{figure}
-        \includegraphics[width=\textwidth]{img/koch_snowflake.png}
+        \includegraphics[width=0.8\textwidth]{img/DeepLearning.jpeg}
+        \caption{retrieved from: \href{https://www.freecodecamp.org/news/want-to-know-how-deep-learning-works-heres-a-quick-guide-for-everyone-1aedeca88076/}{Want to know how Deep Learning works? Here’s a quick guide for everyone, Radu Raicea}}
       \end{figure}
     \end{column}
   \end{columns}
 \end{frame}
 
-\begin{frame}{Example: Koch Snowflake}
+\begin{frame}{Sounds simple?}
   \begin{itemize}
-    \item The snowflake can be constructed using the following procedure
+    \item The above is an \textbf{extremely} simplified introduction to AI and ML
+    \item As you can imagine, tons of math lies underneath are omitted
+    \item A lot of scientists are still working hard to improve different kind of model/methods
+    \item Let's try some really cool tools people developed
   \end{itemize}
-  \begin{enumerate}
-    \item Draw an equilateral triangle with sides $s$; For each line segment:
-    \item Divide the line segment into three segments of equal length
-    \item Draw an equilateral triangle that has the middle segment from step 3 as its base and points outward
-    \item Remove the line segment that is the base of the triangle from step 3
-    \item Repeat at step 2
-  \end{enumerate}
+  \begin{figure}
+    \includegraphics[width=0.6\textwidth]{img/BackPropagation.png}
+    \caption{\textcolor{white}{retrieved from:} \href{https://medium.com/@jorgesleonel/backpropagation-cc81e9c772fd}{Backpropagation, Jorge Leonel}}
+  \end{figure}
 \end{frame}
 
-\begin{frame}{Example: Koch Snowflake}
+\begin{frame}{Stable Diffusion}
   \begin{itemize}
-    \item The resulting animation is shown \href{https://www.robinsnyder.com/KochSnowflake}{here}
-    \item Surprisingly, this figure has infinite perimeter but finite area
+    \item A model that generate Images according to the text describing it
+    \item Proposed by CompVis group at LMU M\"{u}nich in 2022
+    \item Let's try to generate a few images with your own prompt first!
+    \item Make sure the preprocessing part is done.
+    \item Modify the string \texttt{prompt} to generate a image you want
+    \item Do you spot any unusual part in the generated image?
+    \item Can you modify the prompt to fix it?
   \end{itemize}
-  \begin{theorem}[Perimeter of Koch Snowflake]
-    Let $s$ be the side length of the original equilateral triangle, the perimeter of the figure at the $n+1$th iteration is given as:
-    \begin{align*}
-      P_n = 3\cdot s \cdot \left(\frac{4}{3}\right)^n
-    \end{align*} 
-    In other words, as $n\to \infty$, $P_n \to \infty$
-  \end{theorem}
 \end{frame}
 
-\begin{frame}
-  \begin{proof}
-    Observe in each iteration, we remove $1/3$ (the base of the triangle) of the perimeter and add in $2/3$ of the perimeter (the other two sides of the triangle). Hence, in each iteration the perimeter is scaled up by a factor of $4/3$. Since the perimeter of the 1st iteration (i.e. $n=0$) is $3s$, it follows that for the $n+1$th iteration:
-    \begin{align*}
-      P_n = \left(3s\right) \cdot \left(\frac{4}{3}\right)^{n}
-    \end{align*}
-    This completes the proof
-  \end{proof}
-\end{frame}
-
-\begin{frame}{Example: Koch Snowflake}
-  \begin{theorem}[Area of Koch Snowflake]
-    Let $a_0$ be the area of the original triangle, at $n+1$th iteration, the area of the triangle $A_n$ is given as:
-    \begin{align*}
-      A_n = \frac{a_0}{5} \left[8-3\left(\frac{4}{9}\right)^n\right]
-    \end{align*} 
-    In particular when $n\to \infty$, $A_n \to \frac{8}{5} a_0$
-  \end{theorem}
-\end{frame}
-
-\begin{frame}
-  \begin{proof}
-    Let $s_n$ be the number of sides in each iteration. Then:
-    \begin{align*}
-      s_{n+1} = 3 s_n - s_n + 2s_n = 4s_n
-    \end{align*}
-    Hence $s_n = 3\cdot 4^n$
-    Now in the $n+1$th iteration we add $s_n$ triangle to the figure, each with sides $(1/3)^{n+1}$, so the new area is:
-    \begin{align*}
-      A_{n+1} &= A_{n} + a_0 s_n \left(1/3\right)^{2(n+1)}\\
-      &= A_{n} + \frac{a_0}{3} \left(\frac{4}{9}\right)^n
-    \end{align*}
-    Since $A_0=a_0$, expanding the recursion we have:
-    \begin{align*}
-      A_n = a_0 \left[1 + \frac{1}{3} + \frac{1}{3}\left(\frac{4}{9}\right) + \frac{1}{3}\left(\frac{4}{9}\right)^2 + \cdots + \frac{1}{3}\left(\frac{4}{9}\right)^{n-1}\right] 
-    \end{align*}
-    \renewcommand{\qedsymbol}{}
-  \end{proof}
-\end{frame}
-
-\begin{frame}
-  \begin{proof}
-    Recall the geometric sequence sum formula (Try to prove it!):
-    \begin{align*}
-      a_0 + a_0 r + a_0 r^2 + \cdots a_0 r^{n-1} = a_0 \left(\frac{1-r^n}{1-r}\right)
-    \end{align*}
-    Hence the sum becomes:
-    \begin{align*}
-      A_n &= a_0 \left[1+ \frac{1}{3} \left(\frac{1-(4/9)^n}{1-(4/9)}\right)\right]\\
-      &= a_0 \left[1+ \frac{3}{5}\left(1-\left(\frac{4}{9}\right)^n\right)\right]\\
-      &= \frac{a_0}{5} \left[8-3\left(\frac{4}{9}\right)^n\right]
-    \end{align*}
-    This completes the proof
-  \end{proof}
-\end{frame}
-
-\begin{frame}{Example: Koch Snowflake}
+\begin{frame}{Exercise}
   \begin{itemize}
-    \item We can define the dimension of an object by breaking it down in to $N$ self-similar piece, each scaled down by a factor $\epsilon$. For example, the dimension $D$ of a square is $2$ because we can break it down into 4 similar pieces each scaled by a factor of $1/2$. \item In general, we may define the diemnsion of a geometric object by:
-    \begin{align*}
-      N = \epsilon^{-D}
-    \end{align*}
-    \item Using this scaling law we can find that the dimension of Koch Snowflake to be: $\log 4/\log 3 \approx 1.262$
+    \item Modify the code so that it asked user for a input and try to generate a image for the input
+    \item To make it more interative, after the image is generated, ask the user whether he/she want to generate another one
+    \item Modify the code so that it generated multiple images and compare them
+    \item Let the user to choose which image to save
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{GPT-4}
+  \begin{itemize}
+    \item A model that generate text-response according to the text input provided
+    \item Proposed by OpenAi in 2023
+    \item Let's try to Talk with the model, ask it a few questions
+    \item The reaction might be slow, be patient with it
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{What's in the future?}
+  \begin{itemize}
+    \item Make GPT even smarter
+    \item Application to other area: robotics, vehicle, medical-use...
+    \item Small-Data AI, customized AI
+    \item Quantum-based technology
   \end{itemize}
 \end{frame}
 \end{document}

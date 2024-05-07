@@ -1,11 +1,5 @@
-\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
-\defcounter {refsection}{0}\relax 
 \beamer@sectionintoc {1}{Class Goal}{2}{0}{1}
-\defcounter {refsection}{0}\relax 
 \beamer@sectionintoc {2}{Concept of loop}{3}{0}{2}
-\defcounter {refsection}{0}\relax 
 \beamer@sectionintoc {3}{While loop}{8}{0}{3}
-\defcounter {refsection}{0}\relax 
 \beamer@sectionintoc {4}{for loop}{14}{0}{4}
-\defcounter {refsection}{0}\relax 
 \beamer@sectionintoc {5}{list in python}{22}{0}{5}

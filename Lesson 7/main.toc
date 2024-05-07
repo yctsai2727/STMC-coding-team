@@ -1,15 +1,2 @@
-\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
-\defcounter {refsection}{0}\relax 
 \beamer@sectionintoc {1}{Class Goal}{2}{0}{1}
-\defcounter {refsection}{0}\relax 
-\beamer@sectionintoc {2}{Character Encoding}{3}{0}{2}
-\defcounter {refsection}{0}\relax 
-\beamer@sectionintoc {3}{String and List}{8}{0}{3}
-\defcounter {refsection}{0}\relax 
-\beamer@sectionintoc {4}{Practicing string handling}{18}{0}{4}
-\defcounter {refsection}{0}\relax 
-\beamer@sectionintoc {5}{String Searching}{19}{0}{5}
-\defcounter {refsection}{0}\relax 
-\beamer@subsectionintoc {5}{1}{Naive String Search}{20}{0}{5}
-\defcounter {refsection}{0}\relax 
-\beamer@subsectionintoc {5}{2}{Knuth-Morris-Pratt Algorithm}{30}{0}{5}
+\beamer@sectionintoc {2}{Recap}{3}{0}{2}

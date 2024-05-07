@@ -1,0 +1,20 @@
+\frametitle{Implementation}
+\begin{lstlisting}[language=python]
+  class LinkedList:
+    def __init__(self):
+      self.data=None
+      self.next=None
+    def insert(self,data):
+      if self.data==None:
+        self.data=data
+        self.next=LinkedList()
+      else:
+        self.next.insert(data)
+    def find(self,data):
+      if self.data==data:
+        return True
+      elif self.data==None:
+        return False
+      else:
+        return self.next.find(data)
+\end{lstlisting}
